@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Beautiful Galiyat - Travel & Tourism</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Great+Vibes&family=Montserrat:wght@800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header Navigation Bar -->
+    <header class="navbar">
+        <a href="#" class="logo">
+            <img src="assets/logo1.png" alt="Logo" class="site-logo"
+                onerror="this.onerror=null; this.src='assets/logo1-removebg-preview.png';">
+        </a>
+        <nav class="nav-links">
+            <a href="#" class="active">Home</a>
+            <a href="#">Destinations</a>
+            <a href="#">Packages</a>
+            <a href="#">Activities</a>
+            <a href="#">Gallery</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="nav-right">
+            <a href="tel:+923000000000" class="phone-link"><i class="fa-solid fa-phone"></i> +92 300 1234567</a>
+            <button class="btn-primary">Book Now</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Background Overlay for mist & vignette effect -->
+        <div class="hero-overlay"></div>
+        <div class="sunlight-flare"></div>
+
+
+
+        <!-- Hero Central Typography -->
+        <div class="hero-content">
+            <h2 class="script-title">Explore Beautiful</h2>
+            <h1 class="main-title">GALIYAT</h1>
+
+            <!-- Pagination Dots / Indicators -->
+            <div class="hero-pagination">
+                <span class="page-num active" data-slide="1">01</span>
+                <span class="page-num" data-slide="2">02</span>
+                <span class="page-num" data-slide="3">03</span>
+                <span class="page-num" data-slide="4">04</span>
+            </div>
+        </div>
+
+        <!-- Floating Search Widget Bar -->
+        <div class="search-bar-container">
+            <form class="search-bar-form" onsubmit="event.preventDefault();">
+                <!-- 1. Destination -->
+                <div class="search-item">
+                    <div class="icon-wrapper">
+                        <i class="fa-regular fa-compass"></i>
+                    </div>
+                    <div class="search-input-group">
+                        <label for="destination">Destination</label>
+                        <select id="destination">
+                            <option value="">Select Destination</option>
+                            <option value="nathia-gali" selected>Nathia Gali</option>
+                            <option value="mushkpuri">Mushkpuri Peak</option>
+                            <option value="ayubia">Ayubia National Park</option>
+                            <option value="dunga-gali">Dunga Gali Pipeline</option>
+                            <option value="thandiani">Thandiani</option>
+                            <option value="khanspur">Khanspur</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- 2. Kind of Trip -->
+                <div class="search-item">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-suitcase"></i>
+                    </div>
+                    <div class="search-input-group">
+                        <label for="trip-kind">Kind Of Trip</label>
+                        <select id="trip-kind">
+                            <option value="">Select Trip Type</option>
+                            <option value="family" selected>Family Tour</option>
+                            <option value="adventure">Adventure & Trekking</option>
+                            <option value="honeymoon">Honeymoon Special</option>
+                            <option value="group">Group Hiking</option>
+                            <option value="weekend">Weekend Getaway</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- 3. Activities & Themes -->
+                <div class="search-item">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-mountain-sun"></i>
+                    </div>
+                    <div class="search-input-group">
+                        <label for="activities">Activities & Themes</label>
+                        <select id="activities">
+                            <option value="">All Activities</option>
+                            <option value="trekking" selected>Trekking & Hiking</option>
+                            <option value="chairlift">Chairlift Ride</option>
+                            <option value="camping">Pine Camping</option>
+                            <option value="sightseeing">Sightseeing</option>
+                            <option value="snow">Snow Sports</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- 4. Average Price -->
+                <div class="search-item">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                    </div>
+                    <div class="search-input-group">
+                        <label for="price-range">Average Price</label>
+                        <select id="price-range">
+                            <option value="">Select Budget</option>
+                            <option value="budget">PKR 15,000 - 30,000</option>
+                            <option value="medium" selected>PKR 30,000 - 60,000</option>
+                            <option value="luxury">PKR 60,000 - 120,000+</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 5. Search Button -->
+                <button type="submit" class="search-submit-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Where to Next Package Section -->
+    <section class="where-to-next-section">
+        <!-- Background Arc Line Vector -->
+        <div class="bg-arc-line"></div>
+
+        <div class="section-header">
+            <h3 class="script-subtitle">Plan Your Trip</h3>
+            <h2 class="section-main-title">Where to next?</h2>
+        </div>
+
+        <div class="packages-carousel-wrapper">
+            <!-- Navigation Arrow Controls -->
+            <button class="pkg-nav-btn pkg-prev-btn" id="pkgPrevBtn" aria-label="Previous Package">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="pkg-nav-btn pkg-next-btn" id="pkgNextBtn" aria-label="Next Package">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <!-- Packages Container -->
+            <div class="packages-carousel-container">
+
+                <!-- Package 1: Beauteous Galiyat -->
+                <div class="package-group-card active" data-index="0">
+                    <div class="package-img-box">
+                        <img src="assets/chairlift.png" alt="Beauteous Galiyat Package">
+                        <div class="watermark-text">GALIYAT</div>
+                    </div>
+                    <div class="connecting-node">
+                        <i class="fa-solid fa-mountain"></i>
+                    </div>
+                    <div class="package-info-box">
+                        <h3 class="pkg-title">BEAUTEOUS GALIYAT PACKAGE</h3>
+                        <div class="pkg-meta">
+                            <span class="meta-item"><i class="fa-regular fa-calendar"></i> 3 Days / 2 Nights</span>
+                            <span class="meta-item"><i class="fa-solid fa-location-dot"></i> Abbottabad & Galiyat</span>
+                        </div>
+                        <div class="pkg-destination">
+                            <span class="dest-label">Destination:</span>
+                            <p class="dest-text">Nathia Gali (1N) | Ayubia Chairlift (1N) | Mushkpuri Peak Hike | Dunga Gali Pipeline Track</p>
+                        </div>
+                        <div class="pkg-price-row">
+                            <div class="price-block">
+                                <span class="from-label">From</span>
+                                <div class="price-value">
+                                    <span class="currency">PKR</span>
+                                    <span class="amount">25,000/-</span>
+                                    <span class="per-person">Per Person</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 2: Misty Pines & Mountain Adventure -->
+                <div class="package-group-card" data-index="1">
+                    <div class="package-img-box">
+                        <img src="assets/misty_pines.png" alt="Misty Pines Adventure">
+                        <div class="watermark-text">GALIYAT</div>
+                    </div>
+                    <div class="connecting-node">
+                        <i class="fa-solid fa-tree"></i>
+                    </div>
+                    <div class="package-info-box">
+                        <h3 class="pkg-title">MISTY PINES & ADVENTURE</h3>
+                        <div class="pkg-meta">
+                            <span class="meta-item"><i class="fa-regular fa-calendar"></i> 4 Days / 3 Nights</span>
+                            <span class="meta-item"><i class="fa-solid fa-location-dot"></i> Thandiani & Changla Gali</span>
+                        </div>
+                        <div class="pkg-destination">
+                            <span class="dest-label">Destination:</span>
+                            <p class="dest-text">Thandiani Peak (1N) | Changla Gali (1N) | Ayubia National Park | Pipeline Track Trail</p>
+                        </div>
+                        <div class="pkg-price-row">
+                            <div class="price-block">
+                                <span class="from-label">From</span>
+                                <div class="price-value">
+                                    <span class="currency">PKR</span>
+                                    <span class="amount">32,000/-</span>
+                                    <span class="per-person">Per Person</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 3: Nathia Gali & Mushkpuri Trek Special -->
+                <div class="package-group-card" data-index="2">
+                    <div class="package-img-box">
+                        <img src="assets/GALIYAT-BLOG-PIC-3-1024x768.webp" alt="Nathia Gali & Mushkpuri Trek">
+                        <div class="watermark-text">GALIYAT</div>
+                    </div>
+                    <div class="connecting-node">
+                        <i class="fa-solid fa-person-hiking"></i>
+                    </div>
+                    <div class="package-info-box">
+                        <h3 class="pkg-title">NATHIA GALI & MUSHKPURI TREK</h3>
+                        <div class="pkg-meta">
+                            <span class="meta-item"><i class="fa-regular fa-calendar"></i> 2 Days / 1 Night</span>
+                            <span class="meta-item"><i class="fa-solid fa-location-dot"></i> Nathia Gali & Samundar Katha</span>
+                        </div>
+                        <div class="pkg-destination">
+                            <span class="dest-label">Destination:</span>
+                            <p class="dest-text">Mushkpuri Summit Hike (1N) | Governor House | Samundar Katha Lake Boating</p>
+                        </div>
+                        <div class="pkg-price-row">
+                            <div class="price-block">
+                                <span class="from-label">From</span>
+                                <div class="price-value">
+                                    <span class="currency">PKR</span>
+                                    <span class="amount">18,500/-</span>
+                                    <span class="per-person">Per Person</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Easy Stay Section -->
+    <section class="easy-stay-section">
+        <!-- Background Mountain Silhouette Overlay -->
+        <div class="easy-stay-bg-overlay"></div>
+        <div class="dashed-flight-path"></div>
+        <div class="stay-watermark">OUR FAVOURITES</div>
+
+        <div class="container easy-stay-container">
+            <!-- Left Side Content -->
+            <div class="easy-stay-content">
+                <h3 class="script-subtitle-light">Our Favourites</h3>
+                <h2 class="easy-stay-title">Our easy stay</h2>
+
+                <!-- Trip Destinations Table -->
+                <div class="stay-table">
+                    <div class="stay-table-header">
+                        <span class="col-dest">Destination</span>
+                        <span class="col-trip">Trip Name</span>
+                    </div>
+
+                    <div class="stay-table-row active">
+                        <span class="col-dest">Nathia Gali</span>
+                        <span class="col-trip">Nathia Gali Luxury Resort Stay</span>
+                    </div>
+
+                    <div class="stay-table-row">
+                        <span class="col-dest">Ayubia & Changla Gali</span>
+                        <span class="col-trip">Ayubia Pine Valley Stay</span>
+                    </div>
+
+                    <div class="stay-table-row">
+                        <span class="col-dest">Mushkpuri & Dunga Gali</span>
+                        <span class="col-trip">Mushkpuri Heights Stay</span>
+                    </div>
+                </div>
+
+                <!-- See Trips CTA Button -->
+                <div class="stay-cta">
+                    <button class="btn-see-trips">See Trips</button>
+                </div>
+
+                <!-- Carousel Controls -->
+                <div class="stay-carousel-controls">
+                    <div class="controls-line"></div>
+                    <button class="stay-arrow-btn stay-prev" aria-label="Previous Stay">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button class="stay-arrow-btn stay-next" aria-label="Next Stay">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Side Suitcase Image -->
+            <div class="easy-stay-image-wrapper">
+                <img src="assets/suitcase.png" alt="Yellow Suitcase Travel Stay" class="suitcase-img"
+                    onerror="this.onerror=null; this.src='assets/suitcase image.png';">
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Travel Experts Section -->
+    <section class="travel-experts-section">
+        <div class="section-header">
+            <h3 class="script-subtitle">Tailored</h3>
+            <h2 class="section-main-title">Our Travel Experts</h2>
+        </div>
+
+        <div class="experts-card-wrapper">
+            <div class="experts-card">
+                <!-- Left Scenic Photo -->
+                <div class="experts-img-box">
+                    <img src="assets/expert_scenic_1786135310027.png" alt="Scenic Destination" onerror="this.onerror=null; this.src='assets/misty_pines.png';">
+                </div>
+
+                <!-- Right Expert Info Box -->
+                <div class="experts-info-box">
+                    <div class="expert-avatar-box">
+                        <img src="assets/expert_avatar_1786135348557.png" alt="Brooklyn Simmons" class="expert-avatar">
+                    </div>
+                    <h3 class="expert-name">Brooklyn Simmons</h3>
+                    <div class="expert-tags">
+                        <span>Nathia Gali</span> • <span>Ayubia</span> • <span>Mushkpuri</span> • <span>Thandiani</span>
+                    </div>
+                    <p class="expert-bio">
+                        Originally From Grenoble, Born To Adventurous Parents, I Explored Europe Very Early On On
+                        Roadtrips. It's The Beginning Of New Period Of Life And Every Newlywed Couple Dreams To Make It
+                        An Experience Of A Lifetime, To Cherish Forever.
+                    </p>
+
+                    <!-- Pagination Dots -->
+                    <div class="expert-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travalo / Specialist Aerial River Banner Section -->
+    <section class="travalo-banner-section">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <h3 class="script-subtitle-banner">The Polar Travel Specialist</h3>
+            <h1 class="travalo-title">TRAVALO</h1>
+        </div>
+    </section>
+
+    <!-- Testimonials / Reviews Section -->
+    <section class="reviews-section">
+        <div class="section-header">
+            <h3 class="script-subtitle">Review</h3>
+            <h2 class="section-main-title">What they says about us</h2>
+        </div>
+
+        <div class="reviews-container">
+            <!-- Review Card 1 (Active) -->
+            <div class="review-card active">
+                <p class="review-text">
+                    "We Were Recommended By My Brother And Family Who Traveled With Travalo, Visit India Tours A Few Years Ago Who Were So Full Of Praises For The Team. It Was Short Notice And Nine People In Our Group, However Haroon Was So Professional, So Attentive To Our Needs, Quick With Us."
+                </p>
+                <div class="review-author">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" alt="Brooklyn Simmons" class="author-img">
+                    <div class="author-info">
+                        <h4 class="author-name">Brooklyn Simmons</h4>
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review Card 2 -->
+            <div class="review-card">
+                <p class="review-text">
+                    "We Had A Great Week With Lots Of Activities On Offer. The Team On Site Is Very Professional And Friendly. Congratulations To Our Guide Valentin Who Made Us Discover The Activities With A Lot Of Pedagogy, Kindness And Good Humor. Recommended Stay"
+                </p>
+                <div class="review-author">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop" alt="James Mary" class="author-img">
+                    <div class="author-info">
+                        <h4 class="author-name">James Mary</h4>
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review Card 3 -->
+            <div class="review-card">
+                <p class="review-text">
+                    "Very Nice Stay [Physical And Participative] Between Nature And Culture. This Period, With The Midnight Sun, Is Quite Exceptional To Experience Because You Lose All Sense Of Time. A Very Varied Fauna [Foxes, Birds, Polar Bears, Seals, ...] Which Quickly Makes You Realize That You Are Not At Home."
+                </p>
+                <div class="review-author">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop" alt="Robert Patricia" class="author-img">
+                    <div class="author-info">
+                        <h4 class="author-name">Robert Patricia</h4>
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Navigation Controls -->
+        <div class="reviews-carousel-controls">
+            <div class="controls-line"></div>
+            <button class="review-arrow-btn review-prev" aria-label="Previous Review">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="review-arrow-btn review-next" aria-label="Next Review">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Thin Divider Line -->
+    <hr class="section-divider">
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="section-header">
+            <h3 class="script-subtitle">Subscribe</h3>
+            <h2 class="section-main-title">Newsletter</h2>
+        </div>
+
+        <div class="newsletter-form-wrapper">
+            <form class="newsletter-form" onsubmit="event.preventDefault();">
+                <div class="newsletter-input-box">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" placeholder="Your email address" required>
+                </div>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-col brand-col">
+                <img src="assets/logo1.png" alt="Galiyat Tours Logo" class="footer-logo">
+                <p>Experience the majestic pine forests, scenic hiking trails, and serene beauty of Abbottabad's Galiyat region.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Destinations</a></li>
+                    <li><a href="#">Packages</a></li>
+                    <li><a href="#">Activities</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Top Spots</h4>
+                <ul>
+                    <li><a href="#">Nathia Gali</a></li>
+                    <li><a href="#">Ayubia Chairlift</a></li>
+                    <li><a href="#">Mushkpuri Peak</a></li>
+                    <li><a href="#">Thandiani</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p><i class="fa-solid fa-phone"></i> +92 300 1234567</p>
+                <p><i class="fa-solid fa-envelope"></i> info@galiyattours.com</p>
+                <p><i class="fa-solid fa-location-dot"></i> Abbottabad, KPK, Pakistan</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Explore Galiyat. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

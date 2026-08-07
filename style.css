@@ -1425,6 +1425,12 @@ html, body {
         padding: 18px 30px;
     }
 
+    .hero {
+        min-height: 70vh;
+        padding-top: 100px;
+        padding-bottom: 40px;
+    }
+
     .main-title {
         font-size: 4.8rem;
         letter-spacing: 1px;
@@ -1435,10 +1441,18 @@ html, body {
         margin-bottom: -25px;
     }
 
+    /* Move Search Bar CLEANLY BELOW Hero Section on Tablet/iPad */
     .search-bar-container {
-        width: 92%;
-        margin: -35px auto 0;
-        padding: 14px 18px;
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        width: 90%;
+        max-width: 650px;
+        margin: 40px auto 40px;
+        padding: 18px 22px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        z-index: 20;
     }
 
     .search-bar-form {
@@ -1579,10 +1593,11 @@ html, body {
         display: none;
     }
 
-    /* Hero Mobile */
+    /* Hero Mobile - Clean Explore Beautiful Galiyat Front Page */
     .hero {
-        min-height: 80vh;
-        padding-top: 80px;
+        min-height: 65vh;
+        padding-top: 90px;
+        padding-bottom: 30px;
     }
 
     .main-title {
@@ -1600,16 +1615,17 @@ html, body {
         display: none;
     }
 
-    /* Floating Search Bar Mobile */
+    /* Floating Search Bar Mobile - Positioned CLEANLY BELOW Hero */
     .search-bar-container {
         position: relative;
-        bottom: 0;
-        left: 0;
+        bottom: auto;
+        left: auto;
         transform: none;
         width: 92%;
-        margin: -30px auto 0;
+        margin: 30px auto 30px; /* Sits cleanly below hero section */
         padding: 14px 16px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        z-index: 20;
     }
 
     .search-bar-form {

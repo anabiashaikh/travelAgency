@@ -17,7 +17,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+    <!-- Mobile & iPad Navigation Sidebar Drawer -->
+    <div class="mobile-sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="mobile-sidebar" id="mobileSidebar">
+        <div class="sidebar-header">
+            <img src="assets/logo1.png" alt="Logo" class="sidebar-logo">
+            <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <ul class="sidebar-links">
+            <li><a href="#" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="#"><i class="fa-solid fa-location-dot"></i> Destinations</a></li>
+            <li><a href="#"><i class="fa-solid fa-box-archive"></i> Packages</a></li>
+            <li><a href="#"><i class="fa-solid fa-mountain"></i> Activities</a></li>
+            <li><a href="#"><i class="fa-solid fa-images"></i> Gallery</a></li>
+            <li><a href="#"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <a href="tel:+923001234567" class="sidebar-phone"><i class="fa-solid fa-phone"></i> +92 300 1234567</a>
+            <button class="btn-primary sidebar-btn">Book Now</button>
+        </div>
+    </aside>
 
     <!-- Header Navigation Bar -->
     <header class="navbar">
@@ -35,7 +56,10 @@
         </nav>
         <div class="nav-right">
             <a href="tel:+923000000000" class="phone-link"><i class="fa-solid fa-phone"></i> +92 300 1234567</a>
-            <button class="btn-primary">Book Now</button>
+            <button class="btn-primary desktop-book-btn">Book Now</button>
+            <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
     </header>
 

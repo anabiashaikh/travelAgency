@@ -1407,16 +1407,20 @@ body {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN / MEDIA QUERIES
+   RESPONSIVE DESIGN / MEDIA QUERIES (DESKTOP, TABLET, MOBILE)
    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   TABLET & SMALL DESKTOP (Max Width: 1024px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
     .main-title {
-        font-size: 6.5rem;
+        font-size: 5.5rem;
     }
 
     .script-title {
-        font-size: 4rem;
-        margin-bottom: -35px;
+        font-size: 3.6rem;
+        margin-bottom: -30px;
     }
 
     .search-bar-form {
@@ -1436,11 +1440,80 @@ body {
         justify-content: center;
         border-radius: 0 0 4px 4px;
     }
+
+    .package-group-card.active {
+        flex-direction: column;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .package-img-box {
+        width: 100%;
+        height: 280px;
+    }
+
+    .connecting-node {
+        margin: -18px 0;
+    }
+
+    .package-info-box {
+        width: 100%;
+        height: auto;
+        padding: 30px 25px;
+    }
+
+    .easy-stay-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .easy-stay-content {
+        max-width: 100%;
+    }
+
+    .experts-card {
+        flex-direction: column;
+    }
+
+    .experts-img-box {
+        width: 100%;
+        min-height: 320px;
+    }
+
+    .experts-info-box {
+        width: 100%;
+        padding: 40px 30px;
+    }
+
+    .travalo-title {
+        font-size: 6.5rem;
+        letter-spacing: 10px;
+    }
+
+    .script-subtitle-banner {
+        font-size: 3rem;
+        margin-bottom: -35px;
+    }
+
+    .reviews-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
+/* --------------------------------------------------------------------------
+   MOBILE DEVICES (Max Width: 768px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
     .navbar {
-        padding: 20px 24px;
+        padding: 16px 20px;
+    }
+
+    .site-logo {
+        height: 38px;
     }
 
     .nav-links {
@@ -1448,13 +1521,13 @@ body {
     }
 
     .main-title {
-        font-size: 4.2rem;
+        font-size: 3.2rem;
         letter-spacing: 1px;
     }
 
     .script-title {
-        font-size: 3rem;
-        margin-bottom: -25px;
+        font-size: 2.2rem;
+        margin-bottom: -18px;
     }
 
     .carousel-control {
@@ -1466,11 +1539,164 @@ body {
         bottom: 0;
         left: 0;
         transform: none;
-        width: 90%;
-        margin: -40px auto 0;
+        width: 92%;
+        margin: -35px auto 0;
+        padding: 12px;
     }
 
     .search-item {
         flex: 1 1 100%;
+    }
+
+    .search-input-wrapper select {
+        padding: 10px 12px;
+        font-size: 0.88rem;
+    }
+
+    .section-main-title {
+        font-size: 2rem;
+    }
+
+    .script-subtitle {
+        font-size: 2rem;
+    }
+
+    /* Packages Section Mobile */
+    .packages-carousel-wrapper {
+        margin: 30px auto 0;
+        padding: 0 10px;
+    }
+
+    .pkg-prev-btn {
+        left: -10px;
+    }
+
+    .pkg-next-btn {
+        right: -10px;
+    }
+
+    .pkg-title {
+        font-size: 1.05rem;
+    }
+
+    .watermark-text {
+        font-size: 2.8rem;
+        bottom: -30px;
+    }
+
+    /* Easy Stay Mobile */
+    .easy-stay-section {
+        margin-top: 40px;
+        margin-bottom: 50px;
+        padding: 30px 20px 20px;
+    }
+
+    .easy-stay-title {
+        font-size: 1.8rem;
+    }
+
+    .script-subtitle-light {
+        font-size: 1.8rem;
+    }
+
+    .easy-stay-image-wrapper {
+        width: 100%;
+        height: 250px;
+        justify-content: center;
+    }
+
+    .suitcase-img {
+        height: 360px;
+        top: -45px;
+        right: 0;
+    }
+
+    .stay-watermark {
+        font-size: 3rem;
+        letter-spacing: 4px;
+    }
+
+    /* Experts Mobile */
+    .travel-experts-section {
+        padding: 30px 20px 60px;
+    }
+
+    .experts-img-box {
+        min-height: 240px;
+        height: 240px;
+    }
+
+    .experts-info-box {
+        padding: 30px 20px;
+    }
+
+    .expert-name {
+        font-size: 1.3rem;
+    }
+
+    .expert-bio {
+        font-size: 0.84rem;
+        line-height: 1.6;
+        margin-bottom: 25px;
+    }
+
+    /* Travalo Banner Mobile */
+    .travalo-banner-section {
+        height: 300px;
+        background-attachment: scroll; /* Scroll mode for mobile performance */
+    }
+
+    .travalo-title {
+        font-size: 3.4rem;
+        letter-spacing: 4px;
+    }
+
+    .script-subtitle-banner {
+        font-size: 2rem;
+        margin-bottom: -20px;
+    }
+
+    /* Reviews Mobile */
+    .reviews-section {
+        padding: 60px 20px 40px;
+    }
+
+    .reviews-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .review-card {
+        padding: 25px 20px;
+    }
+
+    /* Newsletter Mobile */
+    .newsletter-section {
+        padding: 50px 20px 60px;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        width: 100%;
+        gap: 14px;
+    }
+
+    .newsletter-input-box {
+        width: 100%;
+    }
+
+    .newsletter-btn {
+        width: 100%;
+        padding: 14px 20px;
+    }
+
+    /* Footer Mobile */
+    .site-footer {
+        padding: 50px 20px 25px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
     }
 }

@@ -1576,6 +1576,10 @@ html, body {
         padding: 18px 30px;
     }
 
+    .nav-links {
+        display: none !important;
+    }
+
     .phone-link {
         display: none !important;
     }
@@ -1593,8 +1597,8 @@ html, body {
     }
 
     .hero {
-        min-height: 55vh;
-        max-height: 480px;
+        min-height: 60vh;
+        max-height: 520px;
         padding-top: 95px;
         padding-bottom: 25px;
         background-size: cover;
@@ -1602,13 +1606,19 @@ html, body {
     }
 
     .main-title {
-        font-size: 4.2rem;
-        letter-spacing: 1px;
+        font-size: 5.6rem !important;
+        letter-spacing: 2px;
+        text-shadow:
+            0 8px 20px rgba(0, 0, 0, 0.9),
+            0 18px 35px rgba(0, 0, 0, 0.85),
+            0 30px 60px rgba(0, 0, 0, 0.75),
+            0 0 20px rgba(0, 0, 0, 0.95) !important;
     }
 
     .script-title {
-        font-size: 2.8rem;
-        margin-bottom: -22px;
+        font-size: 3.8rem !important;
+        margin-bottom: -28px;
+        text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.95) !important;
     }
 
     /* Move Search Bar CLEANLY BELOW Hero Section on Tablet/iPad */
@@ -1774,14 +1784,20 @@ html, body {
     }
 
     .main-title {
-        font-size: 2.6rem !important;
-        letter-spacing: 0.5px;
-        -webkit-box-reflect: none !important; /* Prevents text shadow glitch on mobile */
+        font-size: 3.8rem !important;
+        letter-spacing: 1px;
+        -webkit-box-reflect: none !important;
+        text-shadow:
+            0 6px 16px rgba(0, 0, 0, 0.9),
+            0 14px 30px rgba(0, 0, 0, 0.85),
+            0 25px 50px rgba(0, 0, 0, 0.75),
+            0 0 15px rgba(0, 0, 0, 0.95) !important;
     }
 
     .script-title {
-        font-size: 1.6rem !important;
-        margin-bottom: -10px;
+        font-size: 2.8rem !important;
+        margin-bottom: -16px;
+        text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.95) !important;
     }
 
     .carousel-control {

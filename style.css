@@ -1426,19 +1426,22 @@ html, body {
     }
 
     .hero {
-        min-height: 70vh;
-        padding-top: 100px;
-        padding-bottom: 40px;
+        min-height: 55vh;
+        max-height: 480px;
+        padding-top: 95px;
+        padding-bottom: 25px;
+        background-size: cover;
+        background-position: center center;
     }
 
     .main-title {
-        font-size: 4.8rem;
+        font-size: 4.2rem;
         letter-spacing: 1px;
     }
 
     .script-title {
-        font-size: 3.2rem;
-        margin-bottom: -25px;
+        font-size: 2.8rem;
+        margin-bottom: -22px;
     }
 
     /* Move Search Bar CLEANLY BELOW Hero Section on Tablet/iPad */
@@ -1448,16 +1451,16 @@ html, body {
         left: auto;
         transform: none;
         width: 90%;
-        max-width: 650px;
-        margin: 40px auto 40px;
-        padding: 18px 22px;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        max-width: 580px;
+        margin: 30px auto 40px;
+        padding: 16px 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
         z-index: 20;
     }
 
     .search-bar-form {
         flex-wrap: wrap;
-        gap: 15px;
+        gap: 14px;
     }
 
     .search-item {
@@ -1593,22 +1596,25 @@ html, body {
         display: none;
     }
 
-    /* Hero Mobile - Clean Explore Beautiful Galiyat Front Page */
+    /* Hero Mobile - Fits mountain image cleanly within screen height */
     .hero {
-        min-height: 65vh;
-        padding-top: 90px;
-        padding-bottom: 30px;
+        min-height: 50vh;
+        max-height: 380px;
+        padding-top: 80px;
+        padding-bottom: 20px;
+        background-size: cover;
+        background-position: center center;
     }
 
     .main-title {
-        font-size: 2.8rem !important;
+        font-size: 2.6rem !important;
         letter-spacing: 0.5px;
         -webkit-box-reflect: none !important; /* Prevents text shadow glitch on mobile */
     }
 
     .script-title {
-        font-size: 1.8rem !important;
-        margin-bottom: -12px;
+        font-size: 1.6rem !important;
+        margin-bottom: -10px;
     }
 
     .carousel-control {
@@ -1622,9 +1628,9 @@ html, body {
         left: auto;
         transform: none;
         width: 92%;
-        margin: 30px auto 30px; /* Sits cleanly below hero section */
-        padding: 14px 16px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        margin: 20px auto 30px; /* Sits cleanly below hero section */
+        padding: 12px 14px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
         z-index: 20;
     }
 

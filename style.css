@@ -1606,19 +1606,16 @@ html, body {
     }
 
     .main-title {
-        font-size: 5.6rem !important;
+        font-size: 4.8rem !important;
         letter-spacing: 2px;
-        text-shadow:
-            0 8px 20px rgba(0, 0, 0, 0.9),
-            0 18px 35px rgba(0, 0, 0, 0.85),
-            0 30px 60px rgba(0, 0, 0, 0.75),
-            0 0 20px rgba(0, 0, 0, 0.95) !important;
+        text-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 20px 40px rgba(0, 0, 0, 0.35) !important;
+        -webkit-box-reflect: below -18px linear-gradient(transparent 35%, rgba(255, 255, 255, 0.32)) !important;
     }
 
     .script-title {
-        font-size: 3.8rem !important;
-        margin-bottom: -28px;
-        text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.95) !important;
+        font-size: 2.8rem !important;
+        margin-bottom: -22px;
+        text-shadow: 0 4px 15px rgba(0, 0, 0, 0.45) !important;
     }
 
     /* Move Search Bar CLEANLY BELOW Hero Section on Tablet/iPad */
@@ -1784,20 +1781,16 @@ html, body {
     }
 
     .main-title {
-        font-size: 3.8rem !important;
+        font-size: 3.2rem !important;
         letter-spacing: 1px;
-        -webkit-box-reflect: none !important;
-        text-shadow:
-            0 6px 16px rgba(0, 0, 0, 0.9),
-            0 14px 30px rgba(0, 0, 0, 0.85),
-            0 25px 50px rgba(0, 0, 0, 0.75),
-            0 0 15px rgba(0, 0, 0, 0.95) !important;
+        text-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 15px 30px rgba(0, 0, 0, 0.35) !important;
+        -webkit-box-reflect: below -12px linear-gradient(transparent 40%, rgba(255, 255, 255, 0.3)) !important;
     }
 
     .script-title {
-        font-size: 2.8rem !important;
-        margin-bottom: -16px;
-        text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.95) !important;
+        font-size: 1.9rem !important;
+        margin-bottom: -12px;
+        text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45) !important;
     }
 
     .carousel-control {

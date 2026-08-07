@@ -1101,10 +1101,11 @@ body {
     position: relative;
     width: 100%;
     height: 480px;
-    background: url('assets/img1.png') no-repeat center center / cover,
-        url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop') no-repeat center center / cover;
+    background-image: url('assets/img1.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
     background-attachment: fixed;
-    /* STICKY PARALLAX SCROLL EFFECT */
     display: flex;
     justify-content: center;
     align-items: center;

@@ -6118,3 +6118,191 @@ html, body {
     border-color: var(--primary-green);
     transform: translateY(-2px);
 }
+
+/* ==========================================================================
+   HOUSE OF WASILA RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media screen and (max-width: 1024px) {
+    .wasila-channel-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+    }
+
+    .wasila-prod-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .hero-about {
+        min-height: 45vh;
+        padding: 90px 20px 50px;
+    }
+
+    .about-main-title {
+        font-size: 2.2rem;
+        margin-bottom: 12px;
+    }
+
+    .hero-subtext {
+        font-size: 0.98rem;
+        line-height: 1.65;
+        max-width: 100%;
+    }
+
+    .section-main-title {
+        font-size: 2.1rem;
+    }
+
+    .section-sub-desc {
+        font-size: 0.95rem;
+    }
+
+    .story-title {
+        font-size: 1.85rem;
+    }
+
+    .story-paragraph {
+        font-size: 0.94rem;
+        line-height: 1.65;
+    }
+
+    .story-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .stat-box {
+        padding: 16px 12px;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+    }
+
+    .wasila-channel-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 30px;
+    }
+
+    .wasila-channel-card {
+        padding: 24px 20px;
+        border-radius: 16px;
+    }
+
+    .wasila-channel-title {
+        font-size: 1.25rem;
+    }
+
+    .wasila-channel-desc {
+        font-size: 0.88rem;
+    }
+
+    .wasila-prod-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 25px;
+    }
+
+    .wasila-prod-card {
+        padding: 22px 18px;
+        border-radius: 16px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .wasila-hashtag-pill {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-about {
+        min-height: auto;
+        padding: 85px 16px 45px;
+    }
+
+    .about-main-title {
+        font-size: 1.85rem;
+    }
+
+    .script-subtitle {
+        font-size: 1.25rem;
+    }
+
+    .hero-subtext {
+        font-size: 0.9rem;
+    }
+
+    .section-main-title {
+        font-size: 1.7rem;
+    }
+
+    .story-title {
+        font-size: 1.55rem;
+    }
+
+    .story-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
+    }
+
+    .wasila-channel-card {
+        padding: 20px 16px;
+    }
+
+    .wasila-channel-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+        border-radius: 12px;
+    }
+
+    .wasila-prod-card {
+        padding: 18px 15px;
+    }
+
+    .wasila-prod-icon {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+
+    .wasila-prod-title {
+        font-size: 1.1rem;
+    }
+
+    .wasila-prod-desc {
+        font-size: 0.84rem;
+    }
+
+    .cta-title {
+        font-size: 1.7rem;
+    }
+
+    .cta-desc {
+        font-size: 0.9rem;
+    }
+
+    .wasila-hashtag-pill {
+        padding: 5px 12px;
+        font-size: 0.76rem;
+    }
+}

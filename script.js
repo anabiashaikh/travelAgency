@@ -123,10 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardActivity = card.dataset.activity || '';
             const cardPrice = card.dataset.price || '';
 
-            const matchDest = (selDest === 'all' || cardDest === selDest);
-            const matchType = (selType === 'all' || cardType.includes(selType));
-            const matchAct = (selAct === 'all' || cardActivity.includes(selAct));
-            const matchPrice = (selPrice === 'all' || cardPrice.includes(selPrice));
+            const matchDest = (selDest === 'all' || cardDest.split(' ').includes(selDest));
+            const matchType = (selType === 'all' || cardType.split(' ').includes(selType));
+            const matchAct = (selAct === 'all' || cardActivity.split(' ').includes(selAct));
+            const matchPrice = (selPrice === 'all' || cardPrice.split(' ').includes(selPrice));
 
             if (matchDest && matchType && matchAct && matchPrice) {
                 card.classList.remove('hidden-card');
@@ -457,11 +457,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardBudget = card.dataset.budget || '';
             const cardActivity = card.dataset.activity || '';
 
-            const matchDuration = (selDuration === 'all' || cardDuration === selDuration);
-            const matchDest = (selDest === 'all' || cardDest.includes(selDest));
-            const matchType = (selType === 'all' || cardType.includes(selType));
-            const matchBudget = (selBudget === 'all' || cardBudget === selBudget);
-            const matchAct = (selAct === 'all' || cardActivity.includes(selAct));
+            const matchDuration = (selDuration === 'all' || cardDuration.split(' ').includes(selDuration));
+            const matchDest = (selDest === 'all' || cardDest.split(' ').includes(selDest));
+            const matchType = (selType === 'all' || cardType.split(' ').includes(selType));
+            const matchBudget = (selBudget === 'all' || cardBudget.split(' ').includes(selBudget));
+            const matchAct = (selAct === 'all' || cardActivity.split(' ').includes(selAct));
 
             if (matchDuration && matchDest && matchType && matchBudget && matchAct) {
                 card.classList.remove('hidden-card');

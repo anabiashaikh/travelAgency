@@ -1,0 +1,5 @@
+# Ignore backend architecture doc from git
+backend_architecture.md
+.DS_Store
+node_modules/
+*.log

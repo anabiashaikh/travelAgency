@@ -6306,3 +6306,13 @@ html, body {
         font-size: 0.76rem;
     }
 }
+
+.editorial-story-section {
+    padding: 80px 0;
+    background-color: #ffffff;
+}
+
+.story-grid {
+    max-width: 950px;
+    margin: 0 auto;
+}

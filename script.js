@@ -89,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
        4. DESTINATIONS PAGE FILTERING LOGIC
        ========================================================================== */
+    const filterForm = document.getElementById('destFilterForm');
     const filterDest = document.getElementById('filter-dest');
     const filterType = document.getElementById('filter-type');
     const filterActivity = document.getElementById('filter-activity');
@@ -137,13 +138,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (visibleCountEl) visibleCountEl.textContent = visibleCount;
 
-        // Render Active Tags
+        // Render Active Tags & Reset Button Toggle
         if (activeTagsWrapper) {
             activeTagsWrapper.innerHTML = '';
-            if (selDest !== 'all') activeTags.push({ label: `Dest: ${filterDest.options[filterDest.selectedIndex].text}`, id: 'filter-dest' });
-            if (selType !== 'all') activeTags.push({ label: `Type: ${filterType.options[filterType.selectedIndex].text}`, id: 'filter-type' });
-            if (selAct !== 'all') activeTags.push({ label: `Act: ${filterActivity.options[filterActivity.selectedIndex].text}`, id: 'filter-activity' });
-            if (selPrice !== 'all') activeTags.push({ label: `Price: ${filterPrice.options[filterPrice.selectedIndex].text}`, id: 'filter-price' });
+            if (selDest !== 'all' && filterDest) activeTags.push({ label: `Dest: ${filterDest.options[filterDest.selectedIndex].text}`, id: 'filter-dest' });
+            if (selType !== 'all' && filterType) activeTags.push({ label: `Type: ${filterType.options[filterType.selectedIndex].text}`, id: 'filter-type' });
+            if (selAct !== 'all' && filterActivity) activeTags.push({ label: `Act: ${filterActivity.options[filterActivity.selectedIndex].text}`, id: 'filter-activity' });
+            if (selPrice !== 'all' && filterPrice) activeTags.push({ label: `Price: ${filterPrice.options[filterPrice.selectedIndex].text}`, id: 'filter-price' });
 
             activeTags.forEach(tag => {
                 const tagEl = document.createElement('span');
@@ -152,6 +153,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 activeTagsWrapper.appendChild(tagEl);
             });
         }
+
+        if (filterResetBtn) {
+            filterResetBtn.style.display = activeTags.length > 0 ? 'inline-flex' : 'none';
+        }
+    }
+
+    if (filterForm) {
+        filterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            applyDestFilters();
+        });
     }
 
     if (filterDest) filterDest.addEventListener('change', applyDestFilters);
@@ -415,6 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
        7. PACKAGES PAGE FILTERING & MODAL LOGIC
        ========================================================================== */
+    const pkgFilterForm = document.getElementById('pkgFilterForm');
     const pkgDuration = document.getElementById('pkg-duration');
     const pkgDestination = document.getElementById('pkg-destination');
     const pkgType = document.getElementById('pkg-type');
@@ -460,14 +473,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (pkgVisibleCountEl) pkgVisibleCountEl.textContent = visibleCount;
 
-        // Render Active Filter Tags
+        // Render Active Filter Tags & Reset Button Toggle
         if (pkgActiveFilterTags) {
             pkgActiveFilterTags.innerHTML = '';
-            if (selDuration !== 'all') activeTags.push({ label: `Dur: ${pkgDuration.options[pkgDuration.selectedIndex].text}`, id: 'pkg-duration' });
-            if (selDest !== 'all') activeTags.push({ label: `Dest: ${pkgDestination.options[pkgDestination.selectedIndex].text}`, id: 'pkg-destination' });
-            if (selType !== 'all') activeTags.push({ label: `Type: ${pkgType.options[pkgType.selectedIndex].text}`, id: 'pkg-type' });
-            if (selBudget !== 'all') activeTags.push({ label: `Budget: ${pkgBudget.options[pkgBudget.selectedIndex].text}`, id: 'pkg-budget' });
-            if (selAct !== 'all') activeTags.push({ label: `Act: ${pkgActivity.options[pkgActivity.selectedIndex].text}`, id: 'pkg-activity' });
+            if (selDuration !== 'all' && pkgDuration) activeTags.push({ label: `Dur: ${pkgDuration.options[pkgDuration.selectedIndex].text}`, id: 'pkg-duration' });
+            if (selDest !== 'all' && pkgDestination) activeTags.push({ label: `Dest: ${pkgDestination.options[pkgDestination.selectedIndex].text}`, id: 'pkg-destination' });
+            if (selType !== 'all' && pkgType) activeTags.push({ label: `Type: ${pkgType.options[pkgType.selectedIndex].text}`, id: 'pkg-type' });
+            if (selBudget !== 'all' && pkgBudget) activeTags.push({ label: `Budget: ${pkgBudget.options[pkgBudget.selectedIndex].text}`, id: 'pkg-budget' });
+            if (selAct !== 'all' && pkgActivity) activeTags.push({ label: `Act: ${pkgActivity.options[pkgActivity.selectedIndex].text}`, id: 'pkg-activity' });
 
             activeTags.forEach(tag => {
                 const tagEl = document.createElement('span');
@@ -476,6 +489,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 pkgActiveFilterTags.appendChild(tagEl);
             });
         }
+
+        if (pkgResetBtn) {
+            pkgResetBtn.style.display = activeTags.length > 0 ? 'inline-flex' : 'none';
+        }
+    }
+
+    if (pkgFilterForm) {
+        pkgFilterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            applyPkgFilters();
+        });
     }
 
     if (pkgDuration) pkgDuration.addEventListener('change', applyPkgFilters);
@@ -508,6 +532,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Run initial filter check on load
     applyPkgFilters();
 
     /* Package Details Modal Data */

@@ -27,12 +27,13 @@
             </button>
         </div>
         <ul class="sidebar-links">
-            <li><a href="#" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
-            <li><a href="#"><i class="fa-solid fa-location-dot"></i> Destinations</a></li>
-            <li><a href="#"><i class="fa-solid fa-box-archive"></i> Packages</a></li>
-            <li><a href="#"><i class="fa-solid fa-mountain"></i> Activities</a></li>
-            <li><a href="#"><i class="fa-solid fa-images"></i> Gallery</a></li>
-            <li><a href="#"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+            <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
+            <li><a href="destinations.html"><i class="fa-solid fa-location-dot"></i> Destinations</a></li>
+            <li><a href="packages.html"><i class="fa-solid fa-box-archive"></i> Packages</a></li>
+            <li><a href="activities.html"><i class="fa-solid fa-mountain"></i> Activities</a></li>
+            <li><a href="gallery.html"><i class="fa-solid fa-images"></i> Gallery</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
         </ul>
         <div class="sidebar-footer">
             <a href="tel:+923001234567" class="sidebar-phone"><i class="fa-solid fa-phone"></i> +92 300 1234567</a>
@@ -42,17 +43,18 @@
 
     <!-- Header Navigation Bar -->
     <header class="navbar">
-        <a href="#" class="logo">
+        <a href="index.html" class="logo">
             <img src="assets/logo1.png" alt="Logo" class="site-logo"
                 onerror="this.onerror=null; this.src='assets/logo1-removebg-preview.png';">
         </a>
         <nav class="nav-links">
-            <a href="#" class="active">Home</a>
-            <a href="#">Destinations</a>
-            <a href="#">Packages</a>
-            <a href="#">Activities</a>
-            <a href="#">Gallery</a>
-            <a href="#">Contact</a>
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="packages.html">Packages</a>
+            <a href="activities.html">Activities</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
         </nav>
         <div class="nav-right">
             <a href="tel:+923000000000" class="phone-link"><i class="fa-solid fa-phone"></i> +92 300 1234567</a>
@@ -84,95 +86,95 @@
                 <span class="page-num" data-slide="4">04</span>
             </div>
         </div>
+
+        <!-- Floating Search Widget Bar -->
+        <div class="search-bar-container">
+            <form class="search-bar-form" onsubmit="event.preventDefault();">
+                <!-- 1. Destination -->
+                <div class="search-item">
+                    <div class="icon-wrapper">
+                        <i class="fa-regular fa-compass"></i>
+                    </div>
+                    <div class="search-input-group">
+                        <label for="destination">Destination</label>
+                        <select id="destination">
+                            <option value="">Select Destination</option>
+                            <option value="nathia-gali" selected>Nathia Gali</option>
+                            <option value="mushkpuri">Mushkpuri Peak</option>
+                            <option value="ayubia">Ayubia National Park</option>
+                            <option value="dunga-gali">Dunga Gali Pipeline</option>
+                            <option value="thandiani">Thandiani</option>
+                            <option value="khanspur">Khanspur</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- 2. Kind of Trip -->
+                <div class="search-item">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-suitcase"></i>
+                    </div>
+                    <div class="search-input-group">
+                        <label for="trip-kind">Kind Of Trip</label>
+                        <select id="trip-kind">
+                            <option value="">Select Trip Type</option>
+                            <option value="family" selected>Family Tour</option>
+                            <option value="adventure">Adventure & Trekking</option>
+                            <option value="honeymoon">Honeymoon Special</option>
+                            <option value="group">Group Hiking</option>
+                            <option value="weekend">Weekend Getaway</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- 3. Activities & Themes -->
+                <div class="search-item">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-mountain-sun"></i>
+                    </div>
+                    <div class="search-input-group">
+                        <label for="activities">Activities & Themes</label>
+                        <select id="activities">
+                            <option value="">All Activities</option>
+                            <option value="trekking" selected>Trekking & Hiking</option>
+                            <option value="chairlift">Chairlift Ride</option>
+                            <option value="camping">Pine Camping</option>
+                            <option value="sightseeing">Sightseeing</option>
+                            <option value="snow">Snow Sports</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- 4. Average Price -->
+                <div class="search-item">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                    </div>
+                    <div class="search-input-group">
+                        <label for="price-range">Average Price</label>
+                        <select id="price-range">
+                            <option value="">Select Budget</option>
+                            <option value="budget">PKR 15,000 - 30,000</option>
+                            <option value="medium" selected>PKR 30,000 - 60,000</option>
+                            <option value="luxury">PKR 60,000 - 120,000+</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 5. Search Button -->
+                <button type="submit" class="search-submit-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search</span>
+                </button>
+            </form>
+        </div>
     </section>
-
-    <!-- Floating Search Widget Bar -->
-    <div class="search-bar-container">
-        <form class="search-bar-form" onsubmit="event.preventDefault();">
-            <!-- 1. Destination -->
-            <div class="search-item">
-                <div class="icon-wrapper">
-                    <i class="fa-regular fa-compass"></i>
-                </div>
-                <div class="search-input-group">
-                    <label for="destination">Destination</label>
-                    <select id="destination">
-                        <option value="">Select Destination</option>
-                        <option value="nathia-gali" selected>Nathia Gali</option>
-                        <option value="mushkpuri">Mushkpuri Peak</option>
-                        <option value="ayubia">Ayubia National Park</option>
-                        <option value="dunga-gali">Dunga Gali Pipeline</option>
-                        <option value="thandiani">Thandiani</option>
-                        <option value="khanspur">Khanspur</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="divider"></div>
-
-            <!-- 2. Kind of Trip -->
-            <div class="search-item">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-suitcase"></i>
-                </div>
-                <div class="search-input-group">
-                    <label for="trip-kind">Kind Of Trip</label>
-                    <select id="trip-kind">
-                        <option value="">Select Trip Type</option>
-                        <option value="family" selected>Family Tour</option>
-                        <option value="adventure">Adventure & Trekking</option>
-                        <option value="honeymoon">Honeymoon Special</option>
-                        <option value="group">Group Hiking</option>
-                        <option value="weekend">Weekend Getaway</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="divider"></div>
-
-            <!-- 3. Activities & Themes -->
-            <div class="search-item">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-mountain-sun"></i>
-                </div>
-                <div class="search-input-group">
-                    <label for="activities">Activities & Themes</label>
-                    <select id="activities">
-                        <option value="">All Activities</option>
-                        <option value="trekking" selected>Trekking & Hiking</option>
-                        <option value="chairlift">Chairlift Ride</option>
-                        <option value="camping">Pine Camping</option>
-                        <option value="sightseeing">Sightseeing</option>
-                        <option value="snow">Snow Sports</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="divider"></div>
-
-            <!-- 4. Average Price -->
-            <div class="search-item">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-money-bill-wave"></i>
-                </div>
-                <div class="search-input-group">
-                    <label for="price-range">Average Price</label>
-                    <select id="price-range">
-                        <option value="">Select Budget</option>
-                        <option value="budget">PKR 15,000 - 30,000</option>
-                        <option value="medium" selected>PKR 30,000 - 60,000</option>
-                        <option value="luxury">PKR 60,000 - 120,000+</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- 5. Search Button -->
-            <button type="submit" class="search-submit-btn">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <span>Search</span>
-            </button>
-        </form>
-    </div>
 
     <!-- Where to Next Package Section -->
     <section class="where-to-next-section">
@@ -486,6 +488,45 @@
             <button class="review-arrow-btn review-next" aria-label="Next Review">
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
+        </div>
+    </section>
+
+    <!-- Thin Divider Line -->
+    <hr class="section-divider">
+
+    <!-- Interactive Galiyat Location Map Section -->
+    <section class="map-showcase-section" id="location-map">
+        <div class="container">
+            <div class="section-header text-center">
+                <h3 class="script-subtitle">Explore The Region</h3>
+                <h2 class="section-main-title">Interactive Galiyat Location Map</h2>
+                <p class="section-sub-desc">Discover the geography of Abbottabad, Nathia Gali, Ayubia National Park & Thandiani.</p>
+            </div>
+
+            <div class="map-card-container">
+                <div class="map-embed-wrapper">
+                    <!-- Google Maps Live Interactive Iframe Embed -->
+                    <iframe class="map-iframe" 
+                        src="https://maps.google.com/maps?q=Nathia+Gali,+Abbottabad,+KPK,+Pakistan&t=&z=12&ie=UTF8&iwloc=&output=embed" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade" 
+                        title="Galiyat Tours Interactive Location Map">
+                    </iframe>
+                    
+                    <!-- Map Floating Info Badge -->
+                    <div class="map-info-badge">
+                        <div class="badge-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="badge-text">
+                            <strong>Galiyat Travel Region</strong>
+                            <span>Abbottabad, Nathia Gali, Ayubia & Thandiani, KPK</span>
+                        </div>
+                        <a href="https://maps.google.com/maps?q=Nathia+Gali,+Abbottabad,+KPK,+Pakistan" target="_blank" class="badge-dir-btn">
+                            <i class="fa-solid fa-diamond-turn-right"></i> Open Full Map
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 

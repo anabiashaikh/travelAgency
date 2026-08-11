@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Reservations Dashboard - Explore Galiyat & Crown Inn</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admin-body">
+
+    <!-- Top Admin Header -->
+    <header class="admin-header flex-between flex-align">
+        <div class="admin-brand flex-align">
+            <img src="assets/logo1.png" alt="Galiyat Logo" class="admin-logo">
+            <div>
+                <h1 class="admin-title">Galiyat Tours &amp; Crown Inn Admin</h1>
+                <span class="admin-sub">Reservations &amp; Bookings Management Panel</span>
+            </div>
+        </div>
+        <div class="admin-actions flex-align">
+            <a href="index.html" class="btn-secondary-admin"><i class="fa-solid fa-globe"></i> View Website</a>
+            <a href="crown-inn.html" class="btn-primary-admin"><i class="fa-solid fa-hotel"></i> Crown Inn Page</a>
+        </div>
+    </header>
+
+    <!-- Main Dashboard Body -->
+    <main class="admin-main container">
+
+        <!-- Stats Bar -->
+        <div class="admin-stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon blue-bg"><i class="fa-solid fa-calendar-check"></i></div>
+                <div>
+                    <span class="stat-val" id="totalBookingsCount">0</span>
+                    <span class="stat-lbl">Total Bookings</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon green-bg"><i class="fa-solid fa-circle-check"></i></div>
+                <div>
+                    <span class="stat-val" id="confirmedCount">0</span>
+                    <span class="stat-lbl">Confirmed</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon orange-bg"><i class="fa-solid fa-clock"></i></div>
+                <div>
+                    <span class="stat-val" id="pendingCount">0</span>
+                    <span class="stat-lbl">Pending Review</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon purple-bg"><i class="fa-solid fa-hotel"></i></div>
+                <div>
+                    <span class="stat-val" id="crownCount">0</span>
+                    <span class="stat-lbl">Crown Inn Stays</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon blue-bg"><i class="fa-solid fa-plane"></i></div>
+                <div>
+                    <span class="stat-val" id="flightBookingsCount">0</span>
+                    <span class="stat-lbl">Flight Bookings</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Management Section -->
+        <section class="admin-table-section">
+            <div class="admin-table-header flex-between flex-align">
+                <h2 class="table-heading"><i class="fa-solid fa-list-check"></i> All Received Reservations</h2>
+                <div class="table-actions flex-align">
+                    <input type="text" id="adminSearchInput" class="admin-search-input" placeholder="Search guest name, phone, city...">
+                    <button class="btn-csv-admin" id="exportCsvBtn"><i class="fa-solid fa-file-csv"></i> Export CSV</button>
+                    <button class="btn-danger-admin" id="clearAllBtn"><i class="fa-solid fa-trash-can"></i> Clear All</button>
+                </div>
+            </div>
+
+            <div class="admin-table-wrapper">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>#ID</th>
+                            <th>Guest Name</th>
+                            <th>Phone / WhatsApp</th>
+                            <th>City / Country</th>
+                            <th>Booking Type / Property</th>
+                            <th>Date &amp; Time</th>
+                            <th>Confirmation</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminBookingsTbody">
+                        <!-- Dynamic rows injected by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Add New Hotel Form Section -->
+        <section class="admin-table-section" style="margin-top: 30px;">
+            <div class="admin-table-header">
+                <h2 class="table-heading"><i class="fa-solid fa-plus-circle"></i> Add New Galiyat Hotel / Property</h2>
+                <p style="font-size: 0.88rem; color: #64748b; margin-top: 4px;">Fill out this form to add a new hotel to the Booking.com search results page (galiyat-hotels.html).</p>
+            </div>
+            <form id="addHotelAdminForm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px;">
+                <div class="bf-field">
+                    <label for="new-hotel-name">Hotel / Property Name *</label>
+                    <input type="text" id="new-hotel-name" class="bf-input" required placeholder="e.g. Pine View Resort Nathia Gali">
+                </div>
+                <div class="bf-field">
+                    <label for="new-hotel-location">Location / Address *</label>
+                    <input type="text" id="new-hotel-location" class="bf-input" required placeholder="e.g. Nathia Gali Main Road, 0.5 km from downtown">
+                </div>
+                <div class="bf-field">
+                    <label for="new-hotel-price">Price per night (PKR) *</label>
+                    <input type="number" id="new-hotel-price" class="bf-input" required placeholder="e.g. 15000">
+                </div>
+                <div class="bf-field">
+                    <label for="new-hotel-stars">Star Rating</label>
+                    <select id="new-hotel-stars" class="bf-input">
+                        <option value="3">3 Stars ⭐⭐⭐</option>
+                        <option value="4" selected>4 Stars ⭐⭐⭐⭐</option>
+                        <option value="5">5 Stars ⭐⭐⭐⭐⭐</option>
+                    </select>
+                </div>
+                <div class="bf-field">
+                    <label for="new-hotel-type">Property Type</label>
+                    <select id="new-hotel-type" class="bf-input">
+                        <option value="hotel">Hotel &amp; Resort</option>
+                        <option value="apartment">Service Apartment</option>
+                        <option value="cottage">Pine Cottage / Villa</option>
+                    </select>
+                </div>
+                <div class="bf-field">
+                    <label for="new-hotel-img">Photo Image URL / Asset</label>
+                    <input type="text" id="new-hotel-img" class="bf-input" value="assets/nathia_gali.png">
+                </div>
+                <div class="bf-field" style="grid-column: span 2;">
+                    <label for="new-hotel-room">Room Spec &amp; Bed Detail</label>
+                    <input type="text" id="new-hotel-room" class="bf-input" placeholder="e.g. Deluxe Balcony Room — 1 king bed">
+                </div>
+                <div style="grid-column: span 2; margin-top: 10px;">
+                    <button type="submit" class="btn-primary-admin" style="padding: 12px 24px; font-size: 0.95rem; cursor: pointer;">
+                        <i class="fa-solid fa-plus"></i> Add Hotel to Listings
+                    </button>
+                </div>
+            </form>
+        <!-- Add New Destination Location Form Section -->
+        <section class="admin-table-section" style="margin-top: 30px;">
+            <div class="admin-table-header">
+                <h2 class="table-heading"><i class="fa-solid fa-map-location-dot"></i> Add New Search Destination Location</h2>
+                <p style="font-size: 0.88rem; color: #64748b; margin-top: 4px;">Add custom destinations (e.g. Kaghan Valley, Kumrat, Kashmir) to dynamically update the search bar dropdown list across all pages.</p>
+            </div>
+            <form id="addLocationAdminForm" style="display: flex; gap: 14px; margin-top: 20px; align-items: flex-end;">
+                <div class="bf-field" style="flex: 1;">
+                    <label for="new-location-name">Destination Location Name *</label>
+                    <input type="text" id="new-location-name" class="bf-input" required placeholder="e.g. Kaghan Valley, Mansehra, Pakistan">
+                </div>
+                <button type="submit" class="btn-primary-admin" style="padding: 12px 24px; font-size: 0.95rem; cursor: pointer; white-space: nowrap;">
+                    <i class="fa-solid fa-plus-location"></i> Add Location
+                </button>
+            </form>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Admin Dashboard Table Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAdminBookings();
+
+            document.getElementById('adminSearchInput')?.addEventListener('input', (e) => {
+                renderAdminBookings(e.target.value);
+            });
+
+            document.getElementById('exportCsvBtn')?.addEventListener('click', exportToCsv);
+            document.getElementById('clearAllBtn')?.addEventListener('click', () => {
+                if (confirm('Are you sure you want to clear all stored booking records?')) {
+                    localStorage.removeItem('galiyat_bookings');
+                    renderAdminBookings();
+                }
+            });
+        });
+
+        function getBookings() {
+            try {
+                const hotelBookings = JSON.parse(localStorage.getItem('galiyat_bookings')) || [];
+                const flightBookings = JSON.parse(localStorage.getItem('galiyat_bookings_data')) || [];
+                return [...flightBookings, ...hotelBookings];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function renderAdminBookings(filter = '') {
+            const bookings = getBookings();
+            const tbody = document.getElementById('adminBookingsTbody');
+            if (!tbody) return;
+
+            tbody.innerHTML = '';
+
+            const term = filter.toLowerCase();
+            const filtered = bookings.filter(b => 
+                ((b.guestName || (b.firstName + ' ' + b.lastName)) || '').toLowerCase().includes(term) ||
+                (b.phone || '').toLowerCase().includes(term) ||
+                (b.city || b.email || '').toLowerCase().includes(term) ||
+                (b.property || b.bookingType || '').toLowerCase().includes(term)
+            );
+
+            // Update Counts
+            document.getElementById('totalBookingsCount').textContent = bookings.length;
+            document.getElementById('confirmedCount').textContent = bookings.filter(b => b.status === 'Confirmed').length;
+            document.getElementById('pendingCount').textContent = bookings.filter(b => b.status === 'Pending').length;
+            document.getElementById('crownCount').textContent = bookings.filter(b => (b.property || '').includes('Crown')).length;
+            const flightElem = document.getElementById('flightBookingsCount');
+            if (flightElem) flightElem.textContent = bookings.filter(b => (b.bookingType || '').includes('Flight') || (b.id || '').includes('FLT')).length;
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="9" style="text-align:center; padding:40px; color:#94a3b8;">No reservation records found. Make a test booking on the website to see it appear here live!</td></tr>`;
+                return;
+            }
+
+            filtered.forEach((b, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>#${b.id || (1000 + index)}</strong></td>
+                    <td><strong>${b.guestName || (b.firstName + ' ' + (b.lastName || ''))}</strong></td>
+                    <td><a href="https://wa.me/${(b.phone || '').replace(/[^0-9]/g, '')}" target="_blank" class="admin-wa-link"><i class="fa-brands fa-whatsapp"></i> ${b.phone || 'N/A'}</a></td>
+                    <td>${b.city || 'N/A'}, ${b.country || 'Pakistan'}</td>
+                    <td><span class="admin-prop-tag">${b.property || b.bookingType || 'Hotel Stay'}</span></td>
+                    <td>${b.datetime || b.createdAt || 'N/A'}</td>
+                    <td><span class="admin-channel-tag">${b.confirmationChannel || 'WhatsApp'}</span></td>
+                    <td>
+                        <select onchange="updateBookingStatus('${b.id}', this.value)" class="status-select ${b.status === 'Confirmed' ? 'st-conf' : 'st-pend'}">
+                            <option value="Pending" ${b.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                            <option value="Confirmed" ${b.status === 'Confirmed' ? 'selected' : ''}>Confirmed</option>
+                            <option value="Cancelled" ${b.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button onclick="deleteBooking('${b.id}')" class="admin-del-btn" title="Delete record"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function updateBookingStatus(id, newStatus) {
+            let bookings = getBookings();
+            const idx = bookings.findIndex(b => b.id === id);
+            if (idx !== -1) {
+                bookings[idx].status = newStatus;
+                localStorage.setItem('galiyat_bookings', JSON.stringify(bookings));
+                renderAdminBookings();
+            }
+        }
+
+        function deleteBooking(id) {
+            if (confirm('Delete this reservation entry?')) {
+                let bookings = getBookings();
+                bookings = bookings.filter(b => b.id !== id);
+                localStorage.setItem('galiyat_bookings', JSON.stringify(bookings));
+                renderAdminBookings();
+            }
+        }
+
+        function exportToCsv() {
+            const bookings = getBookings();
+            if (!bookings.length) {
+                alert('No bookings to export.');
+                return;
+            }
+            let csv = 'ID,First Name,Last Name,Phone,Email,City,Country,Property,DateTime,Status\n';
+            bookings.forEach(b => {
+                csv += `"${b.id}","${b.firstName}","${b.lastName}","${b.phone}","${b.email || ''}","${b.city || ''}","${b.country || ''}","${b.property || ''}","${b.datetime || ''}","${b.status || ''}"\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Galiyat_Bookings_${new Date().toISOString().slice(0,10)}.csv`;
+            a.click();
+        }
+    </script>
+</body>
+
+</html>

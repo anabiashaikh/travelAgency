@@ -40,7 +40,7 @@
         </ul>
         <div class="sidebar-footer">
             <a href="tel:+923001234567" class="sidebar-phone"><i class="fa-solid fa-phone"></i> +92 300 1234567</a>
-            <button class="btn-primary sidebar-btn open-booking-modal">Book Now</button>
+            <a href="galiyat-hotels.html" class="btn-primary sidebar-btn"><i class="fa-solid fa-hotel"></i> Crown Inn</a>
         </div>
     </aside>
 
@@ -61,7 +61,7 @@
         </nav>
         <div class="nav-right">
             <a href="tel:+923001234567" class="phone-link"><i class="fa-solid fa-phone"></i> +92 300 1234567</a>
-            <button class="btn-primary desktop-book-btn open-booking-modal">Book Now</button>
+            <a href="galiyat-hotels.html" class="btn-primary desktop-book-btn"><i class="fa-solid fa-hotel"></i> Crown Inn</a>
             <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -99,111 +99,6 @@
                     <i class="fa-solid fa-person-hiking"></i>
                     <span><strong>15+</strong> Hiking Trails</span>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Floating Filter & Search Section -->
-    <section class="dest-filter-section">
-        <div class="container">
-            <div class="search-bar-container dest-search-container">
-                <form class="search-bar-form dest-filter-form" id="destFilterForm" onsubmit="event.preventDefault();">
-                    <!-- 1. Destination -->
-                    <div class="search-item">
-                        <div class="icon-wrapper">
-                            <i class="fa-regular fa-compass"></i>
-                        </div>
-                        <div class="search-input-group">
-                            <label for="filter-dest">Destination</label>
-                            <select id="filter-dest">
-                                <option value="all">All Destinations</option>
-                                <option value="nathia-gali">Nathia Gali</option>
-                                <option value="ayubia">Ayubia</option>
-                                <option value="mushkpuri">Mushkpuri Peak</option>
-                                <option value="dunga-gali">Dunga Gali</option>
-                                <option value="thandiani">Thandiani</option>
-                                <option value="changla-gali">Changla Gali</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="divider"></div>
-
-                    <!-- 2. Trip Type -->
-                    <div class="search-item">
-                        <div class="icon-wrapper">
-                            <i class="fa-solid fa-suitcase"></i>
-                        </div>
-                        <div class="search-input-group">
-                            <label for="filter-type">Trip Type</label>
-                            <select id="filter-type">
-                                <option value="all">All Trip Types</option>
-                                <option value="family">Family Tour</option>
-                                <option value="adventure">Adventure & Trekking</option>
-                                <option value="honeymoon">Honeymoon Special</option>
-                                <option value="group">Group Hiking</option>
-                                <option value="weekend">Weekend Getaway</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="divider"></div>
-
-                    <!-- 3. Activity -->
-                    <div class="search-item">
-                        <div class="icon-wrapper">
-                            <i class="fa-solid fa-mountain-sun"></i>
-                        </div>
-                        <div class="search-input-group">
-                            <label for="filter-activity">Activity</label>
-                            <select id="filter-activity">
-                                <option value="all">All Activities</option>
-                                <option value="trekking">Trekking & Hiking</option>
-                                <option value="chairlift">Chairlift Ride</option>
-                                <option value="camping">Pine Camping</option>
-                                <option value="sightseeing">Sightseeing</option>
-                                <option value="snow">Snow Sports</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="divider"></div>
-
-                    <!-- 4. Price Range -->
-                    <div class="search-item">
-                        <div class="icon-wrapper">
-                            <i class="fa-solid fa-money-bill-wave"></i>
-                        </div>
-                        <div class="search-input-group">
-                            <label for="filter-price">Price Range</label>
-                            <select id="filter-price">
-                                <option value="all">All Budgets</option>
-                                <option value="budget">Budget (PKR 15k-30k)</option>
-                                <option value="medium">Medium (PKR 30k-60k)</option>
-                                <option value="luxury">Luxury (PKR 60k+)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- 5. Filter Button -->
-                    <button type="submit" class="search-submit-btn" id="destFilterSubmitBtn">
-                        <i class="fa-solid fa-sliders"></i>
-                        <span>Filter</span>
-                    </button>
-                </form>
-            </div>
-
-            <!-- Filter Status Bar -->
-            <div class="filter-status-bar">
-                <div class="results-count" id="resultsCount">
-                    Showing <strong id="visibleCount">6</strong> of <strong>6</strong> Destinations
-                </div>
-                <div class="active-tags-wrapper" id="activeFilterTags">
-                    <!-- Filter tags injected dynamically -->
-                </div>
-                <button type="button" class="reset-all-btn" id="filterResetBtn" style="display:none;">
-                    <i class="fa-solid fa-rotate-left"></i> Reset All
-                </button>
             </div>
         </div>
     </section>
@@ -271,6 +166,10 @@
                     data-price="budget medium">
                     <div class="dest-card-img-wrapper">
                         <img src="assets/ayubia.png" alt="Ayubia National Park" class="dest-card-img">
+                        <a href="galiyat-hotels.html" class="card-left-crown-btn" title="View Crown Inn Hotel Details">
+                            <i class="fa-solid fa-crown"></i>
+                            <span>Crown Inn</span>
+                        </a>
                         <div class="dest-card-badge alt-badge">National Park</div>
                         <div class="dest-card-elevation"><i class="fa-solid fa-mountain"></i> 2,400m</div>
                     </div>
@@ -811,6 +710,12 @@
             </form>
         </div>
     </div>
+
+    <!-- Floating Left-Center Crown Inn Circle Button -->
+    <a href="galiyat-hotels.html" class="crown-floating-circle-btn" title="View Crown Inn Hotel Details">
+        <i class="fa-solid fa-crown"></i>
+        <span>Crown Inn</span>
+    </a>
 
     <!-- JavaScript Files -->
     <script src="script.js"></script>

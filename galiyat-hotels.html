@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galiyat Hotels &amp; Stays - Explore Galiyat</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bcom-theme">
+
+    <!-- Header Bar -->
+    <header class="bcom-header">
+        <div class="bcom-container bcom-header-top flex-between flex-align">
+            <div class="bcom-brand flex-align">
+                <a href="index.html" class="logo flex-align" style="text-decoration: none; gap: 10px;">
+                    <img src="assets/logo1.png" alt="Galiyat Logo" style="height: 38px;" onerror="this.onerror=null; this.src='assets/logo1-removebg-preview.png';">
+                    <span class="bcom-logo-text" style="font-size: 1.4rem; color: #ffffff;">Explore Galiyat</span>
+                </a>
+                <span class="bcom-subbrand" style="margin-left: 12px; background: var(--primary-green); color: #ffffff; padding: 2px 8px; border-radius: 4px; font-size: 0.78rem; font-weight: 700;">Hotels &amp; Stays</span>
+            </div>
+            <div class="bcom-header-right flex-align">
+                <button class="mobile-hamburger-btn" id="mobileDrawerToggleBtn" title="Open Navigation Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Category Tabs: Stays & Flights (Side by side) -->
+        <div class="bcom-category-bar">
+            <div class="bcom-container flex-align" style="gap: 10px;">
+                <a href="galiyat-hotels.html" class="bcom-tab active" style="margin-right: 4px;"><i class="fa-solid fa-bed"></i> Stays</a>
+                <a href="flights.html" class="bcom-tab"><i class="fa-solid fa-plane"></i> Flights</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Booking.com Yellow Search Box Banner -->
+    <section class="bcom-search-banner-section">
+        <div class="bcom-container">
+            <div class="bcom-search-bar-box">
+                <form id="bcomSearchForm" class="bcom-search-form">
+                    <!-- Destination Field with Dynamic Datalist -->
+                    <div class="bcom-search-field field-dest" style="position: relative;">
+                        <i class="fa-solid fa-bed field-icon"></i>
+                        <div class="field-input-group" style="width: 100%;">
+                            <span class="field-label">Enter destination</span>
+                            <input type="text" id="bcom-dest-input" list="dynamicDestinationsList" value="Galiyat, Abbottabad, Pakistan" placeholder="Where are you going?" style="width: 100%; border: none; outline: none; font-weight: 700; font-size: 0.95rem; background: transparent; color: #1a1a1a;">
+                            <datalist id="dynamicDestinationsList">
+                                <option value="Galiyat, Abbottabad, Pakistan"></option>
+                                <option value="Nathia Gali, Abbottabad, Pakistan"></option>
+                                <option value="Khaira Gali, Abbottabad, Pakistan"></option>
+                                <option value="Ayubia, Abbottabad, Pakistan"></option>
+                                <option value="Balakot, Mansehra, Pakistan"></option>
+                                <option value="Skardu, Gilgit-Baltistan, Pakistan"></option>
+                                <option value="Hunza Valley, Gilgit-Baltistan"></option>
+                                <option value="Swat Valley, Khyber Pakhtunkhwa"></option>
+                                <option value="Murree, Punjab, Pakistan"></option>
+                            </datalist>
+                        </div>
+                    </div>
+
+                    <!-- Dates Field with Live Date Pickers -->
+                    <div class="bcom-search-field field-dates">
+                        <i class="fa-regular fa-calendar-days field-icon"></i>
+                        <div class="field-input-group" style="display: flex; flex-direction: column;">
+                            <span class="field-label">Check-in — Check-out</span>
+                            <div style="display: flex; align-items: center; gap: 4px;">
+                                <input type="date" id="searchCheckInDate" value="2026-09-01" style="border: none; outline: none; font-weight: 700; font-size: 0.82rem; background: transparent; color: #1a1a1a; cursor: pointer;">
+                                <span style="font-size: 0.8rem; color: #64748b;">—</span>
+                                <input type="date" id="searchCheckOutDate" value="2026-09-05" style="border: none; outline: none; font-weight: 700; font-size: 0.82rem; background: transparent; color: #1a1a1a; cursor: pointer;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Occupancy Field with Dropdown Controls -->
+                    <div class="bcom-search-field field-occupancy" style="position: relative;">
+                        <i class="fa-regular fa-user field-icon"></i>
+                        <div class="field-input-group" id="occupancySelectorBox" style="cursor: pointer; width: 100%;">
+                            <span class="field-label">Select occupancy</span>
+                            <span class="field-val-text" id="bcomOccupancyText" style="font-weight: 700; font-size: 0.88rem;">2 adults · 0 children · 1 room</span>
+                        </div>
+                    </div>
+
+                    <!-- Search Button -->
+                    <button type="submit" class="bcom-search-btn">
+                        <span>Search</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Breadcrumbs -->
+    <div class="bcom-breadcrumbs-bar">
+        <div class="bcom-container">
+            <a href="index.html">Home</a> <i class="fa-solid fa-chevron-right sep"></i>
+            <a href="destinations.html">Pakistan</a> <i class="fa-solid fa-chevron-right sep"></i>
+            <a href="destinations.html">Khyber Pakhtunkhwa</a> <i class="fa-solid fa-chevron-right sep"></i>
+            <a href="destinations.html">Khaira Gali</a> <i class="fa-solid fa-chevron-right sep"></i>
+            <span class="current">Search results</span>
+        </div>
+    </div>
+
+    <!-- 4. Main Search Results & Listings Layout -->
+    <main class="bcom-listings-main">
+        <div class="bcom-container bcom-listings-grid">
+
+            <!-- Left Sidebar Filters -->
+            <aside class="bcom-sidebar-filters">
+
+                <!-- Sidebar Brand Contact Widget Box (Requested by user) -->
+                <div class="bcom-filter-widget sidebar-brand-contact-box" style="background: linear-gradient(135deg, #0f172a, #1e293b); color: #ffffff; border-radius: 8px; padding: 14px; border: 1.5px solid var(--primary-green); margin-bottom: 16px; box-shadow: 0 4px 14px rgba(0,0,0,0.15);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 8px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <img src="assets/logo1.png" alt="Galiyat Logo" style="height: 26px;" onerror="this.onerror=null; this.src='assets/logo1-removebg-preview.png';">
+                            <span style="font-size: 1.02rem; font-weight: 800; color: #ffffff;">Explore Galiyat</span>
+                        </div>
+                        <span style="background: var(--primary-green); color: #ffffff; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 700;">Hotels &amp; Stays</span>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-around; gap: 8px; text-align: center;">
+                        <a href="index.html" style="color: #ffffff; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 0.78rem; font-weight: 600; gap: 4px; transition: all 0.2s ease;">
+                            <i class="fa-solid fa-house" style="font-size: 1.1rem; color: #ffffff;"></i>
+                            <span>Home</span>
+                        </a>
+                        <a href="tel:+923001234567" style="color: #ffffff; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; font-weight: 700; gap: 4px; transition: all 0.2s ease;">
+                            <i class="fa-solid fa-phone" style="font-size: 1.1rem; color: #ffffff;"></i>
+                            <span style="line-height: 1.1;">+92<br>300 1234567</span>
+                        </a>
+                        <a href="contact.html" style="color: #ffffff; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 0.78rem; font-weight: 600; gap: 4px; transition: all 0.2s ease;">
+                            <i class="fa-solid fa-envelope" style="font-size: 1.1rem; color: #ffffff;"></i>
+                            <span>Contact</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Interactive Show on Map Card -->
+                <div class="bcom-map-card" style="position: relative; overflow: hidden; border-radius: 8px; border: 2px solid var(--primary-green);">
+                    <iframe src="https://maps.google.com/maps?q=Khaira+Gali,+Abbottabad,+KPK,+Pakistan&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="160" style="border:0; pointer-events: none;" allowfullscreen="" loading="lazy"></iframe>
+                    <div class="map-bg-preview" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.45); display: flex; align-items: center; justify-content: center; backdrop-filter: blur(1px);">
+                        <button class="bcom-show-map-btn" id="showMapModalBtn" style="background: linear-gradient(135deg, var(--primary-green), #047857); color: #ffffff; border: none; padding: 12px 20px; border-radius: 6px; font-weight: 700; font-size: 0.92rem; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.3);">
+                            <i class="fa-solid fa-location-dot" style="color: #fbbf24; margin-right: 6px;"></i> Show on map
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Compare Properties Toggle -->
+                <div class="bcom-filter-widget flex-between flex-align">
+                    <span class="widget-title-text">Compare properties</span>
+                    <label class="bcom-toggle-switch">
+                        <input type="checkbox" id="compareToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+
+                <!-- Main Filters Accordion/Box -->
+                <div class="bcom-filter-widget filter-box">
+                    <h3 class="filter-heading-main">Filter by:</h3>
+
+                    <!-- Filter 1: Budget per night -->
+                    <div class="filter-group">
+                        <h4 class="filter-sub-heading">Your budget (per night)</h4>
+                        <div class="budget-range-display">
+                            <span id="budgetValueText">PKR 3,500 – PKR 20,000+</span>
+                        </div>
+                        <input type="range" id="budgetRangeSlider" min="3500" max="75000" step="2500" value="75000" class="bcom-slider">
+                    </div>
+
+                    <!-- Filter 2: Popular Filters -->
+                    <div class="filter-group">
+                        <h4 class="filter-sub-heading">Popular filters</h4>
+                        <label class="bcom-checkbox-label">
+                            <input type="checkbox" class="hotel-filter-chk" value="breakfast">
+                            <span>Breakfast included</span>
+                        </label>
+                        <label class="bcom-checkbox-label">
+                            <input type="checkbox" class="hotel-filter-chk" value="cancellation" checked>
+                            <span>Free cancellation</span>
+                        </label>
+                        <label class="bcom-checkbox-label">
+                            <input type="checkbox" class="hotel-filter-chk" value="prepayment" checked>
+                            <span>No prepayment needed – pay at property</span>
+                        </label>
+                    </div>
+
+                    <!-- Filter 3: Star Rating -->
+                    <div class="filter-group">
+                        <h4 class="filter-sub-heading">Star rating</h4>
+                        <label class="bcom-checkbox-label">
+                            <input type="checkbox" class="hotel-star-chk" value="5">
+                            <span>5 stars ⭐⭐⭐⭐⭐</span>
+                        </label>
+                        <label class="bcom-checkbox-label">
+                            <input type="checkbox" class="hotel-star-chk" value="4">
+                            <span>4 stars ⭐⭐⭐⭐</span>
+                        </label>
+                        <label class="bcom-checkbox-label">
+                            <input type="checkbox" class="hotel-star-chk" value="3" checked>
+                            <span>3 stars ⭐⭐⭐</span>
+                        </label>
+                    </div>
+
+                    <!-- Filter 4: Property Type -->
+                    <div class="filter-group">
+                        <h4 class="filter-sub-heading">Property type</h4>
+                        <label class="bcom-checkbox-label">
+                            <input type="checkbox" class="hotel-type-chk" value="hotel" checked>
+                            <span>Hotels &amp; Resorts</span>
+                        </label>
+                        <label class="bcom-checkbox-label">
+                            <input type="checkbox" class="hotel-type-chk" value="apartment" checked>
+                            <span>Service Apartments</span>
+                        </label>
+                        <label class="bcom-checkbox-label">
+                            <input type="checkbox" class="hotel-type-chk" value="cottage">
+                            <span>Pine Cottages &amp; Villas</span>
+                        </label>
+                    </div>
+
+                </div>
+
+            </aside>
+
+            <!-- Right Main Listings Area -->
+            <section class="bcom-listings-content">
+
+                <!-- Results Header Bar -->
+                <div class="bcom-results-header flex-between flex-align">
+                    <div>
+                        <h1 class="results-count-heading" id="hotelsCountTitle">Khaira Gali: 1 property found</h1>
+                    </div>
+                    <div class="results-controls flex-align">
+                        <div class="sort-by-box flex-align">
+                            <label for="sortBySelect">Sort by:</label>
+                            <select id="sortBySelect" class="bcom-sort-select">
+                                <option value="top">Our top picks</option>
+                                <option value="price-low">Price (lowest first)</option>
+                                <option value="price-high">Price (highest first)</option>
+                                <option value="rating">Property rating &amp; score</option>
+                            </select>
+                        </div>
+                        <div class="view-toggle-btns flex-align">
+                            <button class="bcom-view-btn active" id="listViewBtn" title="List View"><i class="fa-solid fa-list"></i> List</button>
+                            <button class="bcom-view-btn" id="gridViewBtn" title="Grid View"><i class="fa-solid fa-border-all"></i> Grid</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotel Listings Container -->
+                <div class="bcom-cards-list" id="bcomHotelsContainer">
+
+                    <!-- Hotel Card 1: Crown Inn Hotel Service Apartments -->
+                    <article class="bcom-listing-card" data-price="13200" data-stars="4" data-type="apartment">
+                        <div class="card-left-img">
+                            <img src="assets/670814713.jpg" alt="Crown Inn Hotel Service Apartments">
+                            <button class="wishlist-btn" title="Save property"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <div class="card-mid-info">
+                            <div class="property-header flex-align">
+                                <h3 class="property-name"><a href="crown-inn.html">Crown Inn Hotel Service Apartments</a></h3>
+                                <span class="stars-badge">⭐⭐⭐⭐</span>
+                                <span class="bcom-featured-pill">Genius</span>
+                            </div>
+                            <div class="property-location flex-align" style="flex-wrap: wrap; gap: 8px;">
+                                <span class="loc-text"><i class="fa-solid fa-location-dot" style="color: var(--primary-green);"></i> Galiyat Road near Barrian Cantt Murree, Khaira Gali, Pakistan</span>
+                                <a href="crown-inn.html" class="map-link">Show on map</a>
+                            </div>
+                            <div class="room-spec-box">
+                                <strong>One-Bedroom Apartment</strong>
+                                <span class="bed-detail">1 living room • 1 bathroom • 1 kitchen • 60 m²</span>
+                            </div>
+                            <div class="perks-list">
+                                <span class="perk-item green-text"><i class="fa-solid fa-check"></i> Free cancellation</span>
+                                <span class="perk-item green-text"><i class="fa-solid fa-check"></i> No prepayment needed – pay at property</span>
+                            </div>
+                        </div>
+                        <div class="card-right-pricing text-right">
+                            <div class="review-score-badge flex-between flex-align">
+                                <div class="score-text">
+                                    <strong class="score-label">Wonderful</strong>
+                                    <span class="review-count">20 reviews</span>
+                                </div>
+                                <span class="score-num">9.1</span>
+                            </div>
+                            <div class="pricing-box">
+                                <span class="stay-dur">1 night, 2 adults</span>
+                                <div class="price-val">PKR 13,200</div>
+                                <span class="tax-note">+PKR 1,320 taxes and fees</span>
+                            </div>
+                            <a href="crown-inn.html" class="bcom-see-avail-btn">
+                                <span>See availability</span> <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+
+            </section>
+
+    </main>
+
+    <!-- Crown Inn Google Maps Modal -->
+    <div class="dest-modal-overlay" id="mapLocationModal" style="display: none; z-index: 100000;">
+        <div class="dest-modal-container" style="max-width: 860px; width: 92%; padding: 24px; border-radius: 12px; background: #ffffff; position: relative;">
+            <button class="dest-modal-close" id="mapModalCloseBtn" style="position: absolute; top: 16px; right: 16px; background: #0f172a; color: #ffffff; border: none; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center;">&times;</button>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; gap: 12px; flex-wrap: wrap;">
+                <div>
+                    <h2 style="font-size: 1.35rem; color: #0f172a; margin: 0 0 4px;"><i class="fa-solid fa-hotel" style="color: var(--primary-green);"></i> Crown Inn Hotel Service Apartments Location</h2>
+                    <p style="font-size: 0.88rem; color: #64748b; margin: 0;"><i class="fa-solid fa-location-dot" style="color: #ef4444;"></i> Galiyat Road near Barrian Cantt Murree, Khaira Gali, Pakistan</p>
+                </div>
+                <a href="https://maps.google.com/?q=Khaira+Gali+Abbottabad+Khyber+Pakhtunkhwa" target="_blank" style="background: linear-gradient(135deg, var(--primary-green), #047857); color: #ffffff; text-decoration: none; padding: 10px 16px; border-radius: 6px; font-weight: 700; font-size: 0.88rem; white-space: nowrap;"><i class="fa-solid fa-diamond-turn-right"></i> Get Directions</a>
+            </div>
+            <iframe src="https://maps.google.com/maps?q=Khaira+Gali,+Abbottabad,+KPK,+Pakistan&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="450" style="border: 0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- Booking.com Footer -->
+    <footer class="bcom-footer">
+        <div class="bcom-container text-center">
+            <p class="bcom-copyright">&copy; 2026 Explore Galiyat Hotels &amp; Stays Network. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Interactive Sorting & Filtering for Booking.com Search Results Page
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('bcomHotelsContainer');
+            const sortSelect = document.getElementById('sortBySelect');
+            const rangeSlider = document.getElementById('budgetRangeSlider');
+            const budgetValText = document.getElementById('budgetValueText');
+            const countTitle = document.getElementById('hotelsCountTitle');
+            const listBtn = document.getElementById('listViewBtn');
+            const gridBtn = document.getElementById('gridViewBtn');
+
+            // Google Maps Modal Listener
+            const mapModal = document.getElementById('mapLocationModal');
+            const showMapBtns = document.querySelectorAll('#showMapModalBtn, .map-link');
+            const mapCloseBtn = document.getElementById('mapModalCloseBtn');
+
+            showMapBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (mapModal) mapModal.style.display = 'flex';
+                });
+            });
+
+            mapCloseBtn?.addEventListener('click', () => {
+                if (mapModal) mapModal.style.display = 'none';
+            });
+
+            mapModal?.addEventListener('click', (e) => {
+                if (e.target === mapModal) mapModal.style.display = 'none';
+            });
+
+            function filterAndSortHotels() {
+                if (!container) return;
+                const maxPrice = parseInt(rangeSlider.value) || 75000;
+                budgetValText.textContent = `PKR 3,500 – PKR ${maxPrice.toLocaleString()}+`;
+
+                const checkedStars = Array.from(document.querySelectorAll('.hotel-star-chk:checked')).map(c => c.value);
+                const checkedTypes = Array.from(document.querySelectorAll('.hotel-type-chk:checked')).map(c => c.value);
+
+                const cards = Array.from(container.querySelectorAll('.bcom-listing-card'));
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const price = parseInt(card.getAttribute('data-price')) || 0;
+                    const stars = card.getAttribute('data-stars');
+                    const type = card.getAttribute('data-type');
+
+                    const passPrice = price <= maxPrice;
+                    const passStars = checkedStars.length === 0 || checkedStars.includes(stars);
+                    const passType = checkedTypes.length === 0 || checkedTypes.includes(type);
+
+                    if (passPrice && passStars && passType) {
+                        card.style.display = 'grid';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (countTitle) {
+                    countTitle.textContent = `Galiyat: ${visibleCount} properties found`;
+                }
+
+                // Sorting
+                const sortMode = sortSelect.value;
+                cards.sort((a, b) => {
+                    const priceA = parseInt(a.getAttribute('data-price')) || 0;
+                    const priceB = parseInt(b.getAttribute('data-price')) || 0;
+                    if (sortMode === 'price-low') return priceA - priceB;
+                    if (sortMode === 'price-high') return priceB - priceA;
+                    return 0;
+                });
+
+                cards.forEach(card => container.appendChild(card));
+            }
+
+            sortSelect?.addEventListener('change', filterAndSortHotels);
+            rangeSlider?.addEventListener('input', filterAndSortHotels);
+            document.querySelectorAll('.hotel-star-chk, .hotel-type-chk').forEach(c => {
+                c.addEventListener('change', filterAndSortHotels);
+            });
+
+            // Grid / List Toggle
+            listBtn?.addEventListener('click', () => {
+                container.classList.remove('grid-mode');
+                listBtn.classList.add('active');
+                gridBtn.classList.remove('active');
+            });
+
+            // Mobile Drawer Sidebar Toggle
+            const drawerBtn = document.getElementById('mobileDrawerToggleBtn');
+            const drawerOverlay = document.getElementById('mobileDrawerOverlay');
+            const drawerCloseBtn = document.getElementById('mobileDrawerCloseBtn');
+
+            drawerBtn?.addEventListener('click', () => {
+                drawerOverlay?.classList.add('active');
+                document.body.classList.add('no-scroll');
+            });
+
+            drawerCloseBtn?.addEventListener('click', () => {
+                drawerOverlay?.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+
+            drawerOverlay?.addEventListener('click', (e) => {
+                if (e.target === drawerOverlay) {
+                    drawerOverlay.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                }
+            });
+        });
+    </script>
+
+    <!-- Mobile Slide-Out Off-Canvas Navigation Drawer Sidebar -->
+    <div class="mobile-drawer-overlay" id="mobileDrawerOverlay">
+        <div class="mobile-drawer-panel">
+            <div class="mobile-drawer-header">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <img src="assets/logo1.png" alt="Logo" style="height: 28px;" onerror="this.onerror=null; this.src='assets/logo1-removebg-preview.png';">
+                    <span style="font-weight: 800; font-size: 1.1rem; color: #ffffff;">Explore Galiyat</span>
+                </div>
+                <button class="mobile-drawer-close" id="mobileDrawerCloseBtn">&times;</button>
+            </div>
+            <div class="mobile-drawer-nav">
+                <a href="index.html" class="mobile-drawer-link"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="galiyat-hotels.html" class="mobile-drawer-link active"><i class="fa-solid fa-bed"></i> Stays &amp; Hotels</a>
+            </div>
+            <div class="mobile-drawer-contact-card">
+                <div style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 6px;">Customer Support Helpline</div>
+                <a href="tel:+923001234567" style="color: #10b981; font-size: 1.1rem; font-weight: 800; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-phone"></i> +92 300 1234567
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Left-Center Crown Inn Circle Button -->
+    <a href="crown-inn.html" class="crown-floating-circle-btn" title="View Crown Inn Hotel Details">
+        <i class="fa-solid fa-crown"></i>
+        <span>Crown Inn</span>
+    </a>
+
+</body>
+
+</html>

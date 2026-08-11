@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Form - Reserve Your Stay</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bf-body">
+
+    <div class="bf-page-container">
+        <!-- Top Hero Banner with Dark Ambient Lighting & Logo -->
+        <div class="bf-hero-banner">
+            <div class="bf-logo-badge">
+                <div class="bf-logo-inner">
+                    <span>LO</span>
+                    <span>GO</span>
+                </div>
+            </div>
+            <h1 class="bf-main-heading">Booking Form</h1>
+        </div>
+
+        <!-- Main Form Card Container -->
+        <div class="bf-form-card">
+            <p class="bf-sub-description">Form description...</p>
+            <h2 class="bf-section-title">Section title</h2>
+
+            <form id="standaloneBookingForm" class="bf-form">
+                
+                <!-- First Name & Last Name -->
+                <div class="bf-row bf-two-col">
+                    <div class="bf-field">
+                        <label for="bf-first-name">First Name <span class="req-star">*</span></label>
+                        <input type="text" id="bf-first-name" class="bf-input" required placeholder="">
+                    </div>
+                    <div class="bf-field">
+                        <label for="bf-last-name">Last Name <span class="req-star">*</span></label>
+                        <input type="text" id="bf-last-name" class="bf-input" required placeholder="">
+                    </div>
+                </div>
+
+                <!-- Street Address -->
+                <div class="bf-field">
+                    <label for="bf-street">Street Address <span class="req-star">*</span></label>
+                    <input type="text" id="bf-street" class="bf-input" required placeholder="">
+                </div>
+
+                <!-- Street Address Line 2 -->
+                <div class="bf-field">
+                    <label for="bf-street-2">Street Address Line 2 <span class="req-star">*</span></label>
+                    <input type="text" id="bf-street-2" class="bf-input" required placeholder="">
+                </div>
+
+                <!-- City, State/Province, Postal Code -->
+                <div class="bf-row bf-three-col">
+                    <div class="bf-field">
+                        <label for="bf-city">City <span class="req-star">*</span></label>
+                        <input type="text" id="bf-city" class="bf-input" required placeholder="">
+                    </div>
+                    <div class="bf-field">
+                        <label for="bf-state">State / Province <span class="req-star">*</span></label>
+                        <input type="text" id="bf-state" class="bf-input" required placeholder="">
+                    </div>
+                    <div class="bf-field">
+                        <label for="bf-postal">Postal Code <span class="req-star">*</span></label>
+                        <input type="text" id="bf-postal" class="bf-input" required placeholder="">
+                    </div>
+                </div>
+
+                <!-- Country & Phone Number -->
+                <div class="bf-row bf-two-col">
+                    <div class="bf-field">
+                        <label for="bf-country">Country <span class="req-star">*</span></label>
+                        <input type="text" id="bf-country" class="bf-input" required placeholder="">
+                    </div>
+                    <div class="bf-field">
+                        <label for="bf-phone">Phone number <span class="req-star">*</span></label>
+                        <input type="tel" id="bf-phone" class="bf-input" required placeholder="">
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="bf-field">
+                    <label for="bf-email">Email</label>
+                    <input type="email" id="bf-email" class="bf-input" placeholder="">
+                </div>
+
+                <!-- Booking Date and Time -->
+                <div class="bf-field">
+                    <label for="bf-datetime">Booking Date and Time <span class="req-star">*</span></label>
+                    <input type="text" id="bf-datetime" class="bf-input" required placeholder="e.g. Sat, Aug 15, 2026 - 02:00 PM">
+                </div>
+
+                <!-- Type of Service/Booking -->
+                <div class="bf-field">
+                    <label>Type of Service/Booking <span class="req-star">*</span></label>
+                    <div class="bf-radio-group">
+                        <label class="bf-radio-pill">
+                            <input type="radio" name="booking_type" value="Appointment" required>
+                            <span class="custom-radio"></span>
+                            <span class="pill-label">Appointment</span>
+                        </label>
+                        <label class="bf-radio-pill">
+                            <input type="radio" name="booking_type" value="Reservation" checked required>
+                            <span class="custom-radio"></span>
+                            <span class="pill-label">Reservation</span>
+                        </label>
+                        <label class="bf-radio-pill">
+                            <input type="radio" name="booking_type" value="Event" required>
+                            <span class="custom-radio"></span>
+                            <span class="pill-label">Event</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Special Requests/Requirements -->
+                <div class="bf-field">
+                    <label for="bf-special">Special Requests/Requirements</label>
+                    <input type="text" id="bf-special" class="bf-input" placeholder="">
+                </div>
+
+                <!-- How would you like to receive confirmation of your booking? -->
+                <div class="bf-field">
+                    <label>How would you like to receive confirmation of your booking? <span class="req-star">*</span></label>
+                    <div class="bf-radio-group">
+                        <label class="bf-radio-pill">
+                            <input type="radio" name="confirmation_type" value="Email" required>
+                            <span class="custom-radio"></span>
+                            <span class="pill-label">Email</span>
+                        </label>
+                        <label class="bf-radio-pill">
+                            <input type="radio" name="confirmation_type" value="Phone" required>
+                            <span class="custom-radio"></span>
+                            <span class="pill-label">Phone</span>
+                        </label>
+                        <label class="bf-radio-pill">
+                            <input type="radio" name="confirmation_type" value="Text" checked required>
+                            <span class="custom-radio"></span>
+                            <span class="pill-label">Text</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Comments or Additional Information -->
+                <div class="bf-field">
+                    <label for="bf-comments">Comments or Additional Information</label>
+                    <textarea id="bf-comments" class="bf-textarea" rows="4" placeholder=""></textarea>
+                </div>
+
+                <!-- Please check the box below to proceed -->
+                <div class="bf-field">
+                    <label for="bf-check">Please check the box below to proceed <span class="req-star">*</span></label>
+                    <div class="bf-checkbox-wrapper">
+                        <input type="checkbox" id="bf-check" required>
+                        <label for="bf-check" class="check-label">I agree to the terms and conditions and confirm my booking request.</label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="bf-submit-wrapper">
+                    <button type="submit" class="bf-submit-btn">
+                        <span>Submit Booking</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </form>
+            
+            <div class="bf-watermark">
+                <span>TEMPLATE.NET</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

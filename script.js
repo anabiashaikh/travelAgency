@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mobileSidebar && sidebarOverlay) {
             mobileSidebar.classList.add('open');
             sidebarOverlay.classList.add('open');
-            document.body.style.overflow = 'hidden';
+            document.body.classList.add('no-scroll');
         }
     }
 
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mobileSidebar && sidebarOverlay) {
             mobileSidebar.classList.remove('open');
             sidebarOverlay.classList.remove('open');
-            document.body.style.overflow = '';
+            document.body.classList.remove('no-scroll');
         }
     }
 
@@ -347,13 +347,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         destModal.classList.add('open');
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('no-scroll');
     }
 
     function closeDestModal() {
         if (destModal) {
             destModal.classList.remove('open');
-            document.body.style.overflow = '';
+            document.body.classList.remove('no-scroll');
         }
     }
 
@@ -386,14 +386,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 bookDestSelect.value = preferredDest;
             }
             bookingModal.classList.add('open');
-            document.body.style.overflow = 'hidden';
+            document.body.classList.add('no-scroll');
         }
     }
 
     function closeBookingModal() {
         if (bookingModal) {
             bookingModal.classList.remove('open');
-            document.body.style.overflow = '';
+            document.body.classList.remove('no-scroll');
         }
     }
 
@@ -1080,6 +1080,297 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    /* ==========================================================================
+       11. CROWN INN HOTEL RESERVATION MODAL & BUTTON HANDLERS
+       ========================================================================== */
+    const crownModal = document.getElementById('crownBookingModal');
+    const crownModalClose = document.getElementById('crownModalClose');
+    const openCrownBtns = document.querySelectorAll('.open-crown-modal-btn, .reserve-room-btn');
+    const crownRoomSelect = document.getElementById('crown-room-select');
+    const crownBookingForm = document.getElementById('crownBookingForm');
+    const checkAvailabilityBtn = document.getElementById('checkAvailabilityBtn');
+
+    openCrownBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const selectedRoom = btn.getAttribute('data-room');
+            if (selectedRoom && crownRoomSelect) {
+                crownRoomSelect.value = selectedRoom;
+            }
+            if (crownModal) {
+                crownModal.classList.add('open');
+                document.body.classList.add('no-scroll');
+            }
+        });
+    });
+
+    if (crownModalClose && crownModal) {
+        crownModalClose.addEventListener('click', () => {
+            crownModal.classList.remove('open');
+            document.body.classList.remove('no-scroll');
+        });
+        crownModal.addEventListener('click', (e) => {
+            if (e.target === crownModal) {
+                crownModal.classList.remove('open');
+                document.body.classList.remove('no-scroll');
+            }
+        });
+    }
+
+    if (checkAvailabilityBtn) {
+        checkAvailabilityBtn.addEventListener('click', () => {
+            const checkin = document.getElementById('checkin-date')?.value;
+            const checkout = document.getElementById('checkout-date')?.value;
+            const roomsSection = document.getElementById('rooms-section');
+            if (roomsSection) {
+                roomsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    // Helper function to save booking to localStorage
+    function saveBookingRecord(data) {
+        try {
+            let bookings = JSON.parse(localStorage.getItem('galiyat_bookings')) || [];
+            bookings.unshift(data);
+            localStorage.setItem('galiyat_bookings', JSON.stringify(bookings));
+        } catch (e) {
+            console.error('Error saving booking:', e);
+        }
+    }
+
+    const standaloneBookingForm = document.getElementById('standaloneBookingForm');
+    if (standaloneBookingForm) {
+        standaloneBookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const firstName = document.getElementById('bf-first-name')?.value || 'Guest';
+            const lastName = document.getElementById('bf-last-name')?.value || '';
+            const phone = document.getElementById('bf-phone')?.value || '';
+            const city = document.getElementById('bf-city')?.value || '';
+            const country = document.getElementById('bf-country')?.value || 'Pakistan';
+            const datetime = document.getElementById('bf-datetime')?.value || new Date().toLocaleString();
+            const bookingType = document.querySelector('input[name="booking_type"]:checked')?.value || 'Reservation';
+            const confirmationChannel = document.querySelector('input[name="confirmation_type"]:checked')?.value || 'Text';
+
+            const newBooking = {
+                id: 'GLY-' + Math.floor(100000 + Math.random() * 900000),
+                firstName,
+                lastName,
+                phone,
+                city,
+                country,
+                datetime,
+                bookingType,
+                confirmationChannel,
+                property: 'Explore Galiyat Tour / Stay',
+                status: 'Confirmed',
+                createdAt: new Date().toLocaleString()
+            };
+
+            saveBookingRecord(newBooking);
+
+            // Trigger WhatsApp Message Alert to Agency (+92 300 1234567)
+            const waMsg = `*NEW BOOKING RESERVATION RECEIVED!*%0A%0A*Name:* ${firstName} ${lastName}%0A*Phone:* ${phone}%0A*City:* ${city}, ${country}%0A*Date & Time:* ${datetime}%0A*Type:* ${bookingType}%0A*Confirmation via:* ${confirmationChannel}%0A%0A_Reservation automatically stored in Admin Dashboard (admin.html)_`;
+            
+            alert(`🎉 Booking Submitted Successfully!\n\nThank you, ${firstName} ${lastName}! Your reservation [#${newBooking.id}] has been saved.\n\nWe are opening WhatsApp to notify our front desk manager instantly.`);
+            
+            window.open(`https://wa.me/923001234567?text=${waMsg}`, '_blank');
+            standaloneBookingForm.reset();
+        });
+    }
+
+    if (crownBookingForm) {
+        crownBookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const firstName = document.getElementById('crown-first-name')?.value || 'Guest';
+            const lastName = document.getElementById('crown-last-name')?.value || '';
+            const phone = document.getElementById('crown-phone')?.value || '';
+            const city = document.getElementById('crown-city')?.value || 'Khaira Gali';
+            const country = document.getElementById('crown-country')?.value || 'Pakistan';
+            const datetime = document.getElementById('crown-datetime')?.value || 'Sat, Aug 15, 2026';
+            const bookingType = document.querySelector('input[name="crown_booking_type"]:checked')?.value || 'Reservation';
+            const confirmationChannel = document.querySelector('input[name="crown_confirmation_type"]:checked')?.value || 'Text';
+
+            const newBooking = {
+                id: 'CRN-' + Math.floor(100000 + Math.random() * 900000),
+                firstName,
+                lastName,
+                phone,
+                city,
+                country,
+                datetime,
+                bookingType,
+                confirmationChannel,
+                property: 'Crown Inn Hotel Service Apartments, Khaira Gali',
+                status: 'Confirmed',
+                createdAt: new Date().toLocaleString()
+            };
+
+            saveBookingRecord(newBooking);
+
+            // Trigger WhatsApp Message Alert to Agency (+92 300 1234567)
+            const waMsg = `*NEW CROWN INN RESERVATION RECEIVED!*%0A%0A*Property:* Crown Inn Hotel Service Apartments, Khaira Gali%0A*Guest Name:* ${firstName} ${lastName}%0A*Phone:* ${phone}%0A*Check-in Date:* ${datetime}%0A*Status:* Confirmed (Pay at Property)%0A%0A_Record saved in Admin Dashboard (admin.html)_`;
+
+            alert(`🎉 Crown Inn Reservation Confirmed!\n\nThank you, ${firstName} ${lastName}! Your reservation [#${newBooking.id}] is stored in the system.\n\nOpening WhatsApp to notify the Crown Inn front desk manager...`);
+
+            if (crownModal) {
+                crownModal.classList.remove('open');
+                document.body.classList.remove('no-scroll');
+            }
+            window.open(`https://wa.me/923001234567?text=${waMsg}`, '_blank');
+            crownBookingForm.reset();
+        });
+    }
+
+    // Dynamic Booking.com Room Total Calculator
+    const roomSelects = document.querySelectorAll('.room-count-select');
+    const resTotalPriceEl = document.getElementById('resTotalPrice');
+
+    function updateBcomTotal() {
+        let total = 0;
+        roomSelects.forEach(sel => {
+            const count = parseInt(sel.value) || 0;
+            const price = parseInt(sel.getAttribute('data-price')) || 0;
+            total += count * price;
+        });
+        if (resTotalPriceEl) {
+            resTotalPriceEl.textContent = `PKR ${total.toLocaleString()}`;
+        }
+    }
+
+    roomSelects.forEach(sel => {
+        sel.addEventListener('change', updateBcomTotal);
+    });
+
+    // Admin Add Hotel Handler
+    const addHotelAdminForm = document.getElementById('addHotelAdminForm');
+    if (addHotelAdminForm) {
+        addHotelAdminForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('new-hotel-name')?.value;
+            const location = document.getElementById('new-hotel-location')?.value;
+            const price = parseInt(document.getElementById('new-hotel-price')?.value) || 12000;
+            const stars = document.getElementById('new-hotel-stars')?.value || '4';
+            const type = document.getElementById('new-hotel-type')?.value || 'hotel';
+            const img = document.getElementById('new-hotel-img')?.value || 'assets/670814713.jpg';
+            const room = document.getElementById('new-hotel-room')?.value || 'Standard Room';
+
+            const newHotel = { name, location, price, stars, type, img, room };
+
+            try {
+                let hotels = JSON.parse(localStorage.getItem('galiyat_custom_hotels')) || [];
+                hotels.unshift(newHotel);
+                localStorage.setItem('galiyat_custom_hotels', JSON.stringify(hotels));
+                alert(`🎉 Hotel "${name}" added successfully!\n\nIt is now live on the Booking.com search results page (galiyat-hotels.html).`);
+                addHotelAdminForm.reset();
+            } catch (err) {
+                console.error('Error saving custom hotel:', err);
+            }
+        });
+    }
+
+    // Render Custom Stored Hotels on galiyat-hotels.html
+    const bcomContainer = document.getElementById('bcomHotelsContainer');
+    if (bcomContainer) {
+        try {
+            const customHotels = JSON.parse(localStorage.getItem('galiyat_custom_hotels')) || [];
+            customHotels.forEach(h => {
+                const article = document.createElement('article');
+                article.className = 'bcom-listing-card';
+                article.setAttribute('data-price', h.price);
+                article.setAttribute('data-stars', h.stars);
+                article.setAttribute('data-type', h.type);
+
+                let starStr = '⭐⭐⭐';
+                if (h.stars === '4') starStr = '⭐⭐⭐⭐';
+                if (h.stars === '5') starStr = '⭐⭐⭐⭐⭐';
+
+                article.innerHTML = `
+                    <div class="card-left-img">
+                        <img src="${h.img}" alt="${h.name}">
+                        <button class="wishlist-btn" title="Save property"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <div class="card-mid-info">
+                        <div class="property-header flex-align">
+                            <h3 class="property-name"><a href="crown-inn.html">${h.name}</a></h3>
+                            <span class="stars-badge">${starStr}</span>
+                            <span class="bcom-featured-pill">New</span>
+                        </div>
+                        <div class="property-location flex-align">
+                            <span class="loc-text">${h.location}</span>
+                            <a href="crown-inn.html" class="map-link">Show on map</a>
+                        </div>
+                        <div class="room-spec-box">
+                            <strong>${h.room}</strong>
+                        </div>
+                        <div class="perks-list">
+                            <span class="perk-item green-text"><i class="fa-solid fa-check"></i> Breakfast included</span>
+                            <span class="perk-item green-text"><i class="fa-solid fa-check"></i> Free cancellation</span>
+                            <span class="perk-item green-text"><i class="fa-solid fa-check"></i> Pay at the property</span>
+                        </div>
+                    </div>
+                    <div class="card-right-pricing text-right">
+                        <div class="review-score-badge flex-between flex-align">
+                            <div class="score-text">
+                                <strong class="score-label">Superb</strong>
+                                <span class="review-count">Verified</span>
+                            </div>
+                            <span class="score-num">9.0</span>
+                        </div>
+                        <div class="pricing-box">
+                            <span class="stay-dur">1 night, 2 adults</span>
+                            <div class="price-val">PKR ${h.price.toLocaleString()}</div>
+                            <span class="tax-note">+PKR ${Math.round(h.price * 0.1).toLocaleString()} taxes and fees</span>
+                        </div>
+                        <a href="crown-inn.html" class="bcom-see-avail-btn">
+                            <span>See availability</span> <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                    </div>
+                `;
+                bcomContainer.insertBefore(article, bcomContainer.firstChild);
+            });
+        } catch (e) {
+            console.error('Error rendering custom hotels:', e);
+        }
+    }
+
+    /* ==========================================================================
+       DYNAMIC DESTINATION LOCATIONS (LOCALSTORAGE & DATALIST RENDERER)
+       ========================================================================== */
+    const datalist = document.getElementById('dynamicDestinationsList');
+    if (datalist) {
+        try {
+            const customLocs = JSON.parse(localStorage.getItem('galiyat_custom_locations')) || [];
+            customLocs.forEach(loc => {
+                const opt = document.createElement('option');
+                opt.value = loc;
+                datalist.appendChild(opt);
+            });
+        } catch (err) {
+            console.error('Error loading custom locations:', err);
+        }
+    }
+
+    const addLocationAdminForm = document.getElementById('addLocationAdminForm');
+    if (addLocationAdminForm) {
+        addLocationAdminForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const locName = document.getElementById('new-location-name')?.value;
+            if (!locName) return;
+
+            try {
+                let locs = JSON.parse(localStorage.getItem('galiyat_custom_locations')) || [];
+                if (!locs.includes(locName)) {
+                    locs.push(locName);
+                    localStorage.setItem('galiyat_custom_locations', JSON.stringify(locs));
+                }
+                alert(`🎉 Location "${locName}" added successfully!\n\nIt is now live in the search bar destination dropdown list.`);
+                addLocationAdminForm.reset();
+            } catch (err) {
+                console.error('Error saving new location:', err);
+            }
+        });
+    }
 });
 
 

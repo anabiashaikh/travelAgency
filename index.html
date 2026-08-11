@@ -36,8 +36,8 @@
             <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
         </ul>
         <div class="sidebar-footer">
-            <a href="tel:+923001234567" class="sidebar-phone"><i class="fa-solid fa-phone"></i> +92 300 1234567</a>
-            <button class="btn-primary sidebar-btn">Book Now</button>
+            <a href="tel:+923000000000" class="sidebar-phone"><i class="fa-solid fa-phone"></i> +92 300 1234567</a>
+            <a href="galiyat-hotels.html" class="btn-primary sidebar-btn"><i class="fa-solid fa-hotel"></i> Crown Inn</a>
         </div>
     </aside>
 
@@ -58,7 +58,7 @@
         </nav>
         <div class="nav-right">
             <a href="tel:+923000000000" class="phone-link"><i class="fa-solid fa-phone"></i> +92 300 1234567</a>
-            <button class="btn-primary desktop-book-btn">Book Now</button>
+            <a href="galiyat-hotels.html" class="btn-primary desktop-book-btn"><i class="fa-solid fa-hotel"></i> Crown Inn</a>
             <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -86,95 +86,9 @@
                 <span class="page-num" data-slide="4">04</span>
             </div>
         </div>
-
-        <!-- Floating Search Widget Bar -->
-        <div class="search-bar-container">
-            <form class="search-bar-form" onsubmit="event.preventDefault();">
-                <!-- 1. Destination -->
-                <div class="search-item">
-                    <div class="icon-wrapper">
-                        <i class="fa-regular fa-compass"></i>
-                    </div>
-                    <div class="search-input-group">
-                        <label for="destination">Destination</label>
-                        <select id="destination">
-                            <option value="">Select Destination</option>
-                            <option value="nathia-gali" selected>Nathia Gali</option>
-                            <option value="mushkpuri">Mushkpuri Peak</option>
-                            <option value="ayubia">Ayubia National Park</option>
-                            <option value="dunga-gali">Dunga Gali Pipeline</option>
-                            <option value="thandiani">Thandiani</option>
-                            <option value="khanspur">Khanspur</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="divider"></div>
-
-                <!-- 2. Kind of Trip -->
-                <div class="search-item">
-                    <div class="icon-wrapper">
-                        <i class="fa-solid fa-suitcase"></i>
-                    </div>
-                    <div class="search-input-group">
-                        <label for="trip-kind">Kind Of Trip</label>
-                        <select id="trip-kind">
-                            <option value="">Select Trip Type</option>
-                            <option value="family" selected>Family Tour</option>
-                            <option value="adventure">Adventure & Trekking</option>
-                            <option value="honeymoon">Honeymoon Special</option>
-                            <option value="group">Group Hiking</option>
-                            <option value="weekend">Weekend Getaway</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="divider"></div>
-
-                <!-- 3. Activities & Themes -->
-                <div class="search-item">
-                    <div class="icon-wrapper">
-                        <i class="fa-solid fa-mountain-sun"></i>
-                    </div>
-                    <div class="search-input-group">
-                        <label for="activities">Activities & Themes</label>
-                        <select id="activities">
-                            <option value="">All Activities</option>
-                            <option value="trekking" selected>Trekking & Hiking</option>
-                            <option value="chairlift">Chairlift Ride</option>
-                            <option value="camping">Pine Camping</option>
-                            <option value="sightseeing">Sightseeing</option>
-                            <option value="snow">Snow Sports</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="divider"></div>
-
-                <!-- 4. Average Price -->
-                <div class="search-item">
-                    <div class="icon-wrapper">
-                        <i class="fa-solid fa-money-bill-wave"></i>
-                    </div>
-                    <div class="search-input-group">
-                        <label for="price-range">Average Price</label>
-                        <select id="price-range">
-                            <option value="">Select Budget</option>
-                            <option value="budget">PKR 15,000 - 30,000</option>
-                            <option value="medium" selected>PKR 30,000 - 60,000</option>
-                            <option value="luxury">PKR 60,000 - 120,000+</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- 5. Search Button -->
-                <button type="submit" class="search-submit-btn">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <span>Search</span>
-                </button>
-            </form>
-        </div>
     </section>
+
+    <!-- Where to Next Package Section -->
 
     <!-- Where to Next Package Section -->
     <section class="where-to-next-section">
@@ -204,14 +118,23 @@
                         <img src="assets/chairlift.png" alt="Beauteous Galiyat Package">
                         <div class="watermark-text">GALIYAT</div>
                     </div>
-                    <div class="connecting-node">
-                        <i class="fa-solid fa-mountain"></i>
-                    </div>
+                    
+                    <!-- Crown Inn Circle Button with Curved Arc Text (Desktop centered) -->
+                    <a href="galiyat-hotels.html" class="connecting-node crown-node-btn" title="View Crown Inn Hotel Details & Reservation">
+                        <svg viewBox="0 0 100 100" class="crown-curved-svg">
+                            <path id="crownArcPath" d="M 12, 50 a 38,38 0 1,1 76,0" fill="none" />
+                            <text class="curved-text">
+                                <textPath href="#crownArcPath" startOffset="50%" text-anchor="middle">CROWN INN</textPath>
+                            </text>
+                        </svg>
+                        <i class="fa-solid fa-crown crown-center-icon"></i>
+                    </a>
+                    
                     <div class="package-info-box">
                         <h3 class="pkg-title">BEAUTEOUS GALIYAT PACKAGE</h3>
                         <div class="pkg-meta">
                             <span class="meta-item"><i class="fa-regular fa-calendar"></i> 3 Days / 2 Nights</span>
-                            <span class="meta-item"><i class="fa-solid fa-location-dot"></i> Abbottabad & Galiyat</span>
+                            <span class="meta-item"><i class="fa-solid fa-location-dot"></i> Abbottabad &amp; Galiyat</span>
                         </div>
                         <div class="pkg-destination">
                             <span class="dest-label">Destination:</span>
@@ -229,71 +152,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Package 2: Misty Pines & Mountain Adventure -->
-                <div class="package-group-card" data-index="1">
-                    <div class="package-img-box">
-                        <img src="assets/misty_pines.png" alt="Misty Pines Adventure">
-                        <div class="watermark-text">GALIYAT</div>
-                    </div>
-                    <div class="connecting-node">
-                        <i class="fa-solid fa-tree"></i>
-                    </div>
-                    <div class="package-info-box">
-                        <h3 class="pkg-title">MISTY PINES & ADVENTURE</h3>
-                        <div class="pkg-meta">
-                            <span class="meta-item"><i class="fa-regular fa-calendar"></i> 4 Days / 3 Nights</span>
-                            <span class="meta-item"><i class="fa-solid fa-location-dot"></i> Thandiani & Changla Gali</span>
-                        </div>
-                        <div class="pkg-destination">
-                            <span class="dest-label">Destination:</span>
-                            <p class="dest-text">Thandiani Peak (1N) | Changla Gali (1N) | Ayubia National Park | Pipeline Track Trail</p>
-                        </div>
-                        <div class="pkg-price-row">
-                            <div class="price-block">
-                                <span class="from-label">From</span>
-                                <div class="price-value">
-                                    <span class="currency">PKR</span>
-                                    <span class="amount">32,000/-</span>
-                                    <span class="per-person">Per Person</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Package 3: Nathia Gali & Mushkpuri Trek Special -->
-                <div class="package-group-card" data-index="2">
-                    <div class="package-img-box">
-                        <img src="assets/GALIYAT-BLOG-PIC-3-1024x768.webp" alt="Nathia Gali & Mushkpuri Trek">
-                        <div class="watermark-text">GALIYAT</div>
-                    </div>
-                    <div class="connecting-node">
-                        <i class="fa-solid fa-person-hiking"></i>
-                    </div>
-                    <div class="package-info-box">
-                        <h3 class="pkg-title">NATHIA GALI & MUSHKPURI TREK</h3>
-                        <div class="pkg-meta">
-                            <span class="meta-item"><i class="fa-regular fa-calendar"></i> 2 Days / 1 Night</span>
-                            <span class="meta-item"><i class="fa-solid fa-location-dot"></i> Nathia Gali & Samundar Katha</span>
-                        </div>
-                        <div class="pkg-destination">
-                            <span class="dest-label">Destination:</span>
-                            <p class="dest-text">Mushkpuri Summit Hike (1N) | Governor House | Samundar Katha Lake Boating</p>
-                        </div>
-                        <div class="pkg-price-row">
-                            <div class="price-block">
-                                <span class="from-label">From</span>
-                                <div class="price-value">
-                                    <span class="currency">PKR</span>
-                                    <span class="amount">18,500/-</span>
-                                    <span class="per-person">Per Person</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -493,42 +351,6 @@
 
     <!-- Thin Divider Line -->
     <hr class="section-divider">
-
-    <!-- Interactive Galiyat Location Map Section -->
-    <section class="map-showcase-section" id="location-map">
-        <div class="container">
-            <div class="section-header text-center">
-                <h3 class="script-subtitle">Explore The Region</h3>
-                <h2 class="section-main-title">Interactive Galiyat Location Map</h2>
-                <p class="section-sub-desc">Discover the geography of Abbottabad, Nathia Gali, Ayubia National Park & Thandiani.</p>
-            </div>
-
-            <div class="map-card-container">
-                <div class="map-embed-wrapper">
-                    <!-- Google Maps Live Interactive Iframe Embed -->
-                    <iframe class="map-iframe" 
-                        src="https://maps.google.com/maps?q=Nathia+Gali,+Abbottabad,+KPK,+Pakistan&t=&z=12&ie=UTF8&iwloc=&output=embed" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade" 
-                        title="Galiyat Tours Interactive Location Map">
-                    </iframe>
-                    
-                    <!-- Map Floating Info Badge -->
-                    <div class="map-info-badge">
-                        <div class="badge-icon"><i class="fa-solid fa-location-dot"></i></div>
-                        <div class="badge-text">
-                            <strong>Galiyat Travel Region</strong>
-                            <span>Abbottabad, Nathia Gali, Ayubia & Thandiani, KPK</span>
-                        </div>
-                        <a href="https://maps.google.com/maps?q=Nathia+Gali,+Abbottabad,+KPK,+Pakistan" target="_blank" class="badge-dir-btn">
-                            <i class="fa-solid fa-diamond-turn-right"></i> Open Full Map
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Thin Divider Line -->
     <hr class="section-divider">

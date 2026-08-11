@@ -1630,38 +1630,40 @@ html, body {
     }
 
     .hero {
-        min-height: 60vh;
-        max-height: 520px;
-        padding-top: 95px;
-        padding-bottom: 25px;
+        height: auto !important;
+        min-height: 55vh;
+        max-height: none !important;
+        padding-top: 100px;
+        padding-bottom: 50px;
         background-size: cover;
         background-position: center center;
     }
 
     .main-title {
-        font-size: 4.8rem !important;
+        font-size: clamp(3.2rem, 8vw, 4.8rem) !important;
         letter-spacing: 2px;
         text-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 20px 40px rgba(0, 0, 0, 0.35) !important;
-        -webkit-box-reflect: below -18px linear-gradient(transparent 35%, rgba(255, 255, 255, 0.32)) !important;
+        -webkit-box-reflect: none !important;
     }
 
     .script-title {
-        font-size: 2.8rem !important;
-        margin-bottom: -22px;
+        font-size: clamp(2.0rem, 5vw, 2.8rem) !important;
+        margin-bottom: -15px;
         text-shadow: 0 4px 15px rgba(0, 0, 0, 0.45) !important;
     }
 
-    /* Move Search Bar CLEANLY BELOW Hero Section on Tablet/iPad */
+    /* Move Search Bar CLEANLY INSIDE/BELOW Hero Section on Tablet/iPad */
     .search-bar-container {
         position: relative;
         bottom: auto;
         left: auto;
         transform: none;
-        width: 90%;
-        max-width: 580px;
-        margin: 30px auto 40px;
-        padding: 16px 20px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        width: 92%;
+        max-width: 620px;
+        margin: 30px auto 10px;
+        padding: 18px 20px;
+        border-radius: 12px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
         z-index: 20;
     }
 
@@ -1805,24 +1807,25 @@ html, body {
 
     /* Hero Mobile - Fits mountain image cleanly within screen height */
     .hero {
-        min-height: 50vh;
-        max-height: 380px;
-        padding-top: 80px;
-        padding-bottom: 20px;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        padding-top: 85px !important;
+        padding-bottom: 30px !important;
         background-size: cover;
         background-position: center center;
     }
 
     .main-title {
-        font-size: 3.2rem !important;
+        font-size: clamp(2.2rem, 10vw, 3.2rem) !important;
         letter-spacing: 1px;
-        text-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 15px 30px rgba(0, 0, 0, 0.35) !important;
-        -webkit-box-reflect: below -12px linear-gradient(transparent 40%, rgba(255, 255, 255, 0.3)) !important;
+        text-shadow: 0 8px 20px rgba(0, 0, 0, 0.5) !important;
+        -webkit-box-reflect: none !important;
     }
 
     .script-title {
-        font-size: 1.9rem !important;
-        margin-bottom: -12px;
+        font-size: clamp(1.5rem, 6vw, 2.0rem) !important;
+        margin-bottom: -8px !important;
         text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45) !important;
     }
 
@@ -1830,16 +1833,17 @@ html, body {
         display: none;
     }
 
-    /* Floating Search Bar Mobile - Positioned CLEANLY BELOW Hero */
+    /* Floating Search Bar Mobile - Positioned CLEANLY INSIDE Hero */
     .search-bar-container {
-        position: relative;
-        bottom: auto;
-        left: auto;
-        transform: none;
-        width: 92%;
-        margin: 20px auto 30px; /* Sits cleanly below hero section */
-        padding: 12px 14px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        margin: 20px auto 10px !important;
+        padding: 16px 14px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
         z-index: 20;
     }
 
@@ -1866,7 +1870,7 @@ html, body {
         width: 100%;
         padding: 13px;
         font-size: 0.9rem;
-        border-radius: 4px;
+        border-radius: 8px;
         margin-top: 5px;
     }
 

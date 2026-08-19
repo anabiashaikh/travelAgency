@@ -129,8 +129,11 @@
                 </div>
 
                 <!-- Compare Properties Toggle -->
-                <div class="bcom-filter-widget flex-between flex-align">
-                    <span class="widget-title-text">Compare properties</span>
+                <div class="bcom-filter-widget flex-between flex-align" style="background: #f0fdf4; border: 1.5px solid var(--primary-green);">
+                    <div>
+                        <span class="widget-title-text" style="color: #065f46; display: block;"><i class="fa-solid fa-code-compare" style="color: var(--primary-green); margin-right: 4px;"></i> Compare properties</span>
+                        <span style="font-size: 0.75rem; color: #047857;">Side-by-side comparison</span>
+                    </div>
                     <label class="bcom-toggle-switch">
                         <input type="checkbox" id="compareToggle">
                         <span class="toggle-slider"></span>
@@ -139,15 +142,22 @@
 
                 <!-- Main Filters Accordion/Box -->
                 <div class="bcom-filter-widget filter-box">
-                    <h3 class="filter-heading-main">Filter by:</h3>
+                    <div class="flex-between flex-align" style="border-bottom: 1px solid #e7e7e7; padding-bottom: 10px; margin-bottom: 16px;">
+                        <h3 class="filter-heading-main" style="margin-bottom: 0; padding-bottom: 0; border-bottom: none;">Filter by:</h3>
+                        <button type="button" id="resetFiltersBtn" style="background: none; border: none; color: #047857; font-size: 0.8rem; font-weight: 700; cursor: pointer; text-decoration: underline; padding: 0;">Reset all</button>
+                    </div>
 
                     <!-- Filter 1: Budget per night -->
                     <div class="filter-group">
                         <h4 class="filter-sub-heading">Your budget (per night)</h4>
                         <div class="budget-range-display">
-                            <span id="budgetValueText">PKR 3,500 – PKR 20,000+</span>
+                            <span id="budgetValueText">Up to PKR 25,000 / night</span>
                         </div>
-                        <input type="range" id="budgetRangeSlider" min="3500" max="75000" step="2500" value="75000" class="bcom-slider">
+                        <input type="range" id="budgetRangeSlider" min="5000" max="25000" step="1000" value="25000" class="bcom-slider">
+                        <div class="flex-between" style="font-size: 0.72rem; color: #64748b; margin-top: 4px;">
+                            <span>PKR 5,000</span>
+                            <span>PKR 25,000+</span>
+                        </div>
                     </div>
 
                     <!-- Filter 2: Popular Filters -->
@@ -155,15 +165,15 @@
                         <h4 class="filter-sub-heading">Popular filters</h4>
                         <label class="bcom-checkbox-label">
                             <input type="checkbox" class="hotel-filter-chk" value="breakfast">
-                            <span>Breakfast included</span>
+                            <span>Breakfast included <span style="color:#64748b; font-size:0.78rem;">(1)</span></span>
                         </label>
                         <label class="bcom-checkbox-label">
-                            <input type="checkbox" class="hotel-filter-chk" value="cancellation" checked>
-                            <span>Free cancellation</span>
+                            <input type="checkbox" class="hotel-filter-chk" value="cancellation">
+                            <span>Free cancellation <span style="color:#64748b; font-size:0.78rem;">(2)</span></span>
                         </label>
                         <label class="bcom-checkbox-label">
-                            <input type="checkbox" class="hotel-filter-chk" value="prepayment" checked>
-                            <span>No prepayment needed – pay at property</span>
+                            <input type="checkbox" class="hotel-filter-chk" value="prepayment">
+                            <span>No prepayment needed <span style="color:#64748b; font-size:0.78rem;">(1)</span></span>
                         </label>
                     </div>
 
@@ -172,15 +182,15 @@
                         <h4 class="filter-sub-heading">Star rating</h4>
                         <label class="bcom-checkbox-label">
                             <input type="checkbox" class="hotel-star-chk" value="5">
-                            <span>5 stars ⭐⭐⭐⭐⭐</span>
+                            <span>5 stars ⭐⭐⭐⭐⭐ <span style="color:#64748b; font-size:0.78rem;">(1)</span></span>
                         </label>
                         <label class="bcom-checkbox-label">
                             <input type="checkbox" class="hotel-star-chk" value="4">
-                            <span>4 stars ⭐⭐⭐⭐</span>
+                            <span>4 stars ⭐⭐⭐⭐ <span style="color:#64748b; font-size:0.78rem;">(1)</span></span>
                         </label>
                         <label class="bcom-checkbox-label">
-                            <input type="checkbox" class="hotel-star-chk" value="3" checked>
-                            <span>3 stars ⭐⭐⭐</span>
+                            <input type="checkbox" class="hotel-star-chk" value="3">
+                            <span>3 stars ⭐⭐⭐ <span style="color:#64748b; font-size:0.78rem;">(0)</span></span>
                         </label>
                     </div>
 
@@ -188,16 +198,16 @@
                     <div class="filter-group">
                         <h4 class="filter-sub-heading">Property type</h4>
                         <label class="bcom-checkbox-label">
-                            <input type="checkbox" class="hotel-type-chk" value="hotel" checked>
-                            <span>Hotels &amp; Resorts</span>
+                            <input type="checkbox" class="hotel-type-chk" value="hotel">
+                            <span>Hotels &amp; Resorts <span style="color:#64748b; font-size:0.78rem;">(0)</span></span>
                         </label>
                         <label class="bcom-checkbox-label">
-                            <input type="checkbox" class="hotel-type-chk" value="apartment" checked>
-                            <span>Service Apartments</span>
+                            <input type="checkbox" class="hotel-type-chk" value="apartment">
+                            <span>Service Apartments <span style="color:#64748b; font-size:0.78rem;">(1)</span></span>
                         </label>
                         <label class="bcom-checkbox-label">
                             <input type="checkbox" class="hotel-type-chk" value="cottage">
-                            <span>Pine Cottages &amp; Villas</span>
+                            <span>Pine Cottages &amp; Villas <span style="color:#64748b; font-size:0.78rem;">(1)</span></span>
                         </label>
                     </div>
 
@@ -234,7 +244,7 @@
                 <div class="bcom-cards-list" id="bcomHotelsContainer">
 
                     <!-- Hotel Card 1: Crown Inn Hotel Service Apartments -->
-                    <article class="bcom-listing-card" data-price="13200" data-stars="4" data-type="apartment">
+                    <article class="bcom-listing-card" data-price="13200" data-stars="4" data-type="apartment" data-score="9.1" data-breakfast="false" data-cancellation="true" data-prepayment="true">
                         <div class="card-left-img">
                             <img src="assets/670814713.jpg" alt="Crown Inn Hotel Service Apartments">
                             <button class="wishlist-btn" title="Save property"><i class="fa-regular fa-heart"></i></button>
@@ -278,7 +288,7 @@
                     </article>
 
                     <!-- Hotel Card 2: Maria Villa -->
-                    <article class="bcom-listing-card" data-price="9000" data-stars="5" data-type="cottage">
+                    <article class="bcom-listing-card" data-price="9000" data-stars="5" data-type="cottage" data-score="9.3" data-breakfast="true" data-cancellation="true" data-prepayment="false">
                         <div class="card-left-img">
                             <img src="assets/maria villa (1).jpeg" alt="Maria Villa Khaira Gali">
                             <button class="wishlist-btn" title="Save property"><i class="fa-regular fa-heart"></i></button>
@@ -323,9 +333,107 @@
 
                 </div>
 
+                <!-- No Results State -->
+                <div id="noResultsMessage" style="display: none; background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 12px; padding: 40px 20px; text-align: center; margin-top: 10px;">
+                    <i class="fa-solid fa-filter-circle-xmark" style="font-size: 3rem; color: #94a3b8; margin-bottom: 16px;"></i>
+                    <h3 style="color: #1e293b; font-size: 1.25rem; font-weight: 700; margin: 0 0 8px;">No properties match your current filters</h3>
+                    <p style="color: #64748b; font-size: 0.9rem; margin: 0 0 20px;">Try adjusting your budget or clearing active filter checkboxes to view available stays.</p>
+                    <button type="button" id="noResultsResetBtn" style="background: var(--primary-green); color: #ffffff; border: none; padding: 10px 24px; border-radius: 6px; font-weight: 700; font-size: 0.9rem; cursor: pointer;">
+                        <i class="fa-solid fa-rotate-left"></i> Reset all filters
+                    </button>
+                </div>
+
             </section>
 
     </main>
+
+    <!-- Compare Properties Modal -->
+    <div class="dest-modal-overlay" id="comparePropertiesModal" style="display: none; z-index: 100000;">
+        <div class="dest-modal-container" style="max-width: 960px; width: 94%; padding: 24px; border-radius: 12px; background: #ffffff; position: relative; max-height: 90vh; overflow-y: auto;">
+            <button class="dest-modal-close" id="compareModalCloseBtn" style="position: absolute; top: 16px; right: 16px; background: #0f172a; color: #ffffff; border: none; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center;">&times;</button>
+            
+            <div style="border-bottom: 2px solid var(--primary-green); padding-bottom: 14px; margin-bottom: 20px;">
+                <h2 style="font-size: 1.4rem; color: #0f172a; margin: 0 0 4px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-code-compare" style="color: var(--primary-green);"></i> Property Comparison: Crown Inn vs Maria Villa
+                </h2>
+                <p style="font-size: 0.88rem; color: #64748b; margin: 0;">Side-by-side comparison to help you choose the ideal stay in Khaira Gali, Galiyat.</p>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                    <thead>
+                        <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0;">
+                            <th style="text-align: left; padding: 14px; width: 28%; color: #475569;">Features</th>
+                            <th style="text-align: left; padding: 14px; width: 36%; color: #0f172a; border-left: 1px solid #e2e8f0;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="assets/670814713.jpg" alt="Crown Inn" style="width: 44px; height: 44px; border-radius: 6px; object-fit: cover;">
+                                    <div>
+                                        <strong style="display: block;">Crown Inn</strong>
+                                        <span style="font-size: 0.75rem; color: #047857;">Service Apartments</span>
+                                    </div>
+                                </div>
+                            </th>
+                            <th style="text-align: left; padding: 14px; width: 36%; color: #0f172a; border-left: 1px solid #e2e8f0;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="assets/maria villa (1).jpeg" alt="Maria Villa" style="width: 44px; height: 44px; border-radius: 6px; object-fit: cover;">
+                                    <div>
+                                        <strong style="display: block;">Maria Villa</strong>
+                                        <span style="font-size: 0.75rem; color: #047857;">Luxury Pine Villa</span>
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <td style="padding: 12px 14px; font-weight: 600; color: #334155;"><i class="fa-solid fa-tag" style="color: var(--primary-green); margin-right: 6px;"></i> Starting Price / Night</td>
+                            <td style="padding: 12px 14px; border-left: 1px solid #e2e8f0; font-weight: 800; color: #047857;">PKR 13,200</td>
+                            <td style="padding: 12px 14px; border-left: 1px solid #e2e8f0; font-weight: 800; color: #047857;">PKR 9,000</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0; background: #fafafa;">
+                            <td style="padding: 12px 14px; font-weight: 600; color: #334155;"><i class="fa-solid fa-star" style="color: #f59e0b; margin-right: 6px;"></i> Star Rating &amp; Review</td>
+                            <td style="padding: 12px 14px; border-left: 1px solid #e2e8f0;">⭐⭐⭐⭐ <strong>9.1/10</strong> (Wonderful · 20 reviews)</td>
+                            <td style="padding: 12px 14px; border-left: 1px solid #e2e8f0;">⭐⭐⭐⭐⭐ <strong>9.3/10</strong> (Superb · 16 reviews)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <td style="padding: 12px 14px; font-weight: 600; color: #334155;"><i class="fa-solid fa-building" style="color: var(--primary-green); margin-right: 6px;"></i> Property Type</td>
+                            <td style="padding: 12px 14px; border-left: 1px solid #e2e8f0;">Service Apartment Building</td>
+                            <td style="padding: 12px 14px; border-left: 1px solid #e2e8f0;">Private Standalone Villa &amp; Lawn</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0; background: #fafafa;">
+                            <td style="padding: 12px 14px; font-weight: 600; color: #334155;"><i class="fa-solid fa-utensils" style="color: var(--primary-green); margin-right: 6px;"></i> Breakfast Included</td>
+                            <td style="padding: 12px 14px; border-left: 1px solid #e2e8f0; color: #64748b;">Optional / In higher suites</td>
+                            <td style="padding: 12px 14px; border-left: 1px solid #e2e8f0; color: #047857; font-weight: 700;"><i class="fa-solid fa-check"></i> Included in stay</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <td style="padding: 12px 14px; font-weight: 600; color: #334155;"><i class="fa-solid fa-circle-check" style="color: var(--primary-green); margin-right: 6px;"></i> Cancellation Policy</td>
+                            <td style="padding: 12px 14px; border-left: 1px solid #e2e8f0; color: #047857; font-weight: 700;"><i class="fa-solid fa-check"></i> Free cancellation</td>
+                            <td style="padding: 12px 14px; border-left: 1px solid #e2e8f0; color: #047857; font-weight: 700;"><i class="fa-solid fa-check"></i> Free cancellation</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0; background: #fafafa;">
+                            <td style="padding: 12px 14px; font-weight: 600; color: #334155;"><i class="fa-solid fa-hand-holding-dollar" style="color: var(--primary-green); margin-right: 6px;"></i> Prepayment Required</td>
+                            <td style="padding: 12px 14px; border-left: 1px solid #e2e8f0; color: #047857; font-weight: 700;"><i class="fa-solid fa-check"></i> No prepayment (Pay at property)</td>
+                            <td style="padding: 12px 14px; border-left: 1px solid #e2e8f0; color: #64748b;">Advance confirmation required</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <td style="padding: 12px 14px; font-weight: 600; color: #334155;"><i class="fa-solid fa-maximize" style="color: var(--primary-green); margin-right: 6px;"></i> Unit Sizes</td>
+                            <td style="padding: 12px 14px; border-left: 1px solid #e2e8f0;">45 m² – 120 m² (1 to 3 bedrooms)</td>
+                            <td style="padding: 12px 14px; border-left: 1px solid #e2e8f0;">30 m² – 180 m² (1 to 4 bedrooms)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 16px 14px; font-weight: 600; color: #334155;">View Details</td>
+                            <td style="padding: 16px 14px; border-left: 1px solid #e2e8f0;">
+                                <a href="crown-inn.html" style="background: linear-gradient(135deg, var(--primary-green), #047857); color: #ffffff; text-decoration: none; padding: 8px 16px; border-radius: 6px; font-weight: 700; display: inline-block; font-size: 0.85rem;">View Crown Inn</a>
+                            </td>
+                            <td style="padding: 16px 14px; border-left: 1px solid #e2e8f0;">
+                                <a href="maria-villa.html" style="background: linear-gradient(135deg, var(--primary-green), #047857); color: #ffffff; text-decoration: none; padding: 8px 16px; border-radius: 6px; font-weight: 700; display: inline-block; font-size: 0.85rem;">View Maria Villa</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
     <!-- Crown Inn Google Maps Modal -->
     <div class="dest-modal-overlay" id="mapLocationModal" style="display: none; z-index: 100000;">
@@ -351,7 +459,7 @@
 
     <script src="script.js"></script>
     <script>
-        // Interactive Sorting & Filtering for Booking.com Search Results Page
+        // Interactive Sorting & Comprehensive Filtering for Booking.com Search Results Page
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('bcomHotelsContainer');
             const sortSelect = document.getElementById('sortBySelect');
@@ -360,6 +468,31 @@
             const countTitle = document.getElementById('hotelsCountTitle');
             const listBtn = document.getElementById('listViewBtn');
             const gridBtn = document.getElementById('gridViewBtn');
+            const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+            const noResultsResetBtn = document.getElementById('noResultsResetBtn');
+
+            // Compare Properties Modal & Switch
+            const compareToggle = document.getElementById('compareToggle');
+            const compareModal = document.getElementById('comparePropertiesModal');
+            const compareCloseBtn = document.getElementById('compareModalCloseBtn');
+
+            compareToggle?.addEventListener('change', () => {
+                if (compareToggle.checked) {
+                    if (compareModal) compareModal.style.display = 'flex';
+                }
+            });
+
+            compareCloseBtn?.addEventListener('click', () => {
+                if (compareModal) compareModal.style.display = 'none';
+                if (compareToggle) compareToggle.checked = false;
+            });
+
+            compareModal?.addEventListener('click', (e) => {
+                if (e.target === compareModal) {
+                    compareModal.style.display = 'none';
+                    if (compareToggle) compareToggle.checked = false;
+                }
+            });
 
             // Google Maps Modal Listener
             const mapModal = document.getElementById('mapLocationModal');
@@ -383,11 +516,12 @@
 
             function filterAndSortHotels() {
                 if (!container) return;
-                const maxPrice = parseInt(rangeSlider.value) || 75000;
-                budgetValText.textContent = `PKR 3,500 – PKR ${maxPrice.toLocaleString()}+`;
+                const maxPrice = parseInt(rangeSlider.value) || 25000;
+                budgetValText.textContent = maxPrice >= 25000 ? 'Up to PKR 25,000+ / night' : `Up to PKR ${maxPrice.toLocaleString()} / night`;
 
                 const checkedStars = Array.from(document.querySelectorAll('.hotel-star-chk:checked')).map(c => c.value);
                 const checkedTypes = Array.from(document.querySelectorAll('.hotel-type-chk:checked')).map(c => c.value);
+                const checkedPopular = Array.from(document.querySelectorAll('.hotel-filter-chk:checked')).map(c => c.value);
 
                 const cards = Array.from(container.querySelectorAll('.bcom-listing-card'));
                 let visibleCount = 0;
@@ -396,13 +530,27 @@
                     const price = parseInt(card.getAttribute('data-price')) || 0;
                     const stars = card.getAttribute('data-stars');
                     const type = card.getAttribute('data-type');
+                    const hasBreakfast = card.getAttribute('data-breakfast') === 'true';
+                    const hasCancellation = card.getAttribute('data-cancellation') === 'true';
+                    const hasPrepayment = card.getAttribute('data-prepayment') === 'true';
 
+                    // 1. Budget filter
                     const passPrice = price <= maxPrice;
+
+                    // 2. Star rating filter (if any checked, must match one of checked)
                     const passStars = checkedStars.length === 0 || checkedStars.includes(stars);
+
+                    // 3. Property type filter (if any checked, must match one of checked)
                     const passType = checkedTypes.length === 0 || checkedTypes.includes(type);
 
-                    if (passPrice && passStars && passType) {
-                        card.style.display = 'grid';
+                    // 4. Popular filters (must satisfy all checked popular criteria)
+                    let passPopular = true;
+                    if (checkedPopular.includes('breakfast') && !hasBreakfast) passPopular = false;
+                    if (checkedPopular.includes('cancellation') && !hasCancellation) passPopular = false;
+                    if (checkedPopular.includes('prepayment') && !hasPrepayment) passPopular = false;
+
+                    if (passPrice && passStars && passType && passPopular) {
+                        card.style.display = container.classList.contains('grid-mode') ? 'flex' : 'grid';
                         visibleCount++;
                     } else {
                         card.style.display = 'none';
@@ -410,34 +558,69 @@
                 });
 
                 if (countTitle) {
-                    countTitle.textContent = `Galiyat: ${visibleCount} properties found`;
+                    countTitle.textContent = `Khaira Gali: ${visibleCount} ${visibleCount === 1 ? 'property' : 'properties'} found`;
                 }
 
-                // Sorting
-                const sortMode = sortSelect.value;
+                const noResultsMsg = document.getElementById('noResultsMessage');
+                if (noResultsMsg) {
+                    noResultsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+                }
+
+                // Sorting logic
+                const sortMode = sortSelect ? sortSelect.value : 'top';
                 cards.sort((a, b) => {
                     const priceA = parseInt(a.getAttribute('data-price')) || 0;
                     const priceB = parseInt(b.getAttribute('data-price')) || 0;
+                    const scoreA = parseFloat(a.getAttribute('data-score')) || 0;
+                    const scoreB = parseFloat(b.getAttribute('data-score')) || 0;
+                    const starsA = parseInt(a.getAttribute('data-stars')) || 0;
+                    const starsB = parseInt(b.getAttribute('data-stars')) || 0;
+
                     if (sortMode === 'price-low') return priceA - priceB;
                     if (sortMode === 'price-high') return priceB - priceA;
+                    if (sortMode === 'rating') return scoreB - scoreA;
+                    if (sortMode === 'top') return (scoreB + starsB) - (scoreA + starsA);
                     return 0;
                 });
 
                 cards.forEach(card => container.appendChild(card));
             }
 
+            function resetAllFilters() {
+                if (rangeSlider) rangeSlider.value = 25000;
+                document.querySelectorAll('.hotel-star-chk, .hotel-type-chk, .hotel-filter-chk').forEach(chk => {
+                    chk.checked = false;
+                });
+                if (sortSelect) sortSelect.value = 'top';
+                filterAndSortHotels();
+            }
+
+            resetFiltersBtn?.addEventListener('click', resetAllFilters);
+            noResultsResetBtn?.addEventListener('click', resetAllFilters);
+
             sortSelect?.addEventListener('change', filterAndSortHotels);
             rangeSlider?.addEventListener('input', filterAndSortHotels);
-            document.querySelectorAll('.hotel-star-chk, .hotel-type-chk').forEach(c => {
+            document.querySelectorAll('.hotel-star-chk, .hotel-type-chk, .hotel-filter-chk').forEach(c => {
                 c.addEventListener('change', filterAndSortHotels);
             });
 
-            // Grid / List Toggle
+            // Grid / List View Toggle
             listBtn?.addEventListener('click', () => {
                 container.classList.remove('grid-mode');
                 listBtn.classList.add('active');
                 gridBtn.classList.remove('active');
+                filterAndSortHotels();
             });
+
+            gridBtn?.addEventListener('click', () => {
+                container.classList.add('grid-mode');
+                gridBtn.classList.add('active');
+                listBtn.classList.remove('active');
+                filterAndSortHotels();
+            });
+
+            // Initial trigger to ensure clean state
+            filterAndSortHotels();
 
             // Mobile Drawer Sidebar Toggle
             const drawerBtn = document.getElementById('mobileDrawerToggleBtn');

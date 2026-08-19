@@ -101,35 +101,18 @@
         </div>
 
         <div class="packages-carousel-wrapper">
-            <!-- Navigation Arrow Controls -->
-            <button class="pkg-nav-btn pkg-prev-btn" id="pkgPrevBtn" aria-label="Previous Package">
-                <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            <button class="pkg-nav-btn pkg-next-btn" id="pkgNextBtn" aria-label="Next Package">
-                <i class="fa-solid fa-chevron-right"></i>
-            </button>
+            <!-- Packages Container with Side-by-Side Hotels Box -->
+            <div class="packages-carousel-container" style="justify-content: center;">
 
-            <!-- Packages Container -->
-            <div class="packages-carousel-container">
-
-                <!-- Package 1: Beauteous Galiyat -->
-                <div class="package-group-card active" data-index="0">
+                <!-- Combined Tour Package + Side Hotels Box -->
+                <div class="package-group-card active" style="display: flex; opacity: 1;">
+                    <!-- 1. Left: Tour Package Image -->
                     <div class="package-img-box">
                         <img src="assets/chairlift.png" alt="Beauteous Galiyat Package">
                         <div class="watermark-text">GALIYAT</div>
                     </div>
                     
-                    <!-- Crown Inn Circle Button with Curved Arc Text (Desktop centered) -->
-                    <a href="galiyat-hotels.html" class="connecting-node crown-node-btn" title="View Crown Inn Hotel Details & Reservation">
-                        <svg viewBox="0 0 100 100" class="crown-curved-svg">
-                            <path id="crownArcPath" d="M 12, 50 a 38,38 0 1,1 76,0" fill="none" />
-                            <text class="curved-text">
-                                <textPath href="#crownArcPath" startOffset="50%" text-anchor="middle">CROWN INN</textPath>
-                            </text>
-                        </svg>
-                        <i class="fa-solid fa-crown crown-center-icon"></i>
-                    </a>
-                    
+                    <!-- 2. Middle: Package Details -->
                     <div class="package-info-box">
                         <h3 class="pkg-title">BEAUTEOUS GALIYAT PACKAGE</h3>
                         <div class="pkg-meta">
@@ -150,8 +133,48 @@
                                 </div>
                             </div>
                         </div>
+                        <div style="margin-top: 14px;">
+                            <a href="package-beauteous-galiyat.html" style="background: linear-gradient(135deg, var(--primary-green), #047857); color: #ffffff; text-decoration: none; padding: 8px 20px; border-radius: 6px; font-weight: 700; font-size: 0.84rem; display: inline-flex; align-items: center; gap: 6px;">
+                                <span>View Tour Package</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 3. Right: Side Hotels & Stays Box -->
+                    <div class="package-hotels-side-box">
+                        <div class="hotels-side-header">
+                            <span class="hotels-side-badge"><i class="fa-solid fa-hotel"></i> Stays &amp; Hotels</span>
+                            <h4 class="hotels-side-title">Hotels &amp; Stays Option</h4>
+                        </div>
+                        
+                        <div class="hotels-side-items">
+                            <!-- Hotel 1: Crown Inn -->
+                            <a href="crown-inn.html" class="hotel-mini-card" title="View Crown Inn Hotel Details">
+                                <img src="assets/670814713.jpg" alt="Crown Inn Hotel">
+                                <div class="hotel-mini-info">
+                                    <strong>Crown Inn Apartments</strong>
+                                    <span>⭐ 4 Star · Khaira Gali</span>
+                                    <span class="mini-price">From PKR 13,200/n</span>
+                                </div>
+                            </a>
+                            
+                            <!-- Hotel 2: Maria Villa -->
+                            <a href="maria-villa.html" class="hotel-mini-card" title="View Maria Villa Details">
+                                <img src="assets/maria villa (1).jpeg" alt="Maria Villa">
+                                <div class="hotel-mini-info">
+                                    <strong>Maria Villa Retreat</strong>
+                                    <span>⭐ 5 Star · Pine Forest View</span>
+                                    <span class="mini-price">From PKR 9,000/n</span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <a href="galiyat-hotels.html" class="btn-all-hotels">
+                            <span>Explore All Hotels</span> <i class="fa-solid fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>

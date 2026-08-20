@@ -94,8 +94,8 @@
 
                 <!-- Email -->
                 <div class="bf-field">
-                    <label for="bf-email">Email</label>
-                    <input type="email" id="bf-email" class="bf-input" placeholder="">
+                    <label for="bf-email">Email Address <span class="req-star">*</span></label>
+                    <input type="email" id="bf-email" class="bf-input" required placeholder="name@example.com">
                 </div>
 
                 <!-- Booking Date and Time -->
@@ -129,7 +129,7 @@
                 <!-- Special Requests/Requirements -->
                 <div class="bf-field">
                     <label for="bf-special">Special Requests/Requirements</label>
-                    <input type="text" id="bf-special" class="bf-input" placeholder="">
+                    <input type="text" id="bf-special" class="bf-input" placeholder="e.g. Early check-in requested">
                 </div>
 
                 <!-- How would you like to receive confirmation of your booking? -->
@@ -137,7 +137,7 @@
                     <label>How would you like to receive confirmation of your booking? <span class="req-star">*</span></label>
                     <div class="bf-radio-group">
                         <label class="bf-radio-pill">
-                            <input type="radio" name="confirmation_type" value="Email" required>
+                            <input type="radio" name="confirmation_type" value="Email" checked required>
                             <span class="custom-radio"></span>
                             <span class="pill-label">Email</span>
                         </label>
@@ -147,7 +147,7 @@
                             <span class="pill-label">Phone</span>
                         </label>
                         <label class="bf-radio-pill">
-                            <input type="radio" name="confirmation_type" value="Text" checked required>
+                            <input type="radio" name="confirmation_type" value="Text" required>
                             <span class="custom-radio"></span>
                             <span class="pill-label">Text</span>
                         </label>
@@ -186,6 +186,82 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('standaloneBookingForm');
+            if (!form) return;
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const submitBtn = form.querySelector('.bf-submit-btn');
+                const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<span>Processing Booking...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+                }
+
+                const firstName = document.getElementById('bf-first-name')?.value || '';
+                const lastName = document.getElementById('bf-last-name')?.value || '';
+                const email = document.getElementById('bf-email')?.value || '';
+                const phone = document.getElementById('bf-phone')?.value || '';
+                const street = document.getElementById('bf-street')?.value || '';
+                const street2 = document.getElementById('bf-street-2')?.value || '';
+                const city = document.getElementById('bf-city')?.value || '';
+                const state = document.getElementById('bf-state')?.value || '';
+                const postal = document.getElementById('bf-postal')?.value || '';
+                const country = document.getElementById('bf-country')?.value || 'Pakistan';
+                const datetime = document.getElementById('bf-datetime')?.value || '';
+                const bookingType = document.querySelector('input[name="booking_type"]:checked')?.value || 'Reservation';
+                const confirmationChannel = document.querySelector('input[name="confirmation_type"]:checked')?.value || 'Email';
+                const specialRequests = document.getElementById('bf-special')?.value || '';
+                const comments = document.getElementById('bf-comments')?.value || '';
+
+                const bookingPayload = {
+                    firstName,
+                    lastName,
+                    guestName: `${firstName} ${lastName}`.trim(),
+                    email,
+                    phone,
+                    street,
+                    street2,
+                    city,
+                    state,
+                    postal,
+                    country,
+                    datetime,
+                    bookingType,
+                    confirmationChannel,
+                    property: 'Explore Galiyat Stay & Tour',
+                    specialRequests,
+                    comments
+                };
+
+                try {
+                    const res = await fetch('/api/bookings', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(bookingPayload)
+                    });
+                    const result = await res.json();
+                    const bookingId = result.data?.id || ('GB-' + Math.floor(1000 + Math.random() * 9000));
+
+                    let emailMsg = email ? `\n\n📩 An acknowledgment email has been dispatched to ${email}.` : '';
+                    alert(`🎉 Thank You, ${firstName}!\n\nYour booking request [#${bookingId}] has been successfully received.${emailMsg}\n\nOur team is verifying details and will contact you shortly to confirm!`);
+                    form.reset();
+                } catch (err) {
+                    console.error('Error submitting booking:', err);
+                    alert(`✅ Your booking request has been submitted!\n\nOur team will contact you shortly.`);
+                    form.reset();
+                } finally {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnHtml;
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

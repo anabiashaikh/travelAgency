@@ -596,8 +596,8 @@
 
                     <!-- Email -->
                     <div class="bf-field">
-                        <label for="crown-email">Email</label>
-                        <input type="email" id="crown-email" class="bf-input" placeholder="">
+                        <label for="crown-email">Email Address <span class="req-star">*</span></label>
+                        <input type="email" id="crown-email" class="bf-input" required placeholder="name@example.com">
                     </div>
 
                     <!-- Booking Date and Time -->
@@ -631,7 +631,7 @@
                     <!-- Special Requests/Requirements -->
                     <div class="bf-field">
                         <label for="crown-special">Special Requests/Requirements</label>
-                        <input type="text" id="crown-special" class="bf-input" placeholder="">
+                        <input type="text" id="crown-special" class="bf-input" placeholder="e.g. Balcony mountain view">
                     </div>
 
                     <!-- How would you like to receive confirmation of your booking? -->
@@ -639,7 +639,7 @@
                         <label>How would you like to receive confirmation of your booking? <span class="req-star">*</span></label>
                         <div class="bf-radio-group">
                             <label class="bf-radio-pill">
-                                <input type="radio" name="crown_confirmation_type" value="Email" required>
+                                <input type="radio" name="crown_confirmation_type" value="Email" checked required>
                                 <span class="custom-radio"></span>
                                 <span class="pill-label">Email</span>
                             </label>
@@ -649,7 +649,7 @@
                                 <span class="pill-label">Phone</span>
                             </label>
                             <label class="bf-radio-pill">
-                                <input type="radio" name="crown_confirmation_type" value="Text" checked required>
+                                <input type="radio" name="crown_confirmation_type" value="Text" required>
                                 <span class="custom-radio"></span>
                                 <span class="pill-label">Text</span>
                             </label>

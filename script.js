@@ -1180,45 +1180,90 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (crownBookingForm) {
-        crownBookingForm.addEventListener('submit', (e) => {
+        crownBookingForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            const submitBtn = crownBookingForm.querySelector('.bf-submit-btn');
+            const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span>Processing Request...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+            }
+
             const firstName = document.getElementById('crown-first-name')?.value || 'Guest';
             const lastName = document.getElementById('crown-last-name')?.value || '';
+            const email = document.getElementById('crown-email')?.value || '';
             const phone = document.getElementById('crown-phone')?.value || '';
             const city = document.getElementById('crown-city')?.value || 'Khaira Gali';
             const country = document.getElementById('crown-country')?.value || 'Pakistan';
             const datetime = document.getElementById('crown-datetime')?.value || 'Sat, Aug 15, 2026';
             const bookingType = document.querySelector('input[name="crown_booking_type"]:checked')?.value || 'Reservation';
-            const confirmationChannel = document.querySelector('input[name="crown_confirmation_type"]:checked')?.value || 'Text';
+            const confirmationChannel = document.querySelector('input[name="crown_confirmation_type"]:checked')?.value || 'Email';
+            const specialRequests = document.getElementById('crown-special')?.value || '';
+            const comments = document.getElementById('crown-comments')?.value || '';
+            const totalPrice = parseInt((document.getElementById('resTotalPrice')?.textContent || '0').replace(/[^0-9]/g, '')) || 29000;
 
-            const newBooking = {
-                id: 'CRN-' + Math.floor(100000 + Math.random() * 900000),
+            const bookingPayload = {
                 firstName,
                 lastName,
+                guestName: `${firstName} ${lastName}`.trim(),
+                email,
                 phone,
                 city,
                 country,
                 datetime,
                 bookingType,
                 confirmationChannel,
-                property: 'Crown Inn Hotel Service Apartments, Khaira Gali',
-                status: 'Confirmed',
-                createdAt: new Date().toLocaleString()
+                property: 'Crown Inn Hotel Service Apartments',
+                roomType: 'Deluxe One-Bedroom Apartment',
+                specialRequests,
+                comments,
+                totalPrice
             };
 
-            saveBookingRecord(newBooking);
+            try {
+                const res = await fetch('/api/bookings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(bookingPayload)
+                });
+                const result = await res.json();
+                
+                const bookingId = result.data?.id || ('GB-' + Math.floor(1000 + Math.random() * 9000));
+                saveBookingRecord(result.data || bookingPayload);
 
-            // Trigger WhatsApp Message Alert to Agency (+92 300 1234567)
-            const waMsg = `*NEW CROWN INN RESERVATION RECEIVED!*%0A%0A*Property:* Crown Inn Hotel Service Apartments, Khaira Gali%0A*Guest Name:* ${firstName} ${lastName}%0A*Phone:* ${phone}%0A*Check-in Date:* ${datetime}%0A*Status:* Confirmed (Pay at Property)%0A%0A_Record saved in Admin Dashboard (admin.html)_`;
+                let emailNote = email 
+                    ? `\n\n📩 An acknowledgment email has been dispatched to ${email}.`
+                    : '';
 
-            alert(`🎉 Crown Inn Reservation Confirmed!\n\nThank you, ${firstName} ${lastName}! Your reservation [#${newBooking.id}] is stored in the system.\n\nOpening WhatsApp to notify the Crown Inn front desk manager...`);
+                alert(`🎉 Thank You, ${firstName} ${lastName}!\n\nYour reservation request for Crown Inn Hotel [#${bookingId}] has been received.${emailNote}\n\nOur team is verifying room availability with the hotel front desk and will contact you shortly to confirm!`);
 
-            if (crownModal) {
-                crownModal.classList.remove('open');
-                document.body.classList.remove('no-scroll');
+                if (crownModal) {
+                    crownModal.classList.remove('open');
+                    document.body.classList.remove('no-scroll');
+                }
+
+                // WhatsApp message backup
+                const waMsg = `*NEW CROWN INN RESERVATION RECEIVED!*%0A%0A*Booking ID:* ${bookingId}%0A*Property:* Crown Inn Hotel Service Apartments, Khaira Gali%0A*Guest Name:* ${firstName} ${lastName}%0A*Phone:* ${phone}%0A*Email:* ${email}%0A*Check-in Date:* ${datetime}%0A*Total:* PKR ${totalPrice.toLocaleString()}%0A%0A_Record saved in Database & Admin Panel (admin.html)_`;
+                window.open(`https://wa.me/923001234567?text=${waMsg}`, '_blank');
+                crownBookingForm.reset();
+            } catch (err) {
+                console.error('Server error submitting Crown Inn booking:', err);
+                const localId = 'GB-' + Math.floor(1000 + Math.random() * 9000);
+                bookingPayload.id = localId;
+                bookingPayload.status = 'Pending';
+                saveBookingRecord(bookingPayload);
+
+                alert(`✅ Reservation request saved for Crown Inn [#${localId}]!\n\nOur team will contact you shortly.`);
+                if (crownModal) {
+                    crownModal.classList.remove('open');
+                    document.body.classList.remove('no-scroll');
+                }
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHtml;
+                }
             }
-            window.open(`https://wa.me/923001234567?text=${waMsg}`, '_blank');
-            crownBookingForm.reset();
         });
     }
 

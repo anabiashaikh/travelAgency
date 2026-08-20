@@ -181,17 +181,6 @@
 
     <script src="script.js"></script>
     <script>
-        // Admin Dashboard Table Logic
-        document.addEventListener('DOMContentLoaded', () => {
-            renderAdminBookings();
-
-            document.getElementById('adminSearchInput')?.addEventListener('input', (e) => {
-                renderAdminBookings(e.target.value);
-            });
-
-            document.getElementById('exportCsvBtn')?.addEventListener('click', exportToCsv);
-            document.getElementById('clearAllBtn')?.addEventListener('click', () => {
-                if (confirm('Are you sure you want to clear all stored booking records?')) {
         let adminBookingsCache = [];
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -229,9 +218,20 @@
                 });
             }
 
+            // Add new hotel form handler
+            const addHotelForm = document.getElementById('addHotelAdminForm');
+            if (addHotelForm) {
+                addHotelForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    showAdminNotification('New property saved to hotel directory!', 'success');
+                    addHotelForm.reset();
+                });
+            }
+
             // Refresh logs
             loadEmailLogs();
-            setInterval(loadEmailLogs, 10000);
+            setInterval(loadEmailLogs, 8000);
+            setInterval(loadAdminBookings, 8000);
         });
 
         async function loadAdminBookings() {

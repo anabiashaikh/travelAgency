@@ -3,3 +3,5 @@ backend_architecture.md
 .DS_Store
 node_modules/
 *.log
+.env
+data/

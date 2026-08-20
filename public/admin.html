@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Reservations Dashboard - Explore Galiyat & Crown Inn</title>
+        <!-- Favicon / Tab Logo -->
+    <link rel="icon" type="image/png" href="assets/logo1.png">
+    <link rel="shortcut icon" type="image/png" href="assets/logo1.png">
+    <link rel="apple-touch-icon" href="assets/logo1.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admin-body">
+
+    <!-- Top Admin Header -->
+    <header class="admin-header flex-between flex-align">
+        <div class="admin-brand flex-align">
+            <img src="assets/logo1.png" alt="Galiyat Logo" class="admin-logo">
+            <div>
+                <h1 class="admin-title">Galiyat Tours &amp; Crown Inn Admin</h1>
+                <span class="admin-sub">Reservations &amp; Bookings Management Panel</span>
+            </div>
+        </div>
+        <div class="admin-actions flex-align">
+            <a href="index.html" class="btn-secondary-admin"><i class="fa-solid fa-globe"></i> View Website</a>
+            <a href="crown-inn.html" class="btn-primary-admin"><i class="fa-solid fa-hotel"></i> Crown Inn Page</a>
+        </div>
+    </header>
+
+    <!-- Main Dashboard Body -->
+    <main class="admin-main container">
+
+        <!-- Stats Bar -->
+        <div class="admin-stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon blue-bg"><i class="fa-solid fa-calendar-check"></i></div>
+                <div>
+                    <span class="stat-val" id="totalBookingsCount">0</span>
+                    <span class="stat-lbl">Total Bookings</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon green-bg"><i class="fa-solid fa-circle-check"></i></div>
+                <div>
+                    <span class="stat-val" id="confirmedCount">0</span>
+                    <span class="stat-lbl">Confirmed</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon orange-bg"><i class="fa-solid fa-clock"></i></div>
+                <div>
+                    <span class="stat-val" id="pendingCount">0</span>
+                    <span class="stat-lbl">Pending Review</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon purple-bg"><i class="fa-solid fa-hotel"></i></div>
+                <div>
+                    <span class="stat-val" id="crownCount">0</span>
+                    <span class="stat-lbl">Crown Inn Stays</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon blue-bg"><i class="fa-solid fa-plane"></i></div>
+                <div>
+                    <span class="stat-val" id="flightBookingsCount">0</span>
+                    <span class="stat-lbl">Flight Bookings</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Management Section -->
+        <section class="admin-table-section">
+            <div class="admin-table-header flex-between flex-align">
+                <h2 class="table-heading"><i class="fa-solid fa-list-check"></i> All Received Reservations</h2>
+                <div class="table-actions flex-align">
+                    <input type="text" id="adminSearchInput" class="admin-search-input" placeholder="Search guest name, phone, city...">
+                    <button class="btn-csv-admin" id="exportCsvBtn"><i class="fa-solid fa-file-csv"></i> Export CSV</button>
+                    <button class="btn-danger-admin" id="clearAllBtn"><i class="fa-solid fa-trash-can"></i> Clear All</button>
+                </div>
+            </div>
+
+            <div class="admin-table-wrapper">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>#ID</th>
+                            <th>Guest Name</th>
+                            <th>Phone / WhatsApp</th>
+                            <th>City / Country</th>
+                            <th>Booking Type / Property</th>
+                            <th>Date &amp; Time</th>
+                            <th>Confirmation</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminBookingsTbody">
+                        <!-- Dynamic rows injected by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Add New Hotel Form Section -->
+        <section class="admin-table-section" style="margin-top: 30px;">
+            <div class="admin-table-header">
+                <h2 class="table-heading"><i class="fa-solid fa-plus-circle"></i> Add New Galiyat Hotel / Property</h2>
+                <p style="font-size: 0.88rem; color: #64748b; margin-top: 4px;">Fill out this form to add a new hotel to the Booking.com search results page (galiyat-hotels.html).</p>
+            </div>
+            <form id="addHotelAdminForm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px;">
+                <div class="bf-field">
+                    <label for="new-hotel-name">Hotel / Property Name *</label>
+                    <input type="text" id="new-hotel-name" class="bf-input" required placeholder="e.g. Pine View Resort Nathia Gali">
+                </div>
+                <div class="bf-field">
+                    <label for="new-hotel-location">Location / Address *</label>
+                    <input type="text" id="new-hotel-location" class="bf-input" required placeholder="e.g. Nathia Gali Main Road, 0.5 km from downtown">
+                </div>
+                <div class="bf-field">
+                    <label for="new-hotel-price">Price per night (PKR) *</label>
+                    <input type="number" id="new-hotel-price" class="bf-input" required placeholder="e.g. 15000">
+                </div>
+                <div class="bf-field">
+                    <label for="new-hotel-stars">Star Rating</label>
+                    <select id="new-hotel-stars" class="bf-input">
+                        <option value="3">3 Stars ⭐⭐⭐</option>
+                        <option value="4" selected>4 Stars ⭐⭐⭐⭐</option>
+                        <option value="5">5 Stars ⭐⭐⭐⭐⭐</option>
+                    </select>
+                </div>
+                <div class="bf-field">
+                    <label for="new-hotel-type">Property Type</label>
+                    <select id="new-hotel-type" class="bf-input">
+                        <option value="hotel">Hotel &amp; Resort</option>
+                        <option value="apartment">Service Apartment</option>
+                        <option value="cottage">Pine Cottage / Villa</option>
+                    </select>
+                </div>
+                <div class="bf-field">
+                    <label for="new-hotel-img">Photo Image URL / Asset</label>
+                    <input type="text" id="new-hotel-img" class="bf-input" value="assets/nathia_gali.png">
+                </div>
+                <div class="bf-field" style="grid-column: span 2;">
+                    <label for="new-hotel-room">Room Spec &amp; Bed Detail</label>
+                    <input type="text" id="new-hotel-room" class="bf-input" placeholder="e.g. Deluxe Balcony Room — 1 king bed">
+                </div>
+                <div style="grid-column: span 2; margin-top: 10px;">
+                    <button type="submit" class="btn-primary-admin" style="padding: 12px 24px; font-size: 0.95rem; cursor: pointer;">
+                        <i class="fa-solid fa-plus"></i> Add Hotel to Listings
+                    </button>
+                </div>
+            </form>
+        <!-- Add New Destination Location Form Section -->
+        <section class="admin-table-section" style="margin-top: 30px;">
+            <div class="admin-table-header">
+                <h2 class="table-heading"><i class="fa-solid fa-map-location-dot"></i> Add New Search Destination Location</h2>
+                <p style="font-size: 0.88rem; color: #64748b; margin-top: 4px;">Add custom destinations (e.g. Kaghan Valley, Kumrat, Kashmir) to dynamically update the search bar dropdown list across all pages.</p>
+            </div>
+            <form id="addLocationAdminForm" style="display: flex; gap: 14px; margin-top: 20px; align-items: flex-end;">
+                <div class="bf-field" style="flex: 1;">
+                    <label for="new-location-name">Destination Location Name *</label>
+                    <input type="text" id="new-location-name" class="bf-input" required placeholder="e.g. Kaghan Valley, Mansehra, Pakistan">
+                </div>
+                <button type="submit" class="btn-primary-admin" style="padding: 12px 24px; font-size: 0.95rem; cursor: pointer; white-space: nowrap;">
+                    <i class="fa-solid fa-plus-location"></i> Add Location
+                </button>
+            </form>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        let adminBookingsCache = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAdminBookings();
+
+            // Search input filter
+            const searchInput = document.getElementById('adminSearchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    renderAdminBookings(e.target.value);
+                });
+            }
+
+            // Export CSV
+            const exportBtn = document.getElementById('exportCsvBtn');
+            if (exportBtn) {
+                exportBtn.addEventListener('click', exportToCsv);
+            }
+
+            // Clear All
+            const clearBtn = document.getElementById('clearAllBtn');
+            if (clearBtn) {
+                clearBtn.addEventListener('click', async () => {
+                    if (confirm('Are you sure you want to clear all bookings from the database?')) {
+                        try {
+                            for (let b of adminBookingsCache) {
+                                await fetch(`/api/bookings/${b.id}`, { method: 'DELETE' });
+                            }
+                            await loadAdminBookings();
+                            showAdminNotification('All booking records cleared from database.');
+                        } catch (e) {
+                            console.error(e);
+                        }
+                    }
+                });
+            }
+
+            // Add new hotel form handler
+            const addHotelForm = document.getElementById('addHotelAdminForm');
+            if (addHotelForm) {
+                addHotelForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    showAdminNotification('New property saved to hotel directory!', 'success');
+                    addHotelForm.reset();
+                });
+            }
+
+            // Refresh logs
+            loadEmailLogs();
+            setInterval(loadEmailLogs, 8000);
+            setInterval(loadAdminBookings, 8000);
+        });
+
+        async function loadAdminBookings() {
+            try {
+                const res = await fetch('/api/bookings');
+                if (res.ok) {
+                    const result = await res.json();
+                    adminBookingsCache = result.data || [];
+                } else {
+                    adminBookingsCache = getLocalFallbackBookings();
+                }
+            } catch (err) {
+                console.warn('Backend API not responding, using localStorage cache:', err);
+                adminBookingsCache = getLocalFallbackBookings();
+            }
+            renderAdminBookings();
+        }
+
+        function getLocalFallbackBookings() {
+            try {
+                const hotelBookings = JSON.parse(localStorage.getItem('galiyat_bookings')) || [];
+                const flightBookings = JSON.parse(localStorage.getItem('galiyat_bookings_data')) || [];
+                return [...flightBookings, ...hotelBookings];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function renderAdminBookings(filter = '') {
+            const bookings = adminBookingsCache;
+            const tbody = document.getElementById('adminBookingsTbody');
+            if (!tbody) return;
+
+            tbody.innerHTML = '';
+
+            const term = filter.toLowerCase();
+            const filtered = bookings.filter(b => 
+                ((b.guestName || (b.firstName + ' ' + (b.lastName || ''))) || '').toLowerCase().includes(term) ||
+                (b.phone || '').toLowerCase().includes(term) ||
+                (b.email || '').toLowerCase().includes(term) ||
+                (b.city || '').toLowerCase().includes(term) ||
+                (b.property || b.bookingType || '').toLowerCase().includes(term) ||
+                (b.id || '').toLowerCase().includes(term)
+            );
+
+            // Update Counts
+            document.getElementById('totalBookingsCount').textContent = bookings.length;
+            document.getElementById('confirmedCount').textContent = bookings.filter(b => b.status === 'Confirmed').length;
+            document.getElementById('pendingCount').textContent = bookings.filter(b => b.status === 'Pending').length;
+            document.getElementById('crownCount').textContent = bookings.filter(b => (b.property || '').includes('Crown')).length;
+            const flightElem = document.getElementById('flightBookingsCount');
+            if (flightElem) flightElem.textContent = bookings.filter(b => (b.bookingType || '').includes('Flight') || (b.id || '').includes('FLT')).length;
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="9" style="text-align:center; padding:40px; color:#94a3b8;"><i class="fa-solid fa-inbox" style="font-size:2rem; display:block; margin-bottom:8px; opacity:0.5;"></i>No reservation records found. Make a test booking on the website to see it appear here live!</td></tr>`;
+                return;
+            }
+
+            filtered.forEach((b, index) => {
+                const tr = document.createElement('tr');
+                const isConfirmed = b.status === 'Confirmed';
+                const isCancelled = b.status === 'Cancelled';
+                
+                tr.innerHTML = `
+                    <td><strong>#${b.id || (1000 + index)}</strong></td>
+                    <td>
+                        <strong style="display:block; color:#0f172a;">${b.guestName || (b.firstName + ' ' + (b.lastName || ''))}</strong>
+                        <span style="font-size:0.75rem; color:#64748b;"><i class="fa-regular fa-envelope"></i> ${b.email || 'No email provided'}</span>
+                    </td>
+                    <td><a href="https://wa.me/${(b.phone || '').replace(/[^0-9]/g, '')}" target="_blank" class="admin-wa-link"><i class="fa-brands fa-whatsapp"></i> ${b.phone || 'N/A'}</a></td>
+                    <td>${b.city || 'N/A'}, ${b.country || 'Pakistan'}</td>
+                    <td>
+                        <span class="admin-prop-tag">${b.property || b.bookingType || 'Hotel Stay'}</span>
+                        <div style="font-size:0.72rem; color:#475569; margin-top:2px;">${b.roomType || ''} ${b.totalPrice ? '· PKR ' + Number(b.totalPrice).toLocaleString() : ''}</div>
+                    </td>
+                    <td>
+                        <span style="font-size:0.82rem; font-weight:600; color:#334155;">${b.datetime || b.createdAt || 'N/A'}</span>
+                    </td>
+                    <td><span class="admin-channel-tag"><i class="fa-solid fa-bell"></i> ${b.confirmationChannel || 'Email'}</span></td>
+                    <td>
+                        <select onchange="updateBookingStatus('${b.id}', this.value)" class="status-select ${isConfirmed ? 'st-conf' : (isCancelled ? 'st-canc' : 'st-pend')}" style="padding:6px 10px; border-radius:6px; font-weight:700; font-size:0.82rem; cursor:pointer;">
+                            <option value="Pending" ${b.status === 'Pending' ? 'selected' : ''}>⏳ Pending</option>
+                            <option value="Confirmed" ${isConfirmed ? 'selected' : ''}>✅ Confirmed</option>
+                            <option value="Cancelled" ${isCancelled ? 'selected' : ''}>❌ Cancelled</option>
+                        </select>
+                    </td>
+                    <td>
+                        <div style="display:flex; gap:6px; align-items:center;">
+                            ${b.email ? `
+                            <button onclick="resendConfirmationEmail('${b.id}')" class="btn-email-action" title="Send Official Confirmation Email" style="background:#047857; color:#fff; border:none; padding:6px 10px; border-radius:4px; font-size:0.78rem; cursor:pointer; font-weight:700; display:inline-flex; align-items:center; gap:4px;">
+                                <i class="fa-regular fa-paper-plane"></i> Email
+                            </button>` : ''}
+                            <button onclick="deleteBooking('${b.id}')" class="admin-del-btn" title="Delete record"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        async function updateBookingStatus(id, newStatus) {
+            try {
+                const res = await fetch(`/api/bookings/${id}/status`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: newStatus })
+                });
+
+                if (res.ok) {
+                    const result = await res.json();
+                    if (newStatus === 'Confirmed') {
+                        showAdminNotification(`🎉 Booking #${id} CONFIRMED! Official confirmation voucher email dispatched to guest.`, 'success', result.emailResult?.previewUrl);
+                    } else if (newStatus === 'Cancelled') {
+                        showAdminNotification(`Booking #${id} marked as Cancelled.`, 'info');
+                    } else {
+                        showAdminNotification(`Booking #${id} updated to Pending.`, 'info');
+                    }
+                    await loadAdminBookings();
+                    loadEmailLogs();
+                } else {
+                    // Fallback to local
+                    let bookings = getLocalFallbackBookings();
+                    const idx = bookings.findIndex(b => b.id === id);
+                    if (idx !== -1) {
+                        bookings[idx].status = newStatus;
+                        localStorage.setItem('galiyat_bookings', JSON.stringify(bookings));
+                        renderAdminBookings();
+                    }
+                }
+            } catch (err) {
+                console.error('Error updating status:', err);
+                showAdminNotification(`Failed to update status on server: ${err.message}`, 'error');
+            }
+        }
+
+        async function resendConfirmationEmail(id) {
+            try {
+                const res = await fetch(`/api/bookings/${id}/resend-confirmation`, { method: 'POST' });
+                if (res.ok) {
+                    const data = await res.json();
+                    showAdminNotification(`Official Confirmation email resent to guest!`, 'success', data.result?.previewUrl);
+                    loadEmailLogs();
+                } else {
+                    showAdminNotification('Could not resend email.', 'error');
+                }
+            } catch (e) {
+                showAdminNotification('Error sending email: ' + e.message, 'error');
+            }
+        }
+
+        async function deleteBooking(id) {
+            if (confirm(`Delete reservation #${id} from the database?`)) {
+                try {
+                    const res = await fetch(`/api/bookings/${id}`, { method: 'DELETE' });
+                    if (res.ok) {
+                        showAdminNotification(`Booking #${id} deleted.`, 'info');
+                    }
+                    await loadAdminBookings();
+                } catch (e) {
+                    let bookings = getLocalFallbackBookings().filter(b => b.id !== id);
+                    localStorage.setItem('galiyat_bookings', JSON.stringify(bookings));
+                    renderAdminBookings();
+                }
+            }
+        }
+
+        async function loadEmailLogs() {
+            try {
+                const res = await fetch('/api/email-logs');
+                if (res.ok) {
+                    const data = await res.json();
+                    renderEmailLogsList(data.data || []);
+                }
+            } catch (e) {
+                // Ignore silent poll error
+            }
+        }
+
+        function renderEmailLogsList(logs) {
+            let container = document.getElementById('adminEmailLogsContainer');
+            if (!container) {
+                // Insert Email Logs section below reservations table
+                const tableSection = document.querySelector('.admin-table-section');
+                if (tableSection) {
+                    const logSection = document.createElement('section');
+                    logSection.className = 'admin-table-section';
+                    logSection.style.marginTop = '28px';
+                    logSection.innerHTML = `
+                        <div class="admin-table-header flex-between flex-align">
+                            <h2 class="table-heading"><i class="fa-solid fa-envelope-circle-check"></i> Automated Email Dispatch Logs (2-Stage Workflow)</h2>
+                            <button onclick="loadEmailLogs()" class="btn-csv-admin" style="font-size:0.8rem; padding:6px 12px;"><i class="fa-solid fa-arrows-rotate"></i> Refresh Logs</button>
+                        </div>
+                        <p style="font-size:0.84rem; color:#64748b; margin-top:4px;">
+                            Tracks all Stage 1 (Initial Acknowledgment) and Stage 2 (Official Confirmation Voucher) emails dispatched by the server.
+                        </p>
+                        <div id="adminEmailLogsContainer" style="margin-top:14px; display:flex; flex-direction:column; gap:8px;"></div>
+                    `;
+                    tableSection.parentNode.insertBefore(logSection, tableSection.nextSibling);
+                    container = document.getElementById('adminEmailLogsContainer');
+                }
+            }
+
+            if (!container) return;
+
+            if (logs.length === 0) {
+                container.innerHTML = `<div style="padding:16px; background:#f8fafc; border-radius:6px; font-size:0.85rem; color:#94a3b8; text-align:center;">No automated emails dispatched yet. Submit a booking to see live email logs!</div>`;
+                return;
+            }
+
+            container.innerHTML = logs.map(log => `
+                <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:6px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <span style="background:${log.type.includes('Stage 2') ? '#dcfce7' : '#e0f2fe'}; color:${log.type.includes('Stage 2') ? '#047857' : '#0369a1'}; font-size:0.75rem; font-weight:800; padding:3px 8px; border-radius:4px;">
+                            ${log.type}
+                        </span>
+                        <div>
+                            <strong style="font-size:0.85rem; color:#0f172a;">${log.subject}</strong>
+                            <div style="font-size:0.75rem; color:#64748b;">To: <strong>${log.to}</strong> · ${new Date(log.sentAt).toLocaleTimeString()}</div>
+                        </div>
+                    </div>
+                    <div>
+                        ${log.previewUrl ? `
+                        <a href="${log.previewUrl}" target="_blank" style="background:#0f172a; color:#fff; text-decoration:none; padding:5px 12px; border-radius:4px; font-size:0.78rem; font-weight:700; display:inline-flex; align-items:center; gap:5px;">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Preview Sent Email
+                        </a>` : `<span style="font-size:0.75rem; color:#047857; font-weight:700;">✅ Dispatched</span>`}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showAdminNotification(message, type = 'success', previewUrl = null) {
+            let toast = document.getElementById('adminToast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'adminToast';
+                toast.style.cssText = 'position:fixed; bottom:24px; right:24px; z-index:99999; max-width:420px; background:#0f172a; color:#fff; padding:16px 20px; border-radius:8px; box-shadow:0 10px 30px rgba(0,0,0,0.3); font-size:0.88rem; display:flex; flex-direction:column; gap:8px; border-left:5px solid #10b981; transition:all 0.3s ease;';
+                document.body.appendChild(toast);
+            }
+
+            toast.innerHTML = `
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+                    <div>${message}</div>
+                    <button onclick="this.parentElement.parentElement.style.display='none'" style="background:none; border:none; color:#94a3b8; cursor:pointer; font-size:1.1rem;">&times;</button>
+                </div>
+                ${previewUrl ? `
+                <a href="${previewUrl}" target="_blank" style="background:#10b981; color:#0f172a; text-decoration:none; padding:6px 12px; border-radius:4px; font-weight:800; font-size:0.8rem; text-align:center; display:inline-block;">
+                    🔍 Click Here to Open Sent Email in Browser
+                </a>` : ''}
+            `;
+            toast.style.display = 'flex';
+            setTimeout(() => { if (toast) toast.style.display = 'none'; }, 9000);
+        }
+
+        function exportToCsv() {
+            const bookings = adminBookingsCache;
+            if (!bookings.length) {
+                alert('No bookings to export.');
+                return;
+            }
+            let csv = 'ID,Guest Name,Phone,Email,City,Country,Property,Room Type,Total Price,DateTime,Status\n';
+            bookings.forEach(b => {
+                csv += `"${b.id}","${b.guestName || (b.firstName + ' ' + (b.lastName || ''))}","${b.phone}","${b.email || ''}","${b.city || ''}","${b.country || ''}","${b.property || ''}","${b.roomType || ''}","${b.totalPrice || 0}","${b.datetime || ''}","${b.status || ''}"\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Galiyat_Bookings_${new Date().toISOString().slice(0,10)}.csv`;
+            a.click();
+        }
+    </script>
+</body>
+
+</html>

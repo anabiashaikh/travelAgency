@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Galiyat Travel & Tourism</title>
+    <meta name="description" content="Get in touch with Galiyat travel specialists. Contact us via phone, WhatsApp, or email to plan your custom tour to Nathia Gali, Ayubia, Mushkpuri Peak & Thandiani.">
+        <!-- Favicon / Tab Logo -->
+    <link rel="icon" type="image/png" href="assets/logo1.png">
+    <link rel="shortcut icon" type="image/png" href="assets/logo1.png">
+    <link rel="apple-touch-icon" href="assets/logo1.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Great+Vibes&family=Montserrat:wght@800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Mobile & iPad Navigation Sidebar Drawer -->
+    <div class="mobile-sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="mobile-sidebar" id="mobileSidebar">
+        <div class="sidebar-header">
+            <img src="assets/logo1.png" alt="Galiyat Logo" class="sidebar-logo">
+            <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <ul class="sidebar-links">
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
+            <li><a href="destinations.html"><i class="fa-solid fa-location-dot"></i> Destinations</a></li>
+            <li><a href="packages.html"><i class="fa-solid fa-box-archive"></i> Packages</a></li>
+            <li><a href="activities.html"><i class="fa-solid fa-mountain"></i> Activities</a></li>
+            <li><a href="gallery.html"><i class="fa-solid fa-images"></i> Gallery</a></li>
+            <li><a href="contact.html" class="active"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <a href="tel:+923001234567" class="sidebar-phone"><i class="fa-solid fa-phone"></i> +92 300 1234567</a>
+            <a href="galiyat-hotels.html" class="btn-primary sidebar-btn"><i class="fa-solid fa-hotel"></i> Crown Inn</a>
+        </div>
+    </aside>
+
+    <!-- Header Navigation Bar -->
+    <header class="navbar">
+        <a href="index.html" class="logo">
+            <img src="assets/logo1.png" alt="Galiyat Logo" class="site-logo"
+                onerror="this.onerror=null; this.src='assets/logo1-removebg-preview.png';">
+        </a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="packages.html">Packages</a>
+            <a href="activities.html">Activities</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html" class="active">Contact</a>
+        </nav>
+        <div class="nav-right">
+            <a href="tel:+923001234567" class="phone-link"><i class="fa-solid fa-phone"></i> +92 300 1234567</a>
+            <a href="galiyat-hotels.html" class="btn-primary desktop-book-btn"><i class="fa-solid fa-hotel"></i> Crown Inn</a>
+            <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero hero-contact" style="background-image: url('assets/contact_hero.png');">
+        <!-- Background Overlay for mist & vignette effect -->
+        <div class="hero-overlay"></div>
+        <div class="sunlight-flare"></div>
+
+        <!-- Hero Content -->
+        <div class="hero-content contact-hero-content">
+            <div class="breadcrumb-trail">
+                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <span class="sep">/</span>
+                <span class="current">Contact</span>
+            </div>
+            <h2 class="script-title">Get In Touch</h2>
+            <h1 class="main-title contact-main-title">LET'S PLAN YOUR JOURNEY</h1>
+            <p class="hero-subtext">
+                Tell us what kind of Galiyat experience you're looking for and our local travel experts will help you plan it down to every detail.
+            </p>
+            <div class="dest-quick-stats">
+                <div class="stat-badge">
+                    <i class="fa-solid fa-reply-all"></i>
+                    <span><strong>2-Hour</strong> Fast Response</span>
+                </div>
+                <div class="stat-badge">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span><strong>100%</strong> Custom Trips</span>
+                </div>
+                <div class="stat-badge">
+                    <i class="fa-solid fa-headset"></i>
+                    <span><strong>24/7</strong> WhatsApp Support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Two-Column Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-layout">
+
+                <!-- LEFT COLUMN: Contact Information Cards -->
+                <div class="contact-info-col">
+                    <div class="contact-header">
+                        <h3 class="script-subtitle">Reach Us Anytime</h3>
+                        <h2 class="contact-col-title">Our Contact Info</h2>
+                        <p class="contact-col-desc">Have questions about tour packages, hotel choices, or custom itineraries? We're just a message away.</p>
+                    </div>
+
+                    <div class="contact-cards-stack">
+
+                        <!-- Phone & WhatsApp Card -->
+                        <div class="contact-card">
+                            <div class="contact-icon-box">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div class="contact-card-info">
+                                <h4>Phone & WhatsApp</h4>
+                                <a href="tel:+923001234567" class="card-link">+92 300 1234567</a>
+                                <a href="https://wa.me/923001234567" target="_blank" class="card-link whatsapp-link">
+                                    <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+                                </a>
+                                <span class="card-subtext">Available 24/7 for instant tour queries</span>
+                            </div>
+                        </div>
+
+                        <!-- Email Card -->
+                        <div class="contact-card">
+                            <div class="contact-icon-box">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="contact-card-info">
+                                <h4>Email Support</h4>
+                                <a href="mailto:info@galiyattours.com" class="card-link">info@galiyattours.com</a>
+                                <a href="mailto:bookings@galiyattours.com" class="card-link">bookings@galiyattours.com</a>
+                                <span class="card-subtext">Guaranteed response within 2 hours</span>
+                            </div>
+                        </div>
+
+                        <!-- Office Location Card -->
+                        <div class="contact-card">
+                            <div class="contact-icon-box">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="contact-card-info">
+                                <h4>Abbottabad Office</h4>
+                                <p class="card-text">Main Mansehra Road, Supply Bazaar, Abbottabad, KPK, Pakistan</p>
+                                <span class="card-subtext">Gateway to Nathia Gali & Thandiani</span>
+                            </div>
+                        </div>
+
+                        <!-- Business Hours Card -->
+                        <div class="contact-card">
+                            <div class="contact-icon-box">
+                                <i class="fa-regular fa-clock"></i>
+                            </div>
+                            <div class="contact-card-info">
+                                <h4>Office Working Hours</h4>
+                                <p class="card-text"><strong>Mon - Sat:</strong> 9:00 AM – 9:00 PM</p>
+                                <p class="card-text"><strong>Sunday:</strong> 10:00 AM – 6:00 PM</p>
+                                <span class="card-subtext">Emergency support active 24/7</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Social Media Links Bar -->
+                    <div class="social-connect-box">
+                        <span class="social-title">Connect With Us:</span>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://wa.me/923001234567" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- RIGHT COLUMN: Contact Inquiry Form -->
+                <div class="contact-form-col">
+                    <div class="form-wrapper-card">
+                        <div class="form-card-header">
+                            <h3 class="script-subtitle">Send A Message</h3>
+                            <h2>Send Us An Inquiry</h2>
+                            <p>Fill in your travel preferences and our destination planner will send you a tailored quote.</p>
+                        </div>
+
+                        <form class="main-contact-form" id="mainContactForm" onsubmit="event.preventDefault();">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-name">Full Name *</label>
+                                    <input type="text" id="contact-name" required placeholder="e.g. Ali Khan">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-email">Email Address *</label>
+                                    <input type="email" id="contact-email" required placeholder="e.g. ali@example.com">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-phone">Phone / WhatsApp *</label>
+                                    <input type="tel" id="contact-phone" required placeholder="e.g. +92 300 1234567">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-dest">Preferred Destination</label>
+                                    <select id="contact-dest">
+                                        <option value="All Galiyat Cluster">Complete Galiyat Cluster</option>
+                                        <option value="Nathia Gali">Nathia Gali</option>
+                                        <option value="Ayubia">Ayubia National Park</option>
+                                        <option value="Mushkpuri Peak">Mushkpuri Peak</option>
+                                        <option value="Dunga Gali">Dunga Gali Pipeline Track</option>
+                                        <option value="Thandiani">Thandiani</option>
+                                        <option value="Changla Gali">Changla Gali</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-date">Preferred Travel Date</label>
+                                    <input type="date" id="contact-date">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-guests">Number of Travelers</label>
+                                    <select id="contact-guests">
+                                        <option value="Solo Traveler">1 Traveler</option>
+                                        <option value="Couple" selected>2 Guests (Couple)</option>
+                                        <option value="Family (3-5)">Family (3 - 5 Guests)</option>
+                                        <option value="Group (6+)">Group (6+ Guests)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-package">Preferred Package Category</label>
+                                <select id="contact-package">
+                                    <option value="Beauteous Galiyat Package">Beauteous Galiyat Package (3D/2N)</option>
+                                    <option value="Misty Pines & Adventure">Misty Pines & Adventure (4D/3N)</option>
+                                    <option value="Nathia Gali & Mushkpuri Trek">Nathia Gali & Mushkpuri Trek (2D/1N)</option>
+                                    <option value="Honeymoon Special">Honeymoon Pine Haven Special (5D/4N)</option>
+                                    <option value="Stargazing Camping">Thandiani Sky Ridge Camping</option>
+                                    <option value="Custom Trip">Build Customized Tour</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-message">Your Message / Custom Demands</label>
+                                <textarea id="contact-message" rows="4" placeholder="Tell us your budget, preferred hotel category, or specific requests..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-primary form-submit-btn">
+                                <span>Send Inquiry</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- "Planning a Group Trip?" Section -->
+    <section class="group-trip-section">
+        <div class="container group-trip-container">
+            <div class="group-trip-content">
+                <h3 class="script-subtitle-light">Corporate & Family Groups</h3>
+                <h2 class="group-trip-title">Planning a Group Trip?</h2>
+                <p class="group-trip-desc">
+                    Organizing a corporate retreat, family reunion, or student expedition to Galiyat? We offer customized group itineraries, private 4x4 coasters, dedicated tour coordinators, and exclusive group discounts.
+                </p>
+            </div>
+            <div class="group-trip-action">
+                <a href="https://wa.me/923001234567" target="_blank" class="btn-primary btn-group-cta">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>Talk to Our Travel Experts</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Maps-Style Location Showcase Section -->
+    <section class="map-showcase-section" id="location-map">
+        <div class="container">
+            <div class="section-header text-center">
+                <h3 class="script-subtitle">Visit Our Headquarters</h3>
+                <h2 class="section-main-title">Interactive Galiyat Map & Office Location</h2>
+                <p class="section-sub-desc">Located conveniently in Abbottabad—the gateway to Nathia Gali, Ayubia, and Thandiani.</p>
+            </div>
+
+            <div class="map-card-container">
+                <div class="map-embed-wrapper">
+                    <!-- Google Maps Live Interactive Iframe Embed -->
+                    <iframe class="map-iframe" 
+                        src="https://maps.google.com/maps?q=Nathia+Gali,+Abbottabad,+KPK,+Pakistan&t=&z=12&ie=UTF8&iwloc=&output=embed" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade" 
+                        title="Galiyat Tours Office Location Abbottabad">
+                    </iframe>
+                    
+                    <!-- Map Floating Info Badge -->
+                    <div class="map-info-badge">
+                        <div class="badge-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="badge-text">
+                            <strong>Galiyat Tours HQ</strong>
+                            <span>Main Mansehra Road, Supply Bazaar, Abbottabad, KPK</span>
+                        </div>
+                        <a href="https://maps.google.com/maps?q=Nathia+Gali,+Abbottabad,+KPK,+Pakistan" target="_blank" class="badge-dir-btn">
+                            <i class="fa-solid fa-diamond-turn-right"></i> Open Map
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h3 class="script-subtitle">Got Questions?</h3>
+                <h2 class="section-main-title">Frequently Asked Questions</h2>
+                <p class="section-sub-desc">Everything you need to know before booking your Galiyat trip.</p>
+            </div>
+
+            <div class="faq-accordion-container" id="faqAccordion">
+
+                <!-- FAQ Item 1 -->
+                <div class="faq-item active">
+                    <button class="faq-question">
+                        <span><i class="fa-solid fa-circle-question"></i> What is the best season to visit Galiyat?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Galiyat is a year-round destination! <strong>May to October</strong> offers pleasant cool weather, wildflower alpine meadows, and perfect trekking conditions. <strong>December to February</strong> transforms Nathia Gali and Mushkpuri into a breathtaking snow paradise with winter snow sports and foggy resort fireplaces.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span><i class="fa-solid fa-circle-question"></i> How do I reach Galiyat from Islamabad?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Galiyat is conveniently located approximately 2.5 to 3 hours drive from Islamabad. You can take the Hazara Motorway (M-15) via Abbottabad or the Murree Expressway via Changla Gali. We provide door-to-door pickup in private 4x4 Prado or Grand Cabins.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span><i class="fa-solid fa-circle-question"></i> Are 4x4 vehicles required for Mushkpuri or Thandiani?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Main highways to Nathia Gali and Ayubia are fully paved and accessible by standard cars. However, for high-altitude ridges like Thandiani or off-road trailhead access during winter snow, we provide hill-certified 4x4 Prado and Fortuner vehicles for optimal safety.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span><i class="fa-solid fa-circle-question"></i> Can packages be customized for families or couples?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Absolutely! All our packages are 100% customizable. You can adjust the number of days, upgrade to 4-star luxury cottages, select specific meal plans, or add activities like boating or chairlifts according to your preferences.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span><i class="fa-solid fa-circle-question"></i> What is your cancellation and date change policy?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            We offer flexible policies! Date changes requested up to 7 days prior to travel are 100% free of charge. Cancellations made 7+ days in advance qualify for full credit vouchers or standard refunds.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Thin Divider Line -->
+    <hr class="section-divider">
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="section-header text-center">
+            <h3 class="script-subtitle">Subscribe</h3>
+            <h2 class="section-main-title">Newsletter</h2>
+            <p class="section-sub-desc">Get seasonal tour deals, snow alerts, and Galiyat travel guides directly to your inbox.</p>
+        </div>
+
+        <div class="newsletter-form-wrapper">
+            <form class="newsletter-form" onsubmit="event.preventDefault();">
+                <div class="newsletter-input-box">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" placeholder="Your email address" required>
+                </div>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-col brand-col">
+                <img src="assets/logo1.png" alt="Galiyat Tours Logo" class="footer-logo">
+                <p>Experience the majestic pine forests, scenic hiking trails, and serene beauty of Abbottabad's Galiyat region.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="activities.html">Activities</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Top Spots</h4>
+                <ul>
+                    <li><a href="destinations.html?dest=nathia-gali">Nathia Gali</a></li>
+                    <li><a href="destinations.html?dest=ayubia">Ayubia Chairlift</a></li>
+                    <li><a href="destinations.html?dest=mushkpuri">Mushkpuri Peak</a></li>
+                    <li><a href="destinations.html?dest=thandiani">Thandiani</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p><i class="fa-solid fa-phone"></i> +92 300 1234567</p>
+                <p><i class="fa-solid fa-envelope"></i> info@galiyattours.com</p>
+                <p><i class="fa-solid fa-location-dot"></i> Abbottabad, KPK, Pakistan</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Explore Galiyat. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Booking Inquiry Modal -->
+    <div class="dest-modal-overlay" id="bookingModal">
+        <div class="dest-modal-container booking-modal-container">
+            <button class="dest-modal-close" id="bookingModalClose" aria-label="Close Modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="booking-modal-header">
+                <h3 class="script-subtitle">Plan Your Custom Journey</h3>
+                <h2>Book Galiyat Trip</h2>
+                <p>Fill out the form below and our travel specialist will contact you within 2 hours.</p>
+            </div>
+            <form class="booking-form" id="modalInquiryForm" onsubmit="event.preventDefault();">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="modal-name">Full Name *</label>
+                        <input type="text" id="modal-name" required placeholder="e.g. Ali Khan">
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-phone">Phone / WhatsApp *</label>
+                        <input type="tel" id="modal-phone" required placeholder="e.g. +92 300 1234567">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="modal-dest">Preferred Destination / Tour</label>
+                        <select id="modal-dest">
+                            <option value="Nathia Gali Tour">Nathia Gali Tour</option>
+                            <option value="Ayubia Chairlift Package">Ayubia Chairlift Package</option>
+                            <option value="Mushkpuri Summit Hike">Mushkpuri Summit Hike</option>
+                            <option value="Thandiani Ridge Tour">Thandiani Ridge Tour</option>
+                            <option value="Complete Galiyat Expedition">Complete Galiyat Expedition</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-guests">Number of Guests</label>
+                        <select id="modal-guests">
+                            <option value="Solo Traveler">1 Traveler</option>
+                            <option value="Couple" selected>2 Guests (Couple)</option>
+                            <option value="Family (3-5)">Family (3 - 5 Guests)</option>
+                            <option value="Group (6+)">Group (6+ Guests)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="modal-message">Travel Dates / Special Requests</label>
+                    <textarea id="modal-message" rows="3" placeholder="Tell us your preferred dates or custom requests..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary booking-submit-btn">
+                    <span>Submit Inquiry</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="script.js"></script>
+</body>
+
+</html>

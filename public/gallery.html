@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moments From Galiyat - Photo Gallery | Galiyat Travel & Tourism</title>
+    <meta name="description" content="Explore beautiful photography of Galiyat, Abbottabad. View mountains, pine forests, Mushkpuri hiking, Ayubia chairlifts, stargazing camping, and authentic traveler moments.">
+        <!-- Favicon / Tab Logo -->
+    <link rel="icon" type="image/png" href="assets/logo1.png">
+    <link rel="shortcut icon" type="image/png" href="assets/logo1.png">
+    <link rel="apple-touch-icon" href="assets/logo1.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Great+Vibes&family=Montserrat:wght@800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Mobile & iPad Navigation Sidebar Drawer -->
+    <div class="mobile-sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="mobile-sidebar" id="mobileSidebar">
+        <div class="sidebar-header">
+            <img src="assets/logo1.png" alt="Galiyat Logo" class="sidebar-logo">
+            <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <ul class="sidebar-links">
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
+            <li><a href="destinations.html"><i class="fa-solid fa-location-dot"></i> Destinations</a></li>
+            <li><a href="packages.html"><i class="fa-solid fa-box-archive"></i> Packages</a></li>
+            <li><a href="activities.html"><i class="fa-solid fa-mountain"></i> Activities</a></li>
+            <li><a href="gallery.html" class="active"><i class="fa-solid fa-images"></i> Gallery</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <a href="tel:+923001234567" class="sidebar-phone"><i class="fa-solid fa-phone"></i> +92 300 1234567</a>
+            <a href="galiyat-hotels.html" class="btn-primary sidebar-btn"><i class="fa-solid fa-hotel"></i> Crown Inn</a>
+        </div>
+    </aside>
+
+    <!-- Header Navigation Bar -->
+    <header class="navbar">
+        <a href="index.html" class="logo">
+            <img src="assets/logo1.png" alt="Galiyat Logo" class="site-logo"
+                onerror="this.onerror=null; this.src='assets/logo1-removebg-preview.png';">
+        </a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="packages.html">Packages</a>
+            <a href="activities.html">Activities</a>
+            <a href="gallery.html" class="active">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-right">
+            <a href="tel:+923001234567" class="phone-link"><i class="fa-solid fa-phone"></i> +92 300 1234567</a>
+            <a href="galiyat-hotels.html" class="btn-primary desktop-book-btn"><i class="fa-solid fa-hotel"></i> Crown Inn</a>
+            <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero hero-gallery" style="background-image: url('assets/gallery_hero.png');">
+        <!-- Background Overlay for mist & vignette effect -->
+        <div class="hero-overlay"></div>
+        <div class="sunlight-flare"></div>
+
+        <!-- Hero Content -->
+        <div class="hero-content gal-hero-content">
+            <div class="breadcrumb-trail">
+                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <span class="sep">/</span>
+                <span class="current">Gallery</span>
+            </div>
+            <h2 class="script-title">Captured Perfection</h2>
+            <h1 class="main-title gal-main-title">MOMENTS FROM GALIYAT</h1>
+            <p class="hero-subtext">
+                Explore the landscapes, adventures and unforgettable moments captured across Galiyat's misty pine forests and high mountain summits.
+            </p>
+            <div class="dest-quick-stats">
+                <div class="stat-badge">
+                    <i class="fa-solid fa-camera"></i>
+                    <span><strong>50+</strong> Captured Moments</span>
+                </div>
+                <div class="stat-badge">
+                    <i class="fa-solid fa-mountain-sun"></i>
+                    <span><strong>6</strong> Hill Stations</span>
+                </div>
+                <div class="stat-badge">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <span><strong>100%</strong> Unfiltered Beauty</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter Bar Section -->
+    <section class="gal-filter-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h3 class="script-subtitle">Filter Collections</h3>
+                <h2 class="section-main-title">Explore Gallery Categories</h2>
+                <p class="section-sub-desc">Click a category to filter our photo collection.</p>
+            </div>
+
+            <div class="exp-filter-pills-bar gal-filter-pills-bar" id="galFilterPills">
+                <button class="exp-pill gal-pill active" data-cat="all">All</button>
+                <button class="exp-pill gal-pill" data-cat="mountains">Mountains</button>
+                <button class="exp-pill gal-pill" data-cat="forests">Forests</button>
+                <button class="exp-pill gal-pill" data-cat="hiking">Hiking</button>
+                <button class="exp-pill gal-pill" data-cat="adventures">Adventures</button>
+                <button class="exp-pill gal-pill" data-cat="culture">Culture</button>
+                <button class="exp-pill gal-pill" data-cat="travelers">Travelers</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Masonry Image Gallery Section -->
+    <section class="gallery-grid-section">
+        <div class="bg-arc-line"></div>
+        <div class="container">
+
+            <div class="gallery-masonry-grid" id="galleryGrid">
+
+                <!-- Photo 1: Nathia Gali Pine Ridge -->
+                <div class="gallery-item gallery-item-tall" data-cat="mountains forests" data-title="Nathia Gali Pine Ridge" data-loc="Nathia Gali, KPK">
+                    <img src="assets/nathia_gali.png" alt="Nathia Gali Pine Ridge" class="gal-item-img">
+                    <div class="gal-overlay">
+                        <span class="gal-cat-tag"><i class="fa-solid fa-mountain"></i> Mountains & Forests</span>
+                        <h3 class="gal-title">Nathia Gali Pine Ridge</h3>
+                        <span class="gal-location"><i class="fa-solid fa-location-dot"></i> Nathia Gali, KPK</span>
+                        <div class="gal-zoom-btn"><i class="fa-solid fa-expand"></i></div>
+                    </div>
+                </div>
+
+                <!-- Photo 2: Ayubia Cable Chairlift -->
+                <div class="gallery-item" data-cat="adventures mountains" data-title="Ayubia Cable Chairlift" data-loc="Ayubia National Park">
+                    <img src="assets/ayubia.png" alt="Ayubia Cable Chairlift" class="gal-item-img">
+                    <div class="gal-overlay">
+                        <span class="gal-cat-tag"><i class="fa-solid fa-cable-car"></i> Adventures</span>
+                        <h3 class="gal-title">Ayubia Cable Chairlift</h3>
+                        <span class="gal-location"><i class="fa-solid fa-location-dot"></i> Ayubia National Park</span>
+                        <div class="gal-zoom-btn"><i class="fa-solid fa-expand"></i></div>
+                    </div>
+                </div>
+
+                <!-- Photo 3: Mushkpuri Peak Summit -->
+                <div class="gallery-item gallery-item-wide" data-cat="hiking mountains" data-title="Mushkpuri Peak Meadow Summit" data-loc="Mushkpuri Summit (2,800m)">
+                    <img src="assets/mushkpuri.png" alt="Mushkpuri Peak Summit" class="gal-item-img">
+                    <div class="gal-overlay">
+                        <span class="gal-cat-tag"><i class="fa-solid fa-person-hiking"></i> Hiking & Mountains</span>
+                        <h3 class="gal-title">Mushkpuri Peak Meadow Summit</h3>
+                        <span class="gal-location"><i class="fa-solid fa-location-dot"></i> Mushkpuri Summit (2,800m)</span>
+                        <div class="gal-zoom-btn"><i class="fa-solid fa-expand"></i></div>
+                    </div>
+                </div>
+
+                <!-- Photo 4: Dunga Gali Pipeline Track -->
+                <div class="gallery-item" data-cat="forests hiking" data-title="Dunga Gali Pipeline Track" data-loc="Dunga Gali">
+                    <img src="assets/dunga_gali.png" alt="Dunga Gali Pipeline Track" class="gal-item-img">
+                    <div class="gal-overlay">
+                        <span class="gal-cat-tag"><i class="fa-solid fa-tree"></i> Forests & Hiking</span>
+                        <h3 class="gal-title">Dunga Gali Pipeline Track</h3>
+                        <span class="gal-location"><i class="fa-solid fa-location-dot"></i> Dunga Gali</span>
+                        <div class="gal-zoom-btn"><i class="fa-solid fa-expand"></i></div>
+                    </div>
+                </div>
+
+                <!-- Photo 5: Thandiani Cloud Ocean -->
+                <div class="gallery-item gallery-item-tall" data-cat="mountains adventures" data-title="Thandiani Sea of Clouds" data-loc="Thandiani Ridge (2,750m)">
+                    <img src="assets/thandiani.png" alt="Thandiani Sea of Clouds" class="gal-item-img">
+                    <div class="gal-overlay">
+                        <span class="gal-cat-tag"><i class="fa-solid fa-cloud-sun"></i> Mountains & Adventures</span>
+                        <h3 class="gal-title">Thandiani Sea of Clouds</h3>
+                        <span class="gal-location"><i class="fa-solid fa-location-dot"></i> Thandiani Ridge (2,750m)</span>
+                        <div class="gal-zoom-btn"><i class="fa-solid fa-expand"></i></div>
+                    </div>
+                </div>
+
+                <!-- Photo 6: Misty Pine Forest Walk -->
+                <div class="gallery-item" data-cat="forests hiking" data-title="Misty Pine Forest Path" data-loc="Galiyat Coniferous Sanctuary">
+                    <img src="assets/misty_pines.png" alt="Misty Pine Forest Path" class="gal-item-img">
+                    <div class="gal-overlay">
+                        <span class="gal-cat-tag"><i class="fa-solid fa-tree"></i> Forests</span>
+                        <h3 class="gal-title">Misty Pine Forest Path</h3>
+                        <span class="gal-location"><i class="fa-solid fa-location-dot"></i> Galiyat Coniferous Sanctuary</span>
+                        <div class="gal-zoom-btn"><i class="fa-solid fa-expand"></i></div>
+                    </div>
+                </div>
+
+                <!-- Photo 7: Changla Gali Hill Village -->
+                <div class="gallery-item gallery-item-wide" data-cat="forests culture" data-title="Changla Gali Hill Station" data-loc="Changla Gali Pass">
+                    <img src="assets/changla_gali.png" alt="Changla Gali Hill Station" class="gal-item-img">
+                    <div class="gal-overlay">
+                        <span class="gal-cat-tag"><i class="fa-solid fa-house-chimney"></i> Forests & Culture</span>
+                        <h3 class="gal-title">Changla Gali Hill Station</h3>
+                        <span class="gal-location"><i class="fa-solid fa-location-dot"></i> Changla Gali Pass</span>
+                        <div class="gal-zoom-btn"><i class="fa-solid fa-expand"></i></div>
+                    </div>
+                </div>
+
+                <!-- Photo 8: Samundar Katha Boating -->
+                <div class="gallery-item" data-cat="adventures travelers" data-title="Samundar Katha Lake Boating" data-loc="Samundar Katha Lake">
+                    <img src="assets/chairlift.png" alt="Samundar Katha Lake Boating" class="gal-item-img">
+                    <div class="gal-overlay">
+                        <span class="gal-cat-tag"><i class="fa-solid fa-water"></i> Adventures & Travelers</span>
+                        <h3 class="gal-title">Samundar Katha Lake Boating</h3>
+                        <span class="gal-location"><i class="fa-solid fa-location-dot"></i> Samundar Katha Lake</span>
+                        <div class="gal-zoom-btn"><i class="fa-solid fa-expand"></i></div>
+                    </div>
+                </div>
+
+                <!-- Photo 9: Trekkers at Mushkpuri Meadow -->
+                <div class="gallery-item gallery-item-tall" data-cat="hiking travelers" data-title="Happy Trekkers at Mushkpuri" data-loc="Mushkpuri Ridge Trail">
+                    <img src="assets/GALIYAT-BLOG-PIC-3-1024x768.webp" alt="Trekkers at Mushkpuri" class="gal-item-img">
+                    <div class="gal-overlay">
+                        <span class="gal-cat-tag"><i class="fa-solid fa-users"></i> Hiking & Travelers</span>
+                        <h3 class="gal-title">Happy Trekkers at Mushkpuri</h3>
+                        <span class="gal-location"><i class="fa-solid fa-location-dot"></i> Mushkpuri Ridge Trail</span>
+                        <div class="gal-zoom-btn"><i class="fa-solid fa-expand"></i></div>
+                    </div>
+                </div>
+
+                <!-- Photo 10: Hazara Mountain Trout & Tea -->
+                <div class="gallery-item" data-cat="culture travelers" data-title="Hazara Trout & Mountain Tea" data-loc="Nathia Gali Bazaar">
+                    <img src="assets/expert_scenic_1786135310027.png" alt="Hazara Mountain Trout & Tea" class="gal-item-img">
+                    <div class="gal-overlay">
+                        <span class="gal-cat-tag"><i class="fa-solid fa-utensils"></i> Culture & Travelers</span>
+                        <h3 class="gal-title">Hazara Trout & Mountain Tea</h3>
+                        <span class="gal-location"><i class="fa-solid fa-location-dot"></i> Nathia Gali Bazaar</span>
+                        <div class="gal-zoom-btn"><i class="fa-solid fa-expand"></i></div>
+                    </div>
+                </div>
+
+                <!-- Photo 11: Stargazing Ridge Camping -->
+                <div class="gallery-item gallery-item-wide" data-cat="adventures travelers" data-title="Stargazing Campsite Night" data-loc="Thandiani Campsite">
+                    <img src="assets/destinations_hero.png" alt="Stargazing Campsite Night" class="gal-item-img">
+                    <div class="gal-overlay">
+                        <span class="gal-cat-tag"><i class="fa-solid fa-campground"></i> Adventures & Travelers</span>
+                        <h3 class="gal-title">Stargazing Campsite Night</h3>
+                        <span class="gal-location"><i class="fa-solid fa-location-dot"></i> Thandiani Campsite</span>
+                        <div class="gal-zoom-btn"><i class="fa-solid fa-expand"></i></div>
+                    </div>
+                </div>
+
+                <!-- Photo 12: Galiyat Pine Valley Sunset -->
+                <div class="gallery-item" data-cat="mountains forests" data-title="Pine Valley Sunset Panorama" data-loc="Galiyat High Ridge">
+                    <img src="assets/img1.png" alt="Pine Valley Sunset Panorama" class="gal-item-img">
+                    <div class="gal-overlay">
+                        <span class="gal-cat-tag"><i class="fa-solid fa-sun"></i> Mountains & Forests</span>
+                        <h3 class="gal-title">Pine Valley Sunset Panorama</h3>
+                        <span class="gal-location"><i class="fa-solid fa-location-dot"></i> Galiyat High Ridge</span>
+                        <div class="gal-zoom-btn"><i class="fa-solid fa-expand"></i></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- "See It. Feel It. Experience It." Editorial Showcase Section -->
+    <section class="editorial-showcase-section">
+        <div class="container text-center">
+            <h3 class="script-subtitle">Natural Inspiration</h3>
+            <h2 class="showcase-title">See It. Feel It. Experience It.</h2>
+            <div class="showcase-quote-box">
+                <i class="fa-solid fa-quote-left quote-icon"></i>
+                <p class="showcase-quote">
+                    "Galiyat is not just a destination you visit—it is a feeling of walking among tall misty pines, breathing crisp mountain oxygen, and carrying lifelong memories back home."
+                </p>
+                <span class="quote-author">— Explore Galiyat Expeditions</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call To Action (CTA) Section -->
+    <section class="dest-cta-section gal-cta-section">
+        <div class="dest-cta-overlay"></div>
+        <div class="container dest-cta-container">
+            <h3 class="script-subtitle-banner">Start Your Journey</h3>
+            <h2 class="dest-cta-title">Plan Your Galiyat Journey</h2>
+            <p class="dest-cta-desc">
+                Inspired by these moments? Let our local travel experts craft your customized Galiyat itinerary tailored to your dates and preferences.
+            </p>
+            <div class="dest-cta-btns">
+                <button class="btn-primary btn-cta-main open-booking-modal">
+                    <span>Plan Your Trip</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+                <a href="tel:+923001234567" class="btn-secondary-phone">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>Call +92 300 1234567</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-col brand-col">
+                <img src="assets/logo1.png" alt="Galiyat Tours Logo" class="footer-logo">
+                <p>Experience the majestic pine forests, scenic hiking trails, and serene beauty of Abbottabad's Galiyat region.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="activities.html">Activities</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Top Spots</h4>
+                <ul>
+                    <li><a href="destinations.html?dest=nathia-gali">Nathia Gali</a></li>
+                    <li><a href="destinations.html?dest=ayubia">Ayubia Chairlift</a></li>
+                    <li><a href="destinations.html?dest=mushkpuri">Mushkpuri Peak</a></li>
+                    <li><a href="destinations.html?dest=thandiani">Thandiani</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p><i class="fa-solid fa-phone"></i> +92 300 1234567</p>
+                <p><i class="fa-solid fa-envelope"></i> info@galiyattours.com</p>
+                <p><i class="fa-solid fa-location-dot"></i> Abbottabad, KPK, Pakistan</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Explore Galiyat. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Full-Screen Interactive Lightbox Viewer -->
+    <div class="lightbox-overlay" id="galleryLightbox">
+        <button class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Close Lightbox">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <button class="lightbox-nav-btn lightbox-prev-btn" id="lightboxPrevBtn" aria-label="Previous Image">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <button class="lightbox-nav-btn lightbox-next-btn" id="lightboxNextBtn" aria-label="Next Image">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <div class="lightbox-content-box">
+            <img src="" alt="Expanded View" id="lightboxImg" class="lightbox-main-img">
+            <div class="lightbox-caption-bar">
+                <div class="caption-info">
+                    <h3 id="lightboxTitle">Image Title</h3>
+                    <span id="lightboxLoc"><i class="fa-solid fa-location-dot"></i> Location</span>
+                </div>
+                <div class="lightbox-counter" id="lightboxCounter">
+                    Image 1 of 12
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Inquiry Modal -->
+    <div class="dest-modal-overlay" id="bookingModal">
+        <div class="dest-modal-container booking-modal-container">
+            <button class="dest-modal-close" id="bookingModalClose" aria-label="Close Modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="booking-modal-header">
+                <h3 class="script-subtitle">Plan Your Custom Journey</h3>
+                <h2>Book Galiyat Trip</h2>
+                <p>Fill out the form below and our travel specialist will contact you within 2 hours.</p>
+            </div>
+            <form class="booking-form" id="bookingForm" onsubmit="event.preventDefault();">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="book-name">Full Name *</label>
+                        <input type="text" id="book-name" required placeholder="e.g. Ali Khan">
+                    </div>
+                    <div class="form-group">
+                        <label for="book-phone">Phone / WhatsApp *</label>
+                        <input type="tel" id="book-phone" required placeholder="e.g. +92 300 1234567">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="book-dest">Preferred Destination / Tour</label>
+                        <select id="book-dest">
+                            <option value="Nathia Gali Tour">Nathia Gali Tour</option>
+                            <option value="Ayubia Chairlift Package">Ayubia Chairlift Package</option>
+                            <option value="Mushkpuri Summit Hike">Mushkpuri Summit Hike</option>
+                            <option value="Thandiani Ridge Tour">Thandiani Ridge Tour</option>
+                            <option value="Complete Galiyat Expedition">Complete Galiyat Expedition</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-guests">Number of Guests</label>
+                        <select id="book-guests">
+                            <option value="Solo Traveler">1 Traveler</option>
+                            <option value="Couple" selected>2 Guests (Couple)</option>
+                            <option value="Family (3-5)">Family (3 - 5 Guests)</option>
+                            <option value="Group (6+)">Group (6+ Guests)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="book-message">Travel Dates / Special Requests</label>
+                    <textarea id="book-message" rows="3" placeholder="Tell us your preferred dates or custom requests..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary booking-submit-btn">
+                    <span>Submit Trip Inquiry</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search &amp; Book Flights - Explore Galiyat &amp; Pakistan Air Travel</title>
+        <!-- Favicon / Tab Logo -->
+    <link rel="icon" type="image/png" href="assets/logo1.png">
+    <link rel="shortcut icon" type="image/png" href="assets/logo1.png">
+    <link rel="apple-touch-icon" href="assets/logo1.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bcom-theme">
+
+    <!-- Header Bar -->
+    <header class="bcom-header">
+        <div class="bcom-container bcom-header-top flex-between flex-align">
+            <div class="bcom-brand flex-align">
+                <a href="index.html" class="logo flex-align" style="text-decoration: none; gap: 10px;">
+                    <img src="assets/logo1.png" alt="Galiyat Logo" style="height: 38px;" onerror="this.onerror=null; this.src='assets/logo1-removebg-preview.png';">
+                    <span class="bcom-logo-text" style="font-size: 1.4rem; color: #ffffff;">Explore Galiyat</span>
+                </a>
+            </div>
+            <div class="bcom-header-right flex-align">
+                <button class="mobile-hamburger-btn" id="mobileDrawerToggleBtn" title="Open Navigation Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Clean 2-Option Category Tabs: Stays & Flights -->
+        <div class="bcom-category-bar">
+            <div class="bcom-container flex-align" style="gap: 10px;">
+                <a href="galiyat-hotels.html" class="bcom-tab" style="margin-right: 4px;"><i class="fa-solid fa-bed"></i> Stays</a>
+                <a href="flights.html" class="bcom-tab active"><i class="fa-solid fa-plane"></i> Flights</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Flight Search Banner Section -->
+    <section class="bcom-search-banner-section">
+        <div class="bcom-container">
+
+            <div style="color: #ffffff; margin-bottom: 14px;">
+                <h1 style="font-size: 1.8rem; font-weight: 800; margin: 0 0 6px;">Compare and book flights with ease</h1>
+                <p style="font-size: 0.95rem; color: #a7f3d0; margin: 0;">Discover cheap domestic &amp; international flight deals across Pakistan.</p>
+            </div>
+
+            <!-- Trip Options Row -->
+            <div style="display: flex; gap: 16px; color: #ffffff; font-size: 0.88rem; margin-bottom: 10px;">
+                <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                    <input type="radio" name="flightTripType" value="round" checked accent-color="#10b981"> Round-trip
+                </label>
+                <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                    <input type="radio" name="flightTripType" value="oneway" accent-color="#10b981"> One-way
+                </label>
+                <select id="flightClassSelect" style="background: rgba(255,255,255,0.15); color: #ffffff; border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; padding: 2px 8px; font-size: 0.85rem; outline: none;">
+                    <option value="economy" style="color: #000;">Economy</option>
+                    <option value="business" style="color: #000;">Business Class</option>
+                    <option value="first" style="color: #000;">First Class</option>
+                </select>
+            </div>
+
+            <!-- Search Form Box -->
+            <div class="bcom-search-bar-box">
+                <form id="flightSearchForm" class="bcom-search-form flight-search-form-grid">
+                    <!-- From Field -->
+                    <div class="bcom-search-field">
+                        <i class="fa-solid fa-plane-departure field-icon"></i>
+                        <div class="field-input-group">
+                            <span class="field-label">From</span>
+                            <select id="flightFromSelect" style="border: none; outline: none; font-size: 0.92rem; font-weight: 700; color: #1a1a1a; background: transparent; padding: 0; cursor: pointer;">
+                                <option value="ISB">Islamabad (ISB)</option>
+                                <option value="KHI">Karachi (KHI)</option>
+                                <option value="LHE">Lahore (LHE)</option>
+                                <option value="PEW">Peshawar (PEW)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- To Field -->
+                    <div class="bcom-search-field">
+                        <i class="fa-solid fa-plane-arrival field-icon"></i>
+                        <div class="field-input-group">
+                            <span class="field-label">To</span>
+                            <select id="flightToSelect" style="border: none; outline: none; font-size: 0.92rem; font-weight: 700; color: #1a1a1a; background: transparent; padding: 0; cursor: pointer;">
+                                <option value="KDU">Skardu (KDU)</option>
+                                <option value="ISB">Islamabad (ISB)</option>
+                                <option value="GIL">Gilgit (GIL)</option>
+                                <option value="KHI">Karachi (KHI)</option>
+                                <option value="LHE">Lahore (LHE)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Departure Date -->
+                    <div class="bcom-search-field">
+                        <i class="fa-regular fa-calendar-days field-icon"></i>
+                        <div class="field-input-group">
+                            <span class="field-label">Departure Date</span>
+                            <input type="date" id="flightDeptDate" value="2026-09-01" style="border: none; outline: none; font-size: 0.9rem; font-weight: 700;">
+                        </div>
+                    </div>
+
+                    <!-- Passengers -->
+                    <div class="bcom-search-field">
+                        <i class="fa-solid fa-user-group field-icon"></i>
+                        <div class="field-input-group">
+                            <span class="field-label">Passengers</span>
+                            <span class="field-val-text" id="flightPassengersText">1 Adult</span>
+                        </div>
+                    </div>
+
+                    <!-- Search Button -->
+                    <button type="submit" class="bcom-search-btn">
+                        <span>Search</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Layout -->
+    <main class="bcom-listings-main">
+        <div class="bcom-container bcom-listings-grid">
+
+            <!-- Sidebar Filters -->
+            <aside class="bcom-sidebar-filters">
+                <div class="bcom-filter-widget filter-box">
+                    <h3 class="filter-heading-main">Filter Flights:</h3>
+
+                    <!-- Filter: Stops -->
+                    <div class="filter-group">
+                        <h4 class="filter-sub-heading">Stops</h4>
+                        <label class="bcom-checkbox-label">
+                            <input type="checkbox" class="flight-stop-chk" value="direct" checked>
+                            <span>Direct flights only</span>
+                        </label>
+                        <label class="bcom-checkbox-label">
+                            <input type="checkbox" class="flight-stop-chk" value="1stop" checked>
+                            <span>1 stop</span>
+                        </label>
+                    </div>
+
+                    <!-- Filter: Airlines -->
+                    <div class="filter-group">
+                        <h4 class="filter-sub-heading">Airlines</h4>
+                        <label class="bcom-checkbox-label">
+                            <input type="checkbox" class="flight-airline-chk" value="pia" checked>
+                            <span>PIA - International</span>
+                        </label>
+                        <label class="bcom-checkbox-label">
+                            <input type="checkbox" class="flight-airline-chk" value="airblue" checked>
+                            <span>Airblue</span>
+                        </label>
+                        <label class="bcom-checkbox-label">
+                            <input type="checkbox" class="flight-airline-chk" value="serene" checked>
+                            <span>SereneAir</span>
+                        </label>
+                        <label class="bcom-checkbox-label">
+                            <input type="checkbox" class="flight-airline-chk" value="jinnah" checked>
+                            <span>Fly Jinnah</span>
+                        </label>
+                    </div>
+
+                    <!-- Filter: Departure Time -->
+                    <div class="filter-group">
+                        <h4 class="filter-sub-heading">Departure Time</h4>
+                        <label class="bcom-checkbox-label">
+                            <input type="checkbox" class="flight-time-chk" value="morning" checked>
+                            <span>Morning (06:00 - 12:00)</span>
+                        </label>
+                        <label class="bcom-checkbox-label">
+                            <input type="checkbox" class="flight-time-chk" value="afternoon" checked>
+                            <span>Afternoon (12:00 - 18:00)</span>
+                        </label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Flight Search Results -->
+            <section class="bcom-listings-content">
+                <div class="bcom-results-header flex-between flex-align">
+                    <div>
+                        <h1 class="results-count-heading" id="flightCountTitle">Islamabad (ISB) to Skardu (KDU): 4 flights found</h1>
+                    </div>
+                    <div class="results-controls flex-align">
+                        <label for="flightSortSelect">Sort by:</label>
+                        <select id="flightSortSelect" class="bcom-sort-select">
+                            <option value="cheap">Cheapest first</option>
+                            <option value="fast">Fastest first</option>
+                            <option value="early">Earliest departure</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Flight Cards List -->
+                <div class="bcom-cards-list" id="flightsListContainer">
+
+                    <!-- Flight Card 1: PIA -->
+                    <article class="bcom-listing-card flight-card-item" data-price="24500" data-airline="pia">
+                        <div class="card-mid-info" style="grid-column: span 2;">
+                            <div class="property-header flex-align" style="gap: 12px;">
+                                <span style="background: #0f172a; color: #ffffff; font-weight: 800; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem;">PIA</span>
+                                <h3 class="property-name" style="font-size: 1.1rem; color: #1a1a1a;">PK-605 · Pakistan International Airlines</h3>
+                                <span class="bcom-featured-pill">Direct Non-Stop</span>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin: 16px 0; background: #f8fafc; padding: 14px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                                <div>
+                                    <strong style="font-size: 1.3rem; color: #0f172a; display: block;">09:30</strong>
+                                    <span style="font-size: 0.85rem; color: #64748b; font-weight: 600;">ISB · Islamabad</span>
+                                </div>
+                                <div style="text-align: center;">
+                                    <span style="font-size: 0.78rem; color: #047857; font-weight: 700; display: block;">1h 15m</span>
+                                    <div style="width: 100px; height: 2px; background: var(--primary-green); margin: 4px auto; position: relative;">
+                                        <i class="fa-solid fa-plane" style="position: absolute; top: -7px; left: 45%; color: var(--primary-green); font-size: 0.8rem;"></i>
+                                    </div>
+                                    <span style="font-size: 0.75rem; color: #64748b;">Direct</span>
+                                </div>
+                                <div style="text-align: right;">
+                                    <strong style="font-size: 1.3rem; color: #0f172a; display: block;">10:45</strong>
+                                    <span style="font-size: 0.85rem; color: #64748b; font-weight: 600;">KDU · Skardu</span>
+                                </div>
+                            </div>
+                            <div class="perks-list" style="flex-direction: row; gap: 16px; flex-wrap: wrap;">
+                                <span class="perk-item green-text"><i class="fa-solid fa-suitcase"></i> 20kg checked baggage</span>
+                                <span class="perk-item green-text"><i class="fa-solid fa-bag-shopping"></i> 7kg hand bag</span>
+                                <span class="perk-item green-text"><i class="fa-solid fa-utensils"></i> Free meal included</span>
+                            </div>
+                        </div>
+                        <div class="card-right-pricing text-right" style="justify-content: center; gap: 10px;">
+                            <span class="stay-dur">Per passenger (tax included)</span>
+                            <div class="price-val" style="color: #047857;">PKR 24,500</div>
+                            <button class="bcom-see-avail-btn open-flight-modal-btn" data-airline="PIA PK-605" data-route="Islamabad to Skardu" data-price="24500">
+                                <span>Select Flight</span> <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Flight Card 2: Airblue -->
+                    <article class="bcom-listing-card flight-card-item" data-price="21800" data-airline="airblue">
+                        <div class="card-mid-info" style="grid-column: span 2;">
+                            <div class="property-header flex-align" style="gap: 12px;">
+                                <span style="background: #0284c7; color: #ffffff; font-weight: 800; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem;">Airblue</span>
+                                <h3 class="property-name" style="font-size: 1.1rem; color: #1a1a1a;">PA-204 · Airblue Express</h3>
+                                <span class="bcom-featured-pill">Direct Non-Stop</span>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin: 16px 0; background: #f8fafc; padding: 14px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                                <div>
+                                    <strong style="font-size: 1.3rem; color: #0f172a; display: block;">11:15</strong>
+                                    <span style="font-size: 0.85rem; color: #64748b; font-weight: 600;">ISB · Islamabad</span>
+                                </div>
+                                <div style="text-align: center;">
+                                    <span style="font-size: 0.78rem; color: #047857; font-weight: 700; display: block;">1h 10m</span>
+                                    <div style="width: 100px; height: 2px; background: var(--primary-green); margin: 4px auto; position: relative;">
+                                        <i class="fa-solid fa-plane" style="position: absolute; top: -7px; left: 45%; color: var(--primary-green); font-size: 0.8rem;"></i>
+                                    </div>
+                                    <span style="font-size: 0.75rem; color: #64748b;">Direct</span>
+                                </div>
+                                <div style="text-align: right;">
+                                    <strong style="font-size: 1.3rem; color: #0f172a; display: block;">12:25</strong>
+                                    <span style="font-size: 0.85rem; color: #64748b; font-weight: 600;">KDU · Skardu</span>
+                                </div>
+                            </div>
+                            <div class="perks-list" style="flex-direction: row; gap: 16px; flex-wrap: wrap;">
+                                <span class="perk-item green-text"><i class="fa-solid fa-suitcase"></i> 20kg checked baggage</span>
+                                <span class="perk-item green-text"><i class="fa-solid fa-wifi"></i> Onboard entertainment</span>
+                            </div>
+                        </div>
+                        <div class="card-right-pricing text-right" style="justify-content: center; gap: 10px;">
+                            <span class="stay-dur">Per passenger (tax included)</span>
+                            <div class="price-val" style="color: #047857;">PKR 21,800</div>
+                            <button class="bcom-see-avail-btn open-flight-modal-btn" data-airline="Airblue PA-204" data-route="Islamabad to Skardu" data-price="21800">
+                                <span>Select Flight</span> <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Flight Card 3: SereneAir -->
+                    <article class="bcom-listing-card flight-card-item" data-price="26000" data-airline="serene">
+                        <div class="card-mid-info" style="grid-column: span 2;">
+                            <div class="property-header flex-align" style="gap: 12px;">
+                                <span style="background: #d97706; color: #ffffff; font-weight: 800; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem;">SereneAir</span>
+                                <h3 class="property-name" style="font-size: 1.1rem; color: #1a1a1a;">ER-502 · SereneAir Premium</h3>
+                                <span class="bcom-featured-pill">Direct Non-Stop</span>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin: 16px 0; background: #f8fafc; padding: 14px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                                <div>
+                                    <strong style="font-size: 1.3rem; color: #0f172a; display: block;">14:00</strong>
+                                    <span style="font-size: 0.85rem; color: #64748b; font-weight: 600;">ISB · Islamabad</span>
+                                </div>
+                                <div style="text-align: center;">
+                                    <span style="font-size: 0.78rem; color: #047857; font-weight: 700; display: block;">1h 15m</span>
+                                    <div style="width: 100px; height: 2px; background: var(--primary-green); margin: 4px auto; position: relative;">
+                                        <i class="fa-solid fa-plane" style="position: absolute; top: -7px; left: 45%; color: var(--primary-green); font-size: 0.8rem;"></i>
+                                    </div>
+                                    <span style="font-size: 0.75rem; color: #64748b;">Direct</span>
+                                </div>
+                                <div style="text-align: right;">
+                                    <strong style="font-size: 1.3rem; color: #0f172a; display: block;">15:15</strong>
+                                    <span style="font-size: 0.85rem; color: #64748b; font-weight: 600;">KDU · Skardu</span>
+                                </div>
+                            </div>
+                            <div class="perks-list" style="flex-direction: row; gap: 16px; flex-wrap: wrap;">
+                                <span class="perk-item green-text"><i class="fa-solid fa-suitcase"></i> 25kg extra baggage</span>
+                                <span class="perk-item green-text"><i class="fa-solid fa-utensils"></i> Gourmet meal</span>
+                            </div>
+                        </div>
+                        <div class="card-right-pricing text-right" style="justify-content: center; gap: 10px;">
+                            <span class="stay-dur">Per passenger (tax included)</span>
+                            <div class="price-val" style="color: #047857;">PKR 26,000</div>
+                            <button class="bcom-see-avail-btn open-flight-modal-btn" data-airline="SereneAir ER-502" data-route="Islamabad to Skardu" data-price="26000">
+                                <span>Select Flight</span> <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Flight Booking Modal Pop-Up -->
+    <div class="dest-modal-overlay" id="flightBookingModal" style="display: none;">
+        <div class="dest-modal-container booking-modal-container bf-modal-skin" style="max-width: 580px; border-top: 6px solid var(--primary-green);">
+            <button class="dest-modal-close" id="flightModalClose" aria-label="Close Modal">&times;</button>
+            <div class="bf-card-body" style="padding: 24px;">
+                <div class="bf-header text-center" style="margin-bottom: 20px;">
+                    <h2 class="bf-title" style="font-size: 1.5rem; color: #0f172a;"><i class="fa-solid fa-plane" style="color: var(--primary-green);"></i> Book Flight Ticket</h2>
+                    <p class="bf-subtitle" id="modalFlightDetailsText">Islamabad to Skardu · Selected Flight</p>
+                </div>
+                <form id="flightBookingForm">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                        <div class="bf-field">
+                            <label for="fl-fname">First Name *</label>
+                            <input type="text" id="fl-fname" class="bf-input" required placeholder="Passenger First Name">
+                        </div>
+                        <div class="bf-field">
+                            <label for="fl-lname">Last Name *</label>
+                            <input type="text" id="fl-lname" class="bf-input" required placeholder="Passenger Last Name">
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                        <div class="bf-field">
+                            <label for="fl-phone">Phone / WhatsApp *</label>
+                            <input type="tel" id="fl-phone" class="bf-input" required placeholder="+92 300 0000000">
+                        </div>
+                        <div class="bf-field">
+                            <label for="fl-cnic">CNIC / Passport # *</label>
+                            <input type="text" id="fl-cnic" class="bf-input" required placeholder="61101-1234567-1">
+                        </div>
+                    </div>
+                    <div class="bf-field" style="margin-bottom: 16px;">
+                        <label for="fl-email">Email Address *</label>
+                        <input type="email" id="fl-email" class="bf-input" required placeholder="passenger@gmail.com">
+                    </div>
+                    <button type="submit" class="bf-submit-btn" style="width: 100%; background: linear-gradient(135deg, var(--primary-green), #047857); color: #ffffff; border: none; padding: 14px; border-radius: 6px; font-weight: 700; font-size: 1rem; cursor: pointer;">
+                        <span>Confirm Flight Booking &amp; Save Data</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bcom-footer">
+        <div class="bcom-container text-center">
+            <p class="bcom-copyright">&copy; 2026 Explore Galiyat Flight Booking Network. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Flight Modal & Booking Script
+        document.addEventListener('DOMContentLoaded', () => {
+            const flightModal = document.getElementById('flightBookingModal');
+            const openBtns = document.querySelectorAll('.open-flight-modal-btn');
+            const closeBtn = document.getElementById('flightModalClose');
+            const detailsText = document.getElementById('modalFlightDetailsText');
+            const flightForm = document.getElementById('flightBookingForm');
+
+            let selectedFlight = { airline: 'PIA PK-605', route: 'Islamabad to Skardu', price: 24500 };
+
+            openBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const airline = btn.getAttribute('data-airline');
+                    const route = btn.getAttribute('data-route');
+                    const price = btn.getAttribute('data-price');
+                    selectedFlight = { airline, route, price };
+                    if (detailsText) {
+                        detailsText.textContent = `${airline} (${route}) — PKR ${parseInt(price).toLocaleString()}`;
+                    }
+                    if (flightModal) {
+                        flightModal.style.display = 'flex';
+                        document.body.classList.add('no-scroll');
+                    }
+                });
+            });
+
+            closeBtn?.addEventListener('click', () => {
+                if (flightModal) {
+                    flightModal.style.display = 'none';
+                    document.body.classList.remove('no-scroll');
+                }
+            });
+
+            flightModal?.addEventListener('click', (e) => {
+                if (e.target === flightModal) {
+                    flightModal.style.display = 'none';
+                    document.body.classList.remove('no-scroll');
+                }
+            });
+
+            flightForm?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const fname = document.getElementById('fl-fname').value;
+                const lname = document.getElementById('fl-lname').value;
+                const phone = document.getElementById('fl-phone').value;
+                const cnic = document.getElementById('fl-cnic').value;
+                const email = document.getElementById('fl-email').value;
+
+                const flightRecord = {
+                    id: 'FLT-' + Math.floor(100000 + Math.random() * 900000),
+                    guestName: `${fname} ${lname}`,
+                    phone,
+                    cnic,
+                    email,
+                    bookingType: `Flight: ${selectedFlight.airline}`,
+                    property: selectedFlight.route,
+                    datetime: new Date().toLocaleString(),
+                    status: 'Confirmed',
+                    price: selectedFlight.price
+                };
+
+                try {
+                    let bookings = JSON.parse(localStorage.getItem('galiyat_bookings_data')) || [];
+                    bookings.unshift(flightRecord);
+                    localStorage.setItem('galiyat_bookings_data', JSON.stringify(bookings));
+                    alert(`🎉 Flight Booked Successfully!\n\nPassenger: ${fname} ${lname}\nTicket ID: #${flightRecord.id}\nFlight: ${selectedFlight.airline}\nRoute: ${selectedFlight.route}\n\nRecord saved to Admin Dashboard!`);
+                    flightModal.style.display = 'none';
+                    document.body.classList.remove('no-scroll');
+                    flightForm.reset();
+                } catch (err) {
+                    console.error(err);
+                }
+            });
+
+            // Mobile Drawer Sidebar Toggle
+            const drawerBtn = document.getElementById('mobileDrawerToggleBtn');
+            const drawerOverlay = document.getElementById('mobileDrawerOverlay');
+            const drawerCloseBtn = document.getElementById('mobileDrawerCloseBtn');
+
+            drawerBtn?.addEventListener('click', () => {
+                drawerOverlay?.classList.add('active');
+                document.body.classList.add('no-scroll');
+            });
+
+            drawerCloseBtn?.addEventListener('click', () => {
+                drawerOverlay?.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+
+            drawerOverlay?.addEventListener('click', (e) => {
+                if (e.target === drawerOverlay) {
+                    drawerOverlay.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                }
+            });
+        });
+    </script>
+
+    <!-- Mobile Slide-Out Off-Canvas Navigation Drawer Sidebar -->
+    <div class="mobile-drawer-overlay" id="mobileDrawerOverlay">
+        <div class="mobile-drawer-panel">
+            <div class="mobile-drawer-header">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <img src="assets/logo1.png" alt="Logo" style="height: 28px;" onerror="this.onerror=null; this.src='assets/logo1-removebg-preview.png';">
+                    <span style="font-weight: 800; font-size: 1.1rem; color: #ffffff;">Explore Galiyat</span>
+                </div>
+                <button class="mobile-drawer-close" id="mobileDrawerCloseBtn">&times;</button>
+            </div>
+            <div class="mobile-drawer-nav">
+                <a href="index.html" class="mobile-drawer-link"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="galiyat-hotels.html" class="mobile-drawer-link"><i class="fa-solid fa-bed"></i> Stays &amp; Hotels</a>
+            </div>
+            <div class="mobile-drawer-contact-card">
+                <div style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 6px;">Customer Support Helpline</div>
+                <a href="tel:+923001234567" style="color: #10b981; font-size: 1.1rem; font-weight: 800; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-phone"></i> +92 300 1234567
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

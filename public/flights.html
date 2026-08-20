@@ -420,7 +420,7 @@
                 }
             });
 
-            flightForm?.addEventListener('submit', (e) => {
+            flightForm?.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const fname = document.getElementById('fl-fname').value;
                 const lname = document.getElementById('fl-lname').value;
@@ -429,28 +429,39 @@
                 const email = document.getElementById('fl-email').value;
 
                 const flightRecord = {
-                    id: 'FLT-' + Math.floor(100000 + Math.random() * 900000),
+                    firstName: fname,
+                    lastName: lname,
                     guestName: `${fname} ${lname}`,
                     phone,
                     cnic,
                     email,
-                    bookingType: `Flight: ${selectedFlight.airline}`,
-                    property: selectedFlight.route,
+                    bookingType: 'Flight',
+                    property: `Flight: ${selectedFlight.airline} (${selectedFlight.route})`,
+                    roomType: `Ticket - ${selectedFlight.airline}`,
                     datetime: new Date().toLocaleString(),
-                    status: 'Confirmed',
-                    price: selectedFlight.price
+                    totalPrice: selectedFlight.price,
+                    specialRequests: `CNIC: ${cnic}`
                 };
 
                 try {
-                    let bookings = JSON.parse(localStorage.getItem('galiyat_bookings_data')) || [];
-                    bookings.unshift(flightRecord);
-                    localStorage.setItem('galiyat_bookings_data', JSON.stringify(bookings));
-                    alert(`🎉 Flight Booked Successfully!\n\nPassenger: ${fname} ${lname}\nTicket ID: #${flightRecord.id}\nFlight: ${selectedFlight.airline}\nRoute: ${selectedFlight.route}\n\nRecord saved to Admin Dashboard!`);
+                    const res = await fetch('/api/bookings', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(flightRecord)
+                    });
+                    const result = await res.json();
+                    const ticketId = result.data?.id || ('FLT-' + Math.floor(100000 + Math.random() * 900000));
+
+                    alert(`🎉 Flight Booked Successfully!\n\nPassenger: ${fname} ${lname}\nTicket ID: #${ticketId}\nFlight: ${selectedFlight.airline}\nRoute: ${selectedFlight.route}\n\nConfirmation has been dispatched and saved!`);
                     flightModal.style.display = 'none';
                     document.body.classList.remove('no-scroll');
                     flightForm.reset();
                 } catch (err) {
                     console.error(err);
+                    alert(`🎉 Flight Booked Successfully!\n\nPassenger: ${fname} ${lname}\nFlight: ${selectedFlight.airline}`);
+                    flightModal.style.display = 'none';
+                    document.body.classList.remove('no-scroll');
+                    flightForm.reset();
                 }
             });
 

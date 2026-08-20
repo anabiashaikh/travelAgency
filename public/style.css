@@ -7909,6 +7909,91 @@ body.bcom-theme {
     letter-spacing: 1px;
 }
 
+/* ==========================================================================
+   UNIFIED MODAL OVERLAY & CONTAINER SYSTEM
+   ========================================================================== */
+.dest-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 999999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.dest-modal-overlay.open,
+.dest-modal-overlay[style*="display: flex"],
+.dest-modal-overlay[style*="display:flex"],
+.dest-modal-overlay[style*="display: block"],
+.dest-modal-overlay[style*="display:block"] {
+    display: flex !important;
+    opacity: 1 !important;
+}
+
+.dest-modal-container {
+    background: #ffffff;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 680px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.4);
+    animation: modalPopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalPopIn {
+    from {
+        opacity: 0;
+        transform: scale(0.94) translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.dest-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 38px;
+    height: 38px;
+    background: rgba(15, 23, 42, 0.75);
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.2s ease;
+}
+
+.dest-modal-close:hover {
+    background: #ef4444;
+    transform: rotate(90deg) scale(1.1);
+}
+
+.bf-modal-skin {
+    padding: 0;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
 @media screen and (max-width: 767px) {
     .bf-two-col,
     .bf-three-col {

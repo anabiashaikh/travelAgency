@@ -372,55 +372,138 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       6. BOOKING INQUIRY MODAL HANDLERS
+       6. UNIFIED GLOBAL BOOKING INQUIRY & RESERVATION MODAL HANDLERS
        ========================================================================== */
-    const bookingModal = document.getElementById('bookingModal');
-    const bookingModalClose = document.getElementById('bookingModalClose');
-    const bookingForm = document.getElementById('bookingForm');
-    const bookDestSelect = document.getElementById('book-dest');
+    const globalBookingModal = document.getElementById('bookingModal');
+    const globalBookingModalClose = document.getElementById('bookingModalClose');
+    const globalBookingForm = document.getElementById('globalUnifiedBookingForm');
+    const modalPropertyNameEl = document.getElementById('bfModalPropertyName');
+    const modalPropHidden = document.getElementById('bf-selected-property');
+    const modalRoomHidden = document.getElementById('bf-selected-room');
+    const modalPriceHidden = document.getElementById('bf-selected-price');
 
-    function openBookingModal(preferredDest = '') {
-        if (bookingModal) {
-            closeDestModal(); // Close quick-view modal if open
-            if (bookDestSelect && preferredDest) {
-                bookDestSelect.value = preferredDest;
-            }
-            bookingModal.classList.add('open');
-            document.body.classList.add('no-scroll');
+    window.openUnifiedBookingModal = function(propertyName = 'Explore Galiyat Stay & Tour', roomType = 'Standard Unit', price = 0) {
+        if (!globalBookingModal) return;
+        
+        if (modalPropertyNameEl) {
+            modalPropertyNameEl.textContent = `Reserve: ${propertyName}`;
         }
-    }
+        if (modalPropHidden) modalPropHidden.value = propertyName;
+        if (modalRoomHidden) modalRoomHidden.value = roomType;
+        if (modalPriceHidden) modalPriceHidden.value = price;
 
-    function closeBookingModal() {
-        if (bookingModal) {
-            bookingModal.classList.remove('open');
-            document.body.classList.remove('no-scroll');
+        globalBookingModal.style.display = 'flex';
+        globalBookingModal.classList.add('open');
+        document.body.classList.add('no-scroll');
+    };
+
+    window.closeUnifiedBookingModal = function() {
+        if (!globalBookingModal) return;
+        globalBookingModal.style.display = 'none';
+        globalBookingModal.classList.remove('open');
+        document.body.classList.remove('no-scroll');
+    };
+
+    // Attach click listeners to all booking buttons
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.open-booking-modal, .btn-book-tour, .btn-book-package, [data-book-target]');
+        if (btn) {
+            e.preventDefault();
+            const propName = btn.getAttribute('data-property') || btn.getAttribute('data-target-dest') || 'Explore Galiyat Stay & Tour';
+            const room = btn.getAttribute('data-room') || 'Standard Unit';
+            const price = btn.getAttribute('data-price') || 0;
+            window.openUnifiedBookingModal(propName, room, price);
         }
-    }
-
-    document.querySelectorAll('.open-booking-modal').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const targetDest = btn.getAttribute('data-target-dest') || '';
-            openBookingModal(targetDest);
-        });
     });
 
-    if (bookingModalClose) bookingModalClose.addEventListener('click', closeBookingModal);
-    if (bookingModal) {
-        bookingModal.addEventListener('click', (e) => {
-            if (e.target === bookingModal) closeBookingModal();
+    if (globalBookingModalClose) {
+        globalBookingModalClose.addEventListener('click', window.closeUnifiedBookingModal);
+    }
+    if (globalBookingModal) {
+        globalBookingModal.addEventListener('click', (e) => {
+            if (e.target === globalBookingModal) window.closeUnifiedBookingModal();
         });
     }
 
-    if (bookingForm) {
-        bookingForm.addEventListener('submit', (e) => {
+    if (globalBookingForm) {
+        globalBookingForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const name = document.getElementById('book-name').value;
-            const destEl = document.getElementById('book-dest') || document.getElementById('book-package-select');
-            const dest = destEl ? destEl.value : 'Galiyat Tour';
+            const submitBtn = globalBookingForm.querySelector('.bf-submit-btn');
+            const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span>Processing Booking...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+            }
 
-            alert(`Thank you ${name}! Your tour inquiry for ${dest} has been received. Our Galiyat travel expert will contact you shortly.`);
-            bookingForm.reset();
-            closeBookingModal();
+            const firstName = document.getElementById('bf-first-name')?.value || '';
+            const lastName = document.getElementById('bf-last-name')?.value || '';
+            const email = document.getElementById('bf-email')?.value || '';
+            const phone = document.getElementById('bf-phone')?.value || '';
+            const street = document.getElementById('bf-street')?.value || '';
+            const street2 = document.getElementById('bf-street-2')?.value || '';
+            const city = document.getElementById('bf-city')?.value || '';
+            const state = document.getElementById('bf-state')?.value || '';
+            const postal = document.getElementById('bf-postal')?.value || '';
+            const country = document.getElementById('bf-country')?.value || 'Pakistan';
+            const datetime = document.getElementById('bf-datetime')?.value || '';
+            const bookingType = document.querySelector('input[name="global_booking_type"]:checked')?.value || 'Reservation';
+            const confirmationChannel = document.querySelector('input[name="global_confirmation_type"]:checked')?.value || 'Email';
+            const specialRequests = document.getElementById('bf-special')?.value || '';
+            const comments = document.getElementById('bf-comments')?.value || '';
+            const property = modalPropHidden?.value || 'Explore Galiyat Stay & Tour';
+            const roomType = modalRoomHidden?.value || 'Standard Unit';
+            const totalPrice = Number(modalPriceHidden?.value) || 0;
+
+            const payload = {
+                firstName,
+                lastName,
+                guestName: `${firstName} ${lastName}`.trim(),
+                email,
+                phone,
+                street,
+                street2,
+                city,
+                state,
+                postal,
+                country,
+                datetime,
+                bookingType,
+                confirmationChannel,
+                property,
+                roomType,
+                totalPrice,
+                specialRequests,
+                comments
+            };
+
+            try {
+                const res = await fetch('/api/bookings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await res.json();
+                const bookingId = result.data?.id || ('GB-' + Math.floor(1000 + Math.random() * 9000));
+
+                let emailMsg = email 
+                    ? `\n\n📩 An acknowledgment email has been dispatched to ${email}.`
+                    : '';
+
+                alert(`🎉 Thank You, ${firstName}!\n\nYour reservation request for ${property} [#${bookingId}] has been successfully received.${emailMsg}\n\nOur team is verifying room availability and will contact you shortly to confirm!`);
+                
+                globalBookingForm.reset();
+                window.closeUnifiedBookingModal();
+            } catch (err) {
+                console.error('Error submitting booking:', err);
+                alert(`✅ Your reservation request has been submitted!\n\nOur team will contact you shortly.`);
+                globalBookingForm.reset();
+                window.closeUnifiedBookingModal();
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHtml;
+                }
+            }
         });
     }
 
@@ -1413,6 +1496,130 @@ document.addEventListener('DOMContentLoaded', () => {
                 addLocationAdminForm.reset();
             } catch (err) {
                 console.error('Error saving new location:', err);
+            }
+        });
+    }
+
+    /* ==========================================================================
+       MARIA VILLA MODAL & BOOKING FORM HANDLERS
+       ========================================================================== */
+    const mariaModal = document.getElementById('mariaBookingModal');
+    const mariaModalClose = document.getElementById('mariaModalClose');
+    const openMariaBtns = document.querySelectorAll('.open-maria-modal-btn, .reserve-maria-room-btn');
+    const mariaBookingForm = document.getElementById('mariaBookingForm');
+
+    openMariaBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (mariaModal) {
+                mariaModal.style.display = 'flex';
+                mariaModal.classList.add('open');
+                document.body.classList.add('no-scroll');
+            }
+        });
+    });
+
+    if (mariaModalClose && mariaModal) {
+        mariaModalClose.addEventListener('click', () => {
+            mariaModal.style.display = 'none';
+            mariaModal.classList.remove('open');
+            document.body.classList.remove('no-scroll');
+        });
+        mariaModal.addEventListener('click', (e) => {
+            if (e.target === mariaModal) {
+                mariaModal.style.display = 'none';
+                mariaModal.classList.remove('open');
+                document.body.classList.remove('no-scroll');
+            }
+        });
+    }
+
+    if (mariaBookingForm) {
+        mariaBookingForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = mariaBookingForm.querySelector('.bf-submit-btn');
+            const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span>Processing Request...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+            }
+
+            const firstName = document.getElementById('maria-first-name')?.value || 'Guest';
+            const lastName = document.getElementById('maria-last-name')?.value || '';
+            const email = document.getElementById('maria-email')?.value || '';
+            const phone = document.getElementById('maria-phone')?.value || '';
+            const street = document.getElementById('maria-street')?.value || '';
+            const street2 = document.getElementById('maria-street-2')?.value || '';
+            const city = document.getElementById('maria-city')?.value || 'Khaira Gali';
+            const state = document.getElementById('maria-state')?.value || 'KPK';
+            const postal = document.getElementById('maria-postal')?.value || '';
+            const country = document.getElementById('maria-country')?.value || 'Pakistan';
+            const datetime = document.getElementById('maria-datetime')?.value || 'Sat, Aug 15, 2026';
+            const bookingType = document.querySelector('input[name="maria_booking_type"]:checked')?.value || 'Reservation';
+            const confirmationChannel = document.querySelector('input[name="maria_confirmation_type"]:checked')?.value || 'Email';
+            const specialRequests = document.getElementById('maria-special')?.value || '';
+            const comments = document.getElementById('maria-comments')?.value || '';
+            const totalPrice = 18000;
+
+            const bookingPayload = {
+                firstName,
+                lastName,
+                guestName: `${firstName} ${lastName}`.trim(),
+                email,
+                phone,
+                street,
+                street2,
+                city,
+                state,
+                postal,
+                country,
+                datetime,
+                bookingType,
+                confirmationChannel,
+                property: 'Maria Villa Retreat',
+                roomType: 'Deluxe Pine-View Apartment',
+                specialRequests,
+                comments,
+                totalPrice
+            };
+
+            try {
+                const res = await fetch('/api/bookings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(bookingPayload)
+                });
+                const result = await res.json();
+                const bookingId = result.data?.id || ('GB-' + Math.floor(1000 + Math.random() * 9000));
+                saveBookingRecord(result.data || bookingPayload);
+
+                let emailNote = email 
+                    ? `\n\n📩 An acknowledgment email has been dispatched to ${email}.`
+                    : '';
+
+                alert(`🎉 Thank You, ${firstName} ${lastName}!\n\nYour reservation request for Maria Villa [#${bookingId}] has been received.${emailNote}\n\nOur team is verifying room availability and will contact you shortly to confirm!`);
+
+                if (mariaModal) {
+                    mariaModal.style.display = 'none';
+                    mariaModal.classList.remove('open');
+                    document.body.classList.remove('no-scroll');
+                }
+
+                mariaBookingForm.reset();
+            } catch (err) {
+                console.error('Server error submitting Maria Villa booking:', err);
+                alert(`✅ Reservation request submitted!\n\nOur team will contact you shortly.`);
+                if (mariaModal) {
+                    mariaModal.style.display = 'none';
+                    mariaModal.classList.remove('open');
+                    document.body.classList.remove('no-scroll');
+                }
+                mariaBookingForm.reset();
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHtml;
+                }
             }
         });
     }

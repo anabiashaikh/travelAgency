@@ -516,52 +516,171 @@
         </div>
     </footer>
 
-    <!-- Booking Inquiry Modal -->
+    <!-- Unified New Booking Form Modal -->
     <div class="dest-modal-overlay" id="bookingModal">
-        <div class="dest-modal-container booking-modal-container">
+        <div class="dest-modal-container booking-modal-container bf-modal-skin">
             <button class="dest-modal-close" id="bookingModalClose" aria-label="Close Modal">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="booking-modal-header">
-                <h3 class="script-subtitle">Plan Your Dream Journey</h3>
-                <h2>Book Beauteous Galiyat Package</h2>
-                <p>Fill out the form below and our Galiyat specialist will contact you within 2 hours.</p>
+            
+            <div class="bf-hero-banner">
+                <div class="bf-logo-badge">
+                    <div class="bf-logo-inner">
+                        <span>LO</span>
+                        <span>GO</span>
+                    </div>
+                </div>
+                <h1 class="bf-main-heading">Booking Form</h1>
             </div>
-            <form class="booking-form" id="bookingForm" onsubmit="event.preventDefault();">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="book-name">Full Name *</label>
-                        <input type="text" id="book-name" required placeholder="e.g. Ali Khan">
+
+            <div class="bf-modal-body">
+                <p class="bf-sub-description">Please fill in your details to secure your reservation for Beauteous Galiyat Package.</p>
+                <h2 class="bf-section-title" id="bfModalPropertyName">Reserve: Beauteous Galiyat Package (3D/2N)</h2>
+
+                <form id="globalUnifiedBookingForm" class="bf-form">
+                    <input type="hidden" id="bf-selected-property" value="Beauteous Galiyat Package (3D/2N)">
+                    <input type="hidden" id="bf-selected-room" value="Standard Tour Package">
+                    <input type="hidden" id="bf-selected-price" value="28000">
+                    
+                    <!-- First Name & Last Name -->
+                    <div class="bf-row bf-two-col">
+                        <div class="bf-field">
+                            <label for="bf-first-name">First Name <span class="req-star">*</span></label>
+                            <input type="text" id="bf-first-name" class="bf-input" required placeholder="">
+                        </div>
+                        <div class="bf-field">
+                            <label for="bf-last-name">Last Name <span class="req-star">*</span></label>
+                            <input type="text" id="bf-last-name" class="bf-input" required placeholder="">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="book-phone">Phone / WhatsApp *</label>
-                        <input type="tel" id="book-phone" required placeholder="e.g. +92 300 1234567">
+
+                    <!-- Street Address -->
+                    <div class="bf-field">
+                        <label for="bf-street">Street Address <span class="req-star">*</span></label>
+                        <input type="text" id="bf-street" class="bf-input" required placeholder="">
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="book-dest">Selected Package</label>
-                        <input type="text" id="book-dest" value="Beauteous Galiyat Package (3D/2N)" readonly>
+
+                    <!-- Street Address Line 2 -->
+                    <div class="bf-field">
+                        <label for="bf-street-2">Street Address Line 2 <span class="req-star">*</span></label>
+                        <input type="text" id="bf-street-2" class="bf-input" required placeholder="">
                     </div>
-                    <div class="form-group">
-                        <label for="book-guests">Number of Guests</label>
-                        <select id="book-guests">
-                            <option value="Solo Traveler">1 Traveler</option>
-                            <option value="Couple" selected>2 Guests (Couple)</option>
-                            <option value="Family (3-5)">Family (3 - 5 Guests)</option>
-                            <option value="Group (6+)">Group (6+ Guests)</option>
-                        </select>
+
+                    <!-- City, State/Province, Postal Code -->
+                    <div class="bf-row bf-three-col">
+                        <div class="bf-field">
+                            <label for="bf-city">City <span class="req-star">*</span></label>
+                            <input type="text" id="bf-city" class="bf-input" required placeholder="">
+                        </div>
+                        <div class="bf-field">
+                            <label for="bf-state">State / Province <span class="req-star">*</span></label>
+                            <input type="text" id="bf-state" class="bf-input" required placeholder="">
+                        </div>
+                        <div class="bf-field">
+                            <label for="bf-postal">Postal Code <span class="req-star">*</span></label>
+                            <input type="text" id="bf-postal" class="bf-input" required placeholder="">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="book-message">Preferred Travel Dates / Custom Requests</label>
-                    <textarea id="book-message" rows="3" placeholder="Tell us your preferred start date or hotel upgrade preferences..."></textarea>
-                </div>
-                <button type="submit" class="btn-primary booking-submit-btn">
-                    <span>Submit Booking Inquiry</span>
-                    <i class="fa-solid fa-paper-plane"></i>
-                </button>
-            </form>
+
+                    <!-- Country & Phone Number -->
+                    <div class="bf-row bf-two-col">
+                        <div class="bf-field">
+                            <label for="bf-country">Country <span class="req-star">*</span></label>
+                            <input type="text" id="bf-country" class="bf-input" required placeholder="">
+                        </div>
+                        <div class="bf-field">
+                            <label for="bf-phone">Phone number <span class="req-star">*</span></label>
+                            <input type="tel" id="bf-phone" class="bf-input" required placeholder="">
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="bf-field">
+                        <label for="bf-email">Email Address <span class="req-star">*</span></label>
+                        <input type="email" id="bf-email" class="bf-input" required placeholder="name@example.com">
+                    </div>
+
+                    <!-- Booking Date and Time -->
+                    <div class="bf-field">
+                        <label for="bf-datetime">Booking Date and Time <span class="req-star">*</span></label>
+                        <input type="text" id="bf-datetime" class="bf-input" required placeholder="e.g. Sat, Aug 15, 2026 - 02:00 PM">
+                    </div>
+
+                    <!-- Type of Service/Booking -->
+                    <div class="bf-field">
+                        <label>Type of Service/Booking <span class="req-star">*</span></label>
+                        <div class="bf-radio-group">
+                            <label class="bf-radio-pill">
+                                <input type="radio" name="global_booking_type" value="Appointment" required>
+                                <span class="custom-radio"></span>
+                                <span class="pill-label">Appointment</span>
+                            </label>
+                            <label class="bf-radio-pill">
+                                <input type="radio" name="global_booking_type" value="Reservation" checked required>
+                                <span class="custom-radio"></span>
+                                <span class="pill-label">Reservation</span>
+                            </label>
+                            <label class="bf-radio-pill">
+                                <input type="radio" name="global_booking_type" value="Event" required>
+                                <span class="custom-radio"></span>
+                                <span class="pill-label">Event</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Special Requests/Requirements -->
+                    <div class="bf-field">
+                        <label for="bf-special">Special Requests/Requirements</label>
+                        <input type="text" id="bf-special" class="bf-input" placeholder="e.g. Include sightseeing transport and breakfast">
+                    </div>
+
+                    <!-- How would you like to receive confirmation of your booking? -->
+                    <div class="bf-field">
+                        <label>How would you like to receive confirmation of your booking? <span class="req-star">*</span></label>
+                        <div class="bf-radio-group">
+                            <label class="bf-radio-pill">
+                                <input type="radio" name="global_confirmation_type" value="Email" checked required>
+                                <span class="custom-radio"></span>
+                                <span class="pill-label">Email</span>
+                            </label>
+                            <label class="bf-radio-pill">
+                                <input type="radio" name="global_confirmation_type" value="Phone" required>
+                                <span class="custom-radio"></span>
+                                <span class="pill-label">Phone</span>
+                            </label>
+                            <label class="bf-radio-pill">
+                                <input type="radio" name="global_confirmation_type" value="Text" required>
+                                <span class="custom-radio"></span>
+                                <span class="pill-label">Text</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Comments or Additional Information -->
+                    <div class="bf-field">
+                        <label for="bf-comments">Comments or Additional Information</label>
+                        <textarea id="bf-comments" class="bf-textarea" rows="4" placeholder=""></textarea>
+                    </div>
+
+                    <!-- Please check the box below to proceed -->
+                    <div class="bf-field">
+                        <label for="bf-check">Please check the box below to proceed <span class="req-star">*</span></label>
+                        <div class="bf-checkbox-wrapper">
+                            <input type="checkbox" id="bf-check" required>
+                            <label for="bf-check" class="check-label">I agree to the terms and conditions and confirm my booking request.</label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="bf-submit-wrapper">
+                        <button type="submit" class="bf-submit-btn">
+                            <span>Submit Package Booking</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
         </div>
     </div>
 

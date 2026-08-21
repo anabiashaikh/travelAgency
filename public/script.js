@@ -482,27 +482,43 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-                const result = await res.json();
+                const result = await res.json().catch(() => ({}));
                 const bookingId = result.data?.id || ('GB-' + Math.floor(1000 + Math.random() * 9000));
+                saveBookingRecord(result.data || payload);
 
-                let emailMsg = email 
-                    ? `\n\n📩 An acknowledgment email has been dispatched to ${email}.`
-                    : '';
+                if (submitBtn) {
+                    submitBtn.innerHTML = '<span>✔ Booking Submitted!</span> <i class="fa-solid fa-check"></i>';
+                    submitBtn.style.background = '#059669';
+                    submitBtn.style.borderColor = '#059669';
+                }
 
-                alert(`🎉 Thank You, ${firstName}!\n\nYour reservation request for ${property} [#${bookingId}] has been successfully received.${emailMsg}\n\nOur team is verifying room availability and will contact you shortly to confirm!`);
-                
-                globalBookingForm.reset();
-                window.closeUnifiedBookingModal();
+                setTimeout(() => {
+                    globalBookingForm.reset();
+                    window.closeUnifiedBookingModal();
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnHtml;
+                        submitBtn.style.background = '';
+                        submitBtn.style.borderColor = '';
+                    }
+                }, 900);
             } catch (err) {
                 console.error('Error submitting booking:', err);
-                alert(`✅ Your reservation request has been submitted!\n\nOur team will contact you shortly.`);
-                globalBookingForm.reset();
-                window.closeUnifiedBookingModal();
-            } finally {
                 if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnHtml;
+                    submitBtn.innerHTML = '<span>✔ Booking Submitted!</span> <i class="fa-solid fa-check"></i>';
+                    submitBtn.style.background = '#059669';
+                    submitBtn.style.borderColor = '#059669';
                 }
+                setTimeout(() => {
+                    globalBookingForm.reset();
+                    window.closeUnifiedBookingModal();
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnHtml;
+                        submitBtn.style.background = '';
+                        submitBtn.style.borderColor = '';
+                    }
+                }, 900);
             }
         });
     }
@@ -1309,26 +1325,30 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(bookingPayload)
                 });
-                const result = await res.json();
-                
+                const result = await res.json().catch(() => ({}));
                 const bookingId = result.data?.id || ('GB-' + Math.floor(1000 + Math.random() * 9000));
                 saveBookingRecord(result.data || bookingPayload);
 
-                let emailNote = email 
-                    ? `\n\n📩 An acknowledgment email has been dispatched to ${email}.`
-                    : '';
-
-                alert(`🎉 Thank You, ${firstName} ${lastName}!\n\nYour reservation request for Crown Inn Hotel [#${bookingId}] has been received.${emailNote}\n\nOur team is verifying room availability with the hotel front desk and will contact you shortly to confirm!`);
-
-                if (crownModal) {
-                    crownModal.classList.remove('open');
-                    document.body.classList.remove('no-scroll');
+                if (submitBtn) {
+                    submitBtn.innerHTML = '<span>✔ Booking Submitted!</span> <i class="fa-solid fa-check"></i>';
+                    submitBtn.style.background = '#059669';
+                    submitBtn.style.borderColor = '#059669';
                 }
 
-                // WhatsApp message backup
-                const waMsg = `*NEW CROWN INN RESERVATION RECEIVED!*%0A%0A*Booking ID:* ${bookingId}%0A*Property:* Crown Inn Hotel Service Apartments, Khaira Gali%0A*Guest Name:* ${firstName} ${lastName}%0A*Phone:* ${phone}%0A*Email:* ${email}%0A*Check-in Date:* ${datetime}%0A*Total:* PKR ${totalPrice.toLocaleString()}%0A%0A_Record saved in Database & Admin Panel (admin.html)_`;
-                window.open(`https://wa.me/923001234567?text=${waMsg}`, '_blank');
-                crownBookingForm.reset();
+                setTimeout(() => {
+                    if (crownModal) {
+                        crownModal.style.display = 'none';
+                        crownModal.classList.remove('open');
+                        document.body.classList.remove('no-scroll');
+                    }
+                    crownBookingForm.reset();
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnHtml;
+                        submitBtn.style.background = '';
+                        submitBtn.style.borderColor = '';
+                    }
+                }, 900);
             } catch (err) {
                 console.error('Server error submitting Crown Inn booking:', err);
                 const localId = 'GB-' + Math.floor(1000 + Math.random() * 9000);
@@ -1336,16 +1356,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 bookingPayload.status = 'Pending';
                 saveBookingRecord(bookingPayload);
 
-                alert(`✅ Reservation request saved for Crown Inn [#${localId}]!\n\nOur team will contact you shortly.`);
-                if (crownModal) {
-                    crownModal.classList.remove('open');
-                    document.body.classList.remove('no-scroll');
-                }
-            } finally {
                 if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnHtml;
+                    submitBtn.innerHTML = '<span>✔ Booking Submitted!</span> <i class="fa-solid fa-check"></i>';
+                    submitBtn.style.background = '#059669';
+                    submitBtn.style.borderColor = '#059669';
                 }
+
+                setTimeout(() => {
+                    if (crownModal) {
+                        crownModal.style.display = 'none';
+                        crownModal.classList.remove('open');
+                        document.body.classList.remove('no-scroll');
+                    }
+                    crownBookingForm.reset();
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnHtml;
+                        submitBtn.style.background = '';
+                        submitBtn.style.borderColor = '';
+                    }
+                }, 900);
             }
         });
     }
@@ -1589,37 +1619,51 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(bookingPayload)
                 });
-                const result = await res.json();
+                const result = await res.json().catch(() => ({}));
                 const bookingId = result.data?.id || ('GB-' + Math.floor(1000 + Math.random() * 9000));
                 saveBookingRecord(result.data || bookingPayload);
 
-                let emailNote = email 
-                    ? `\n\n📩 An acknowledgment email has been dispatched to ${email}.`
-                    : '';
-
-                alert(`🎉 Thank You, ${firstName} ${lastName}!\n\nYour reservation request for Maria Villa [#${bookingId}] has been received.${emailNote}\n\nOur team is verifying room availability and will contact you shortly to confirm!`);
-
-                if (mariaModal) {
-                    mariaModal.style.display = 'none';
-                    mariaModal.classList.remove('open');
-                    document.body.classList.remove('no-scroll');
+                if (submitBtn) {
+                    submitBtn.innerHTML = '<span>✔ Booking Submitted!</span> <i class="fa-solid fa-check"></i>';
+                    submitBtn.style.background = '#059669';
+                    submitBtn.style.borderColor = '#059669';
                 }
 
-                mariaBookingForm.reset();
+                setTimeout(() => {
+                    if (mariaModal) {
+                        mariaModal.style.display = 'none';
+                        mariaModal.classList.remove('open');
+                        document.body.classList.remove('no-scroll');
+                    }
+                    mariaBookingForm.reset();
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnHtml;
+                        submitBtn.style.background = '';
+                        submitBtn.style.borderColor = '';
+                    }
+                }, 900);
             } catch (err) {
                 console.error('Server error submitting Maria Villa booking:', err);
-                alert(`✅ Reservation request submitted!\n\nOur team will contact you shortly.`);
-                if (mariaModal) {
-                    mariaModal.style.display = 'none';
-                    mariaModal.classList.remove('open');
-                    document.body.classList.remove('no-scroll');
-                }
-                mariaBookingForm.reset();
-            } finally {
                 if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnHtml;
+                    submitBtn.innerHTML = '<span>✔ Booking Submitted!</span> <i class="fa-solid fa-check"></i>';
+                    submitBtn.style.background = '#059669';
+                    submitBtn.style.borderColor = '#059669';
                 }
+                setTimeout(() => {
+                    if (mariaModal) {
+                        mariaModal.style.display = 'none';
+                        mariaModal.classList.remove('open');
+                        document.body.classList.remove('no-scroll');
+                    }
+                    mariaBookingForm.reset();
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnHtml;
+                        submitBtn.style.background = '';
+                        submitBtn.style.borderColor = '';
+                    }
+                }, 900);
             }
         });
     }

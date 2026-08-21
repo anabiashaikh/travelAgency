@@ -34,14 +34,16 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
 });
 
-// Start Server
-app.listen(PORT, () => {
-    console.log('\n======================================================');
-    console.log(`🚀 Explore Galiyat Server & Database running on http://localhost:${PORT}`);
-    console.log(`📊 Admin Reservations Dashboard: http://localhost:${PORT}/admin.html`);
-    console.log(`🏨 Maria Villa Page: http://localhost:${PORT}/maria-villa.html`);
-    console.log(`👑 Crown Inn Page: http://localhost:${PORT}/crown-inn.html`);
-    console.log('======================================================\n');
-});
+// Start Server (only when executed directly, not when imported by Vercel serverless)
+if (require.main === module || !process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log('\n======================================================');
+        console.log(`🚀 Explore Galiyat Server & Database running on http://localhost:${PORT}`);
+        console.log(`📊 Admin Reservations Dashboard: http://localhost:${PORT}/admin.html`);
+        console.log(`🏨 Maria Villa Page: http://localhost:${PORT}/maria-villa.html`);
+        console.log(`👑 Crown Inn Page: http://localhost:${PORT}/crown-inn.html`);
+        console.log('======================================================\n');
+    });
+}
 
 module.exports = app;

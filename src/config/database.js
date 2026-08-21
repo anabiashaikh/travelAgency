@@ -122,57 +122,8 @@ async function initDb() {
         `);
 
         console.log('✔ PostgreSQL tables ready.');
-
-        // Migrate local JSON bookings if any exist
-        await migrateLocalJsonData();
     } catch (err) {
         console.error('❌ Error during PostgreSQL table initialization:', err);
-    }
-}
-
-// Automatic Migration of data/bookings.json to PostgreSQL
-async function migrateLocalJsonData() {
-    try {
-        const jsonPath = path.join(__dirname, '..', '..', 'data', 'bookings.json');
-        if (fs.existsSync(jsonPath)) {
-            const raw = fs.readFileSync(jsonPath, 'utf8');
-            const bookings = JSON.parse(raw || '[]');
-            if (bookings.length > 0) {
-                console.log(`📦 Found ${bookings.length} local booking records to synchronize with PostgreSQL...`);
-                for (const b of bookings) {
-                    const id = b.id || generateBookingId();
-                    const guestName = b.guestName || `${b.firstName || ''} ${b.lastName || ''}`.trim() || 'Valued Guest';
-                    const createdAt = b.createdAt ? new Date(b.createdAt) : new Date();
-
-                    await pool.query(`
-                        INSERT INTO bookings (
-                            id, guest_name, first_name, last_name, phone, email, street, street2,
-                            city, state, postal, country, property, booking_type, room_type,
-                            rooms_count, guests_count, datetime, check_in_date, check_out_date,
-                            total_price, special_requests, confirmation_channel, comments,
-                            status, created_at, updated_at
-                        ) VALUES (
-                            $1, $2, $3, $4, $5, $6, $7, $8,
-                            $9, $10, $11, $12, $13, $14, $15,
-                            $16, $17, $18, $19, $20,
-                            $21, $22, $23, $24,
-                            $25, $26, $27
-                        ) ON CONFLICT (id) DO NOTHING;
-                    `, [
-                        id, guestName, b.firstName || '', b.lastName || '', b.phone || '', b.email || '',
-                        b.street || '', b.street2 || '', b.city || '', b.state || '', b.postal || '',
-                        b.country || 'Pakistan', b.property || 'Galiyat Stay', b.bookingType || 'Reservation',
-                        b.roomType || 'Standard Room', b.roomsCount || 1, b.guestsCount || '2 adults · 0 children',
-                        b.datetime || '', b.checkInDate || '', b.checkOutDate || '', Number(b.totalPrice) || 0,
-                        b.specialRequests || '', b.confirmationChannel || 'Email', b.comments || '',
-                        b.status || 'Pending', createdAt, createdAt
-                    ]);
-                }
-                console.log('✔ JSON data successfully migrated to PostgreSQL!');
-            }
-        }
-    } catch (err) {
-        console.warn('Notice: Local JSON migration skipped or failed:', err.message);
     }
 }
 

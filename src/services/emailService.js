@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const Database = require('../config/database');
 require('dotenv').config();
 
 let transporter = null;
@@ -57,7 +58,7 @@ async function getTransporter() {
     return transporter;
 }
 
-// Helper to record email logs
+// Helper to record email logs in memory and PostgreSQL
 function logEmail(type, to, subject, previewUrl = null, error = null) {
     const entry = {
         id: Date.now().toString(36),
@@ -71,6 +72,12 @@ function logEmail(type, to, subject, previewUrl = null, error = null) {
     };
     emailLogs.unshift(entry);
     if (emailLogs.length > 50) emailLogs.pop();
+
+    // Persist to PostgreSQL database
+    try {
+        Database.addEmailLog(entry).catch(err => console.warn('Email log DB error:', err.message));
+    } catch (e) {}
+
     return entry;
 }
 

@@ -2,17 +2,17 @@ const Database = require('../config/database');
 const EmailService = require('../services/emailService');
 
 const BookingController = {
-    // 1. GET ALL BOOKINGS
+    // 1. GET ALL BOOKINGS (FROM POSTGRESQL)
     async getAllBookings(req, res) {
         try {
-            const bookings = Database.getAllBookings();
+            const bookings = await Database.getAllBookings();
             return res.json({
                 success: true,
                 count: bookings.length,
                 data: bookings
             });
         } catch (err) {
-            console.error('Error fetching bookings:', err);
+            console.error('Error fetching bookings from PostgreSQL:', err);
             return res.status(500).json({ success: false, message: 'Failed to retrieve bookings', error: err.message });
         }
     },
@@ -20,7 +20,7 @@ const BookingController = {
     // 2. GET BOOKING BY ID
     async getBookingById(req, res) {
         try {
-            const booking = Database.getBookingById(req.params.id);
+            const booking = await Database.getBookingById(req.params.id);
             if (!booking) {
                 return res.status(404).json({ success: false, message: 'Booking not found' });
             }
@@ -30,7 +30,7 @@ const BookingController = {
         }
     },
 
-    // 3. CREATE BOOKING (Stage 1: Save + Instant Acknowledgment & Admin Alert)
+    // 3. CREATE BOOKING (Stage 1: Save in PostgreSQL + Instant Acknowledgment & Admin Alert)
     async createBooking(req, res) {
         try {
             const bookingData = req.body;
@@ -41,9 +41,9 @@ const BookingController = {
                 });
             }
 
-            // Save to database
-            const newBooking = Database.createBooking(bookingData);
-            console.log(`\n📝 New Booking Saved: #${newBooking.id} (${newBooking.guestName} - ${newBooking.property})`);
+            // Save to PostgreSQL database
+            const newBooking = await Database.createBooking(bookingData);
+            console.log(`\n🐘 New Booking Saved to PostgreSQL: #${newBooking.id} (${newBooking.guestName} - ${newBooking.property})`);
 
             // Dispatch Stage 1 Customer Acknowledgment Email
             let emailResult = null;
@@ -66,7 +66,7 @@ const BookingController = {
                 }
             });
         } catch (err) {
-            console.error('Error creating booking:', err);
+            console.error('Error creating booking in PostgreSQL:', err);
             return res.status(500).json({ success: false, message: 'Failed to process booking', error: err.message });
         }
     },
@@ -81,12 +81,12 @@ const BookingController = {
                 return res.status(400).json({ success: false, message: 'Status is required.' });
             }
 
-            const updatedBooking = Database.updateBookingStatus(id, status);
+            const updatedBooking = await Database.updateBookingStatus(id, status);
             if (!updatedBooking) {
                 return res.status(404).json({ success: false, message: `Booking #${id} not found.` });
             }
 
-            console.log(`\n🔄 Booking #${id} status updated to [${status}].`);
+            console.log(`\n🔄 Booking #${id} status updated to [${status}] in PostgreSQL.`);
             let emailResult = null;
 
             // Trigger Stage 2 confirmation voucher email
@@ -118,7 +118,7 @@ const BookingController = {
     async resendConfirmationEmail(req, res) {
         try {
             const { id } = req.params;
-            const booking = Database.getBookingById(id);
+            const booking = await Database.getBookingById(id);
             if (!booking) {
                 return res.status(404).json({ success: false, message: 'Booking not found' });
             }
@@ -141,7 +141,7 @@ const BookingController = {
     async deleteBooking(req, res) {
         try {
             const { id } = req.params;
-            const success = Database.deleteBooking(id);
+            const success = await Database.deleteBooking(id);
             if (!success) {
                 return res.status(404).json({ success: false, message: 'Booking not found or already deleted.' });
             }
@@ -154,7 +154,7 @@ const BookingController = {
     // 7. GET EMAIL LOGS
     async getEmailLogs(req, res) {
         try {
-            const logs = EmailService.getEmailLogs();
+            const logs = await Database.getEmailLogs();
             return res.json({ success: true, count: logs.length, data: logs });
         } catch (err) {
             return res.status(500).json({ success: false, message: 'Failed to retrieve email logs' });

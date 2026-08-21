@@ -428,6 +428,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (globalBookingForm) {
         globalBookingForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            if (globalBookingForm._isSubmitting) return;
+            globalBookingForm._isSubmitting = true;
+
             const submitBtn = globalBookingForm.querySelector('.bf-submit-btn');
             const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
             if (submitBtn) {
@@ -494,6 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 setTimeout(() => {
                     globalBookingForm.reset();
+                    globalBookingForm._isSubmitting = false;
                     window.closeUnifiedBookingModal();
                     if (submitBtn) {
                         submitBtn.disabled = false;
@@ -511,6 +515,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 setTimeout(() => {
                     globalBookingForm.reset();
+                    globalBookingForm._isSubmitting = false;
                     window.closeUnifiedBookingModal();
                     if (submitBtn) {
                         submitBtn.disabled = false;
@@ -1281,6 +1286,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (crownBookingForm) {
         crownBookingForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            if (crownBookingForm._isSubmitting) return;
+            crownBookingForm._isSubmitting = true;
+
             const submitBtn = crownBookingForm.querySelector('.bf-submit-btn');
             const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
             if (submitBtn) {
@@ -1342,6 +1350,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         document.body.classList.remove('no-scroll');
                     }
                     crownBookingForm.reset();
+                    crownBookingForm._isSubmitting = false;
                     if (submitBtn) {
                         submitBtn.disabled = false;
                         submitBtn.innerHTML = originalBtnHtml;
@@ -1369,6 +1378,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         document.body.classList.remove('no-scroll');
                     }
                     crownBookingForm.reset();
+                    crownBookingForm._isSubmitting = false;
                     if (submitBtn) {
                         submitBtn.disabled = false;
                         submitBtn.innerHTML = originalBtnHtml;
@@ -1567,6 +1577,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mariaBookingForm) {
         mariaBookingForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            if (mariaBookingForm._isSubmitting) return;
+            mariaBookingForm._isSubmitting = true;
+
             const submitBtn = mariaBookingForm.querySelector('.bf-submit-btn');
             const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
             if (submitBtn) {
@@ -1636,6 +1649,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         document.body.classList.remove('no-scroll');
                     }
                     mariaBookingForm.reset();
+                    mariaBookingForm._isSubmitting = false;
                     if (submitBtn) {
                         submitBtn.disabled = false;
                         submitBtn.innerHTML = originalBtnHtml;
@@ -1657,6 +1671,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         document.body.classList.remove('no-scroll');
                     }
                     mariaBookingForm.reset();
+                    mariaBookingForm._isSubmitting = false;
                     if (submitBtn) {
                         submitBtn.disabled = false;
                         submitBtn.innerHTML = originalBtnHtml;

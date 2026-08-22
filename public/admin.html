@@ -493,7 +493,13 @@
                     body: JSON.stringify({ email, password })
                 });
 
-                const result = await res.json();
+                let result = {};
+                try {
+                    result = await res.json();
+                } catch (parseErr) {
+                    result = { error: { message: `Server error (${res.status}). Please verify deployment.` } };
+                }
+
                 if (res.ok && result.success) {
                     currentUser = result.data.user;
                     showDashboard();

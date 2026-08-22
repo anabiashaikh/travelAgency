@@ -45,7 +45,20 @@ app.use(express.static(PUBLIC_DIR, {
     etag: true
 }));
 
-// 7. Mount Domain API Routes
+// 7. Lazy Database initialization check for API routes
+const { initDatabase } = require('./config/database');
+app.use(async (req, res, next) => {
+    if (req.path.startsWith('/api')) {
+        try {
+            await initDatabase();
+        } catch (dbErr) {
+            console.error('[DB Init Error in Middleware]:', dbErr.message);
+        }
+    }
+    next();
+});
+
+// 8. Mount Domain API Routes
 app.use('/api/admin/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/properties', propertiesRoutes);

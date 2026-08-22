@@ -1,49 +1,56 @@
-const express = require('express');
-const path = require('path');
-const cors = require('cors');
-require('dotenv').config();
+const app = require('./src/app');
+const env = require('./src/config/env');
+const logger = require('./src/config/logger');
+const { initDatabase, pool } = require('./src/config/database');
+const { startEmailWorker, stopEmailWorker } = require('./src/jobs/email.worker');
 
-const bookingRoutes = require('./src/routes/bookingRoutes');
+let server = null;
 
-const app = express();
-const PORT = process.env.PORT || 8080;
+async function bootstrap() {
+    try {
+        // 1. Initialize Database, Migrations & Seeds
+        await initDatabase();
 
-// Middleware
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+        // 2. Start Background Email Job Worker
+        startEmailWorker(4000);
 
-// Serve all frontend static files from /public directory
-const PUBLIC_DIR = path.join(__dirname, 'public');
-app.use(express.static(PUBLIC_DIR));
-
-// Mount Backend REST API Routes at /api
-app.use('/api', bookingRoutes);
-
-// Root route redirects / serves homepage
-app.get('/', (req, res) => {
-    res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
-});
-
-// Fallback route for client-side routing / unknown pages
-app.get('*', (req, res) => {
-    const requestedPath = path.join(PUBLIC_DIR, req.path);
-    if (requestedPath.endsWith('.html') && require('fs').existsSync(requestedPath)) {
-        return res.sendFile(requestedPath);
+        // 3. Start Express Server
+        if (require.main === module || !process.env.VERCEL) {
+            server = app.listen(env.PORT, () => {
+                logger.info('======================================================');
+                logger.info(`🚀 Explore Galiyat Server running on http://localhost:${env.PORT}`);
+                logger.info(`📊 Admin Portal: http://localhost:${env.PORT}/admin.html`);
+                logger.info(`Environment: ${env.NODE_ENV}`);
+                logger.info('======================================================');
+            });
+        }
+    } catch (err) {
+        logger.error(`❌ Server bootstrap failed: ${err.message}`, { stack: err.stack });
+        if (env.IS_PROD) {
+            process.exit(1);
+        }
     }
-    res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
-});
-
-// Start Server (only when executed directly, not when imported by Vercel serverless)
-if (require.main === module || !process.env.VERCEL) {
-    app.listen(PORT, () => {
-        console.log('\n======================================================');
-        console.log(`🚀 Explore Galiyat Server & Database running on http://localhost:${PORT}`);
-        console.log(`📊 Admin Reservations Dashboard: http://localhost:${PORT}/admin.html`);
-        console.log(`🏨 Maria Villa Page: http://localhost:${PORT}/maria-villa.html`);
-        console.log(`👑 Crown Inn Page: http://localhost:${PORT}/crown-inn.html`);
-        console.log('======================================================\n');
-    });
 }
+
+// Graceful Shutdown
+function gracefulShutdown(signal) {
+    logger.info(`Received ${signal}. Shutting down gracefully...`);
+    stopEmailWorker();
+    if (server) {
+        server.close(async () => {
+            logger.info('HTTP server closed.');
+            await pool.end();
+            logger.info('Database connections closed. Exiting process.');
+            process.exit(0);
+        });
+    } else {
+        process.exit(0);
+    }
+}
+
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+
+bootstrap();
 
 module.exports = app;

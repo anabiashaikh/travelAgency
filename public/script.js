@@ -480,9 +480,13 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
+                const idempotencyKey = 'idemp_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
                 const res = await fetch('/api/bookings', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Idempotency-Key': idempotencyKey
+                    },
                     body: JSON.stringify(payload)
                 });
                 const result = await res.json().catch(() => ({}));
@@ -1328,9 +1332,13 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
+                const idempotencyKey = 'idemp_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
                 const res = await fetch('/api/bookings', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Idempotency-Key': idempotencyKey
+                    },
                     body: JSON.stringify(bookingPayload)
                 });
                 const result = await res.json().catch(() => ({}));
@@ -1627,9 +1635,13 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
+                const idempotencyKey = 'idemp_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
                 const res = await fetch('/api/bookings', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Idempotency-Key': idempotencyKey
+                    },
                     body: JSON.stringify(bookingPayload)
                 });
                 const result = await res.json().catch(() => ({}));

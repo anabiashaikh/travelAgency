@@ -357,9 +357,9 @@ const BookingRepository = {
     /**
      * Server-side paginated bookings search
      */
-    async getPaginatedBookings({ page = 1, limit = 20, search = '', status = '', property = '', dateFrom = '', dateTo = '' }) {
+    async getPaginatedBookings({ page = 1, limit = 10, search = '', status = '', property = '', dateFrom = '', dateTo = '' }) {
         const safePage = Math.max(1, parseInt(page, 10) || 1);
-        const safeLimit = Math.min(100, Math.max(1, parseInt(limit, 10) || 20));
+        const safeLimit = Math.min(100, Math.max(1, parseInt(limit, 10) || 10));
         const offset = (safePage - 1) * safeLimit;
 
         const whereClauses = ['deleted_at IS NULL'];

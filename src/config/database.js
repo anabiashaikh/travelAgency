@@ -25,22 +25,23 @@ let isInitialized = false;
 async function initDatabase() {
     if (isInitialized) return pool;
     try {
-        logger.info('🐘 Connecting to PostgreSQL database...');
-        // Test connection
         const client = await pool.connect();
         client.release();
-        logger.info('✔ PostgreSQL connection established successfully.');
 
-        // Run automated migrations
-        await runMigrations(pool);
-
-        // Run initial seed
-        await seedInitialData(pool);
+        // Run migrations & initial seeds in dedicated server environment
+        if (!process.env.VERCEL) {
+            try {
+                await runMigrations(pool);
+                await seedInitialData(pool);
+            } catch (migErr) {
+                logger.warn(`Migration notice: ${migErr.message}`);
+            }
+        }
 
         isInitialized = true;
         return pool;
     } catch (err) {
-        logger.error('❌ Failed to initialize database:', { error: err.message });
+        logger.error('Failed to initialize database connection pool:', { error: err.message });
         throw err;
     }
 }

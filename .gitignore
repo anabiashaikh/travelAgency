@@ -1,7 +1,26 @@
-# Ignore backend architecture doc from git
-backend_architecture.md
-.DS_Store
-node_modules/
-*.log
+# Environment and Secrets
 .env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+*.crt
+
+# Node Modules and Logs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Data and Local Storage Dumps
 data/
+*.dump
+*.sql.gz
+
+# System and IDE Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

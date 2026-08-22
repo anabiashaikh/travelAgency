@@ -281,12 +281,13 @@ sequenceDiagram
 
 ```env
 PORT=8080
-DATABASE_URL=postgresql://neondb_owner:npg_gjMHuh9X5Wal@ep-snowy-meadow-ay862b8h.c-5.us-east-2.aws.neon.tech/neondb?sslmode=require
+DATABASE_URL=postgresql://<DB_USER>:<DB_PASSWORD>@<DB_HOST>/<DB_NAME>?sslmode=require
+JWT_SECRET=<YOUR_SECURE_RANDOM_SECRET_KEY>
 SMTP_SERVICE=gmail
-SMTP_USER=anabiaxhaikh190@gmail.com
-SMTP_PASS=yyho dghn nteo bfdx
-EMAIL_FROM="Explore Galiyat Reservations" <anabiaxhaikh190@gmail.com>
-ADMIN_NOTIFICATION_EMAIL=anabiaxhaikh190@gmail.com
+SMTP_USER=<YOUR_EMAIL>@gmail.com
+SMTP_PASS=<YOUR_16_CHAR_APP_PASSWORD>
+EMAIL_FROM="Explore Galiyat Reservations" <reservations@exploregaliyat.com>
+ADMIN_NOTIFICATION_EMAIL=<YOUR_EMAIL>@gmail.com
 ```
 
 ### 10.2 Steps to Deploy on Vercel
